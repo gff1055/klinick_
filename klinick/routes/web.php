@@ -15,4 +15,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+/* Rota inicial */
+Route::get('/login', [
+    'as' => 'user.login_get',
+    'uses' => 'Controller@userLogin'
+]);
+
+/** Rota POST onde  é enviado os dados de login fornecidos*/
+Route::post('/login',[
+    'as' => 'user.login_post',
+    'uses' => 'UsersController@login'
+]);
+
+/** Temporariooooo!!!! */
+Route::get('/user',[
+    'as' => 'user.index',
+    'uses' => 'UsersController@index'
+]);
+
 

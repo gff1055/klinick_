@@ -1,0 +1,399 @@
+/*
+E, pE:		0, 0, 0, 1
+C, pC, atr:	0, 0, 1, 0
+Id			0, 1, 0, 0
+inl			1, 0, 0, 0
+*/
+
+*{												/*Resetando os estilos do navegador*/
+	padding: 0px;
+	margin: 0px;
+	list-style: none;
+	outline: none;
+	border: none;
+
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+
+/* body */
+
+body{
+	min-width: 560px
+}
+
+
+/* CONFIGURACOES GERAIS DO MENU DA BARRA SUPERIOS */
+
+/* Menu do topo da pagina inicial */
+.topMenuBar{
+	background-color:  #009900;
+	color: #eeeeee;
+	display: flex;
+	align-items: center;
+	font-size: 16px;
+	font-family: verdana;
+}
+
+
+/* Logo ao lado do menu na pagina inicial */
+.topMenuBar .logo{
+	color: #eeeeee;
+	font-size: 32px;
+	margin-right: 16px;
+}
+
+/* Item do menu da pagina inicial */
+.itemTopMenuBar{
+	margin: 4px;
+	margin-right: 16px;
+
+}
+
+/* Links do menu */
+.itemTopMenuBar a{
+	color: #fff;
+	border-radius: 8px;
+	padding: 10px;
+}
+
+/* Links do menu ao passar o mouse */
+.itemTopMenuBar a:hover{
+	color: #fff;
+	text-decoration: none;
+	background-color: #006600;
+	transition: .3s;
+}
+
+.beginning{
+	font-size: 2em;
+	color: #dddddd;
+	background-color: #333333;
+	margin: 8px;
+}
+
+#optionContact{
+	flex-grow: 10;
+}
+
+#optionBeDoctor{
+	white-space: nowrap;	
+}
+
+
+/* MENU SANDUICHE NO MENU DA BARRA SUPERIOR */
+
+/*O menu e as opcoes*/
+#menuToggle{
+	display: block;
+	position: relative;
+	/*top: 50px;*/
+	left: 8px;
+	z-index: 1;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+/* Configura o estilo das opcoes */
+#menuToggle a{
+	text-decoration: none;
+	color: #232323;
+	transition: color 0.3s ease;
+	padding: 0px;
+	
+}
+
+/* Opcoes quando passa o mouse em cima */
+#menuToggle a:hover{
+	color: #eeeeee;
+	
+}
+
+/* Estiliza o input check oculto */
+#menuToggle input{
+	display: block;
+	width: 40px;
+	height: 32px;
+	position: absolute;
+	top: -7px;
+	left: -5px;
+	
+	cursor: pointer;
+
+	opacity: 0; 
+	z-index: 2;
+
+	-webkit-touch-callout: none;
+	
+}
+
+/* Estiliza o icone do menu hamburguer */
+#menuToggle span{
+	display: block;
+	width: 33px;
+	height: 4px;
+	margin-bottom: 5px;
+	position: relative;
+
+	background: #cdcdcd;
+	border-radius: 3px;
+
+	z-index: 1;
+
+	transform-origin: 4px 0px;
+
+	transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+			  opacity 0.55s ease;
+			  
+}
+
+/* Configuracao da animação do icone do menu hamburguer */
+#menuToggle span:first-child{
+  transform-origin: 0% 0%;
+  
+}
+
+#menuToggle span:nth-last-child(2){
+  transform-origin: 0% 100%;
+}
+
+#menuToggle input:checked ~ span{
+	opacity: 1;
+	transform: rotate(45deg) translate(-2px, -1px);
+	background: #232323;
+	
+}
+
+#menuToggle input:checked ~ span:nth-last-child(3){
+	opacity: 0;
+	transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+#menuToggle input:checked ~ span:nth-last-child(2){
+	transform: rotate(-45deg) translate(0, -1px);
+}
+
+/*Area do menu*/
+#menu{
+	position: absolute;
+	width: 300px;
+	margin: -100px 0 0 -50px;
+	padding: 38px;
+	padding-right: 2px;
+	padding-top: 100px;
+	padding-bottom: 8px;
+	
+
+	background: #ededed;
+	list-style-type: none;
+	-webkit-font-smoothing: antialiased;
+	/* to stop flickering of text in safari */
+
+	transform-origin: 0% 0%;
+	transform: translate(-100%, 0);
+
+	transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+	box-shadow: 2px 4px 3px #888888 ;
+}
+
+#menu li{
+  padding: 10px 0;
+  padding-left: 16px;
+  font-size: 16px;
+}
+
+#menu li:hover{
+	background-color: #009900;
+}
+
+
+#menuToggle input:checked ~ ul{
+  transform: none;
+}
+
+
+/* Icone do menu sanduiche da barra superior */
+/*.topMenuBar .menuSandwich div div{
+	width: 24px;
+	height: 2px;
+	background-color: #eeeeee;
+	margin: 4px 0;
+}
+
+/* Rotulo "menu" no menu sanduiche da barra superior */
+/*.topMenuBar .menuSandwich div{
+	margin-right: 4px;
+}
+
+/* Menu sanduiche */
+/*.menuSandwich{
+	padding: 8px;
+	margin-left: 16px;
+	margin-right: 12px;
+	display: flex;
+}
+
+.subMenuSandwich{
+	/*display: none;*/
+/*	z-index: 1;
+}
+
+/* Menu sanduiche ao passar o mouse por cima */
+/*.menuSandwich:hover{
+	background-color: 006600;
+	border-radius: 8px;
+	transition: .2s;
+	cursor: pointer;
+}
+
+
+/* Area de escolha de tipo de acesso */
+
+.logo{
+	font-family: 'Lobster', cursive;
+	color: #009900/*#477F6D*/;
+}
+
+
+/** ESTILO GERAL DOS FORMULARIOS **/
+
+
+form{											
+	padding: 30px;
+	width: fit-content;
+	height: auto;
+	border-radius: 25px;
+}
+
+/* Logotipo no formluarios*/
+form .logo{										
+	font-size: 48px;
+}
+
+/* Icone nos formularios */
+form .icone{									
+	color: #009900/*#477F6D*/;
+}
+
+/* Estilo geral dos atributos dos formularios */
+.atrForm{										
+	font-size: 16px;
+	margin: 8px 0px 8px 0px;
+	border-radius: 8px;
+	padding: 8px;
+	width: 100%;
+	border-color: #333333;
+}
+
+/* Estilo de campos que ocupam metade do formulario */
+.atrFormSizeHalf{
+	width: 49.5%;
+}
+
+/* Div que contem botoes submit dos formularios */
+form .divBtEnviar{
+	text-align: center;
+}
+
+/* Estilo do botao submit do formulario*/
+form .divBtEnviar input[type="submit"]{
+	width: 50%;
+}
+
+/* Botoes submit dos formularios */
+form input[type="submit"]{						
+	background-color: /*#5BA28B*/#009900;
+	font-weight: bold;
+	color: white;
+	margin-top: 32px;
+}
+
+/* Botoes submit ao passar o mouse por cima */
+form input[type="submit"]:hover{				
+	background-color: /*#477F6D*/#006600;
+}
+
+/* Campos de texto e campos de senha */
+form input[type="text"], form input[type="password"]{	
+	text-shadow: 10px, 10px;
+	border: 1px solid #888888;
+}
+
+/* Atributos desabilitados */
+form input[disabled]{							
+	background-color: /*#477F6D*/#888888;
+}
+
+/* Atributos desabilitados quando passar o mouse por cima */
+form input[disabled]:hover{						
+	background-color: /*#477F6D*/#888888;
+}
+
+
+/*Configuracoes da area de login do usuario*/
+
+/* Estilo do body da pagina de login */
+.bodyPaginaLoginUser{								
+	background-image: url("/images/frontdesk.png");
+	background-size: cover;
+	font-family: Verdana, "sans-serif";	
+}
+
+/* Camada escura em cima da imagem de fundo */
+.divMaskBackgroundImage{
+	background-color: rgba(0,0,0,.5);
+}
+
+.divFormLogin{									/* Estilo da div que abriga o formulario de login */
+	height: 100%;								/* Altura da area dor formulario */
+	min-height: 100%;							/* Altura minima da area dor formulario */
+	display: flex;								/* Flexbox */
+	align-items: center;						/*Alinha form no centro*/
+	justify-content: center;					/*Alinha form no centro*/
+}
+
+/*Estilo do formulario de login*/
+.formLogin{										
+	background-color: #ffffff;
+	margin-top: 1%;
+	width: 400px;
+	text-align: center;
+}
+
+/* Estilo dos atributos do formulario de login */
+.formLogin .atrForm{
+	width: 82%;
+}
+
+
+
+/*CONFIGURACOES DA PAGINA DE CADASTRO DE NOVOS USUARIO*/
+
+
+
+/* Estilo da div que contem o formulario de cadastro */
+.divUserRegisterForm form{
+	width: 100%;
+}
+
+/*Titulo do formulario*/
+.formUserRegisterTitle{
+	text-align: center;
+}
+
+.requiredFieldLabel{
+	font-size: 0.8em;
+	font-style: italic;
+}
+
+
+/* CONFIGURACOES DA PAGINA INICIAL DO USUARIO */
+
+.iconMenuToggle{
+	margin-right: 1em;
+}
+
+
