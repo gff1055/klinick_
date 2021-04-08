@@ -12,29 +12,22 @@ use App\Http\Requests\UserUpdateRequest;
 use App\Repositories\UserRepository;
 use App\Validators\UserValidator;
 use App\Entities\User;
-//use App\Services\UserService;
+use App\Services\UserService;
 use Illuminate\Support\Facades\DB;
-//use Illuminate\Support\Facades\Auth;
 use Auth;
 use Exception;
 
 class UsersController extends Controller{
     
     protected $repository;
-
-    /*reformuacao
-    protected $service;*/
+    protected $service;
     
     //reformulacao
-    protected $validator;
+    //protected $validator;
 
-
-
-
-    public function __construct(UserRepository $repository, UserValidator $validator){//*UserService $service){
+    public function __construct(UserRepository $repository, UserService $service){
         $this->repository = $repository;
-        //*$this->service = $service;
-        $this->validator  = $validator;
+        $this->service = $service;
     }
 
 
@@ -220,26 +213,29 @@ class UsersController extends Controller{
      * RETORNO:     Dados necessarios para avaliar se houve falha ou nao no cadastro
      */
     public function store(UserCreateRequest $request){
-        
-        //*$request = $this->service->store($request->all());
+        $registeredData = $request;
+        $request = $this->service->store($request->all());
 
         // O usuario sendo cadastrado com sucesso, ou nao,
         // os dados referentes são enviados para a view
-        if($request[0]['success']){
+        if($request['success']){
 
-            echo json_encode($request);
-            return;
-
-            //--->$user = $request['data'];
+            /*echo json_encode($request);
+            return;*/
+            $user = $request['data'];
         }
 
         else{
-
-            echo json_encode($request);
-            return;
-            //--->$user = null;
-
+            /*echo json_encode($request);
+            return;*/
+            $user = null;
         }
+
+
+        $user = $this->repository->findWhere(['email' => $registeredData['email']])->first();
+        //dd($user);
+        Auth::login($user);
+        return redirect()->route('user.index');
 
         /*return view('user.index',[
             'user' => $user,

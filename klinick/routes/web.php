@@ -27,10 +27,11 @@ Route::post('/login',[
     'uses' => 'UsersController@login'
 ]);
 
-/** Temporariooooo!!!! */
-Route::get('/user',[
-    'as' => 'user.index',
-    'uses' => 'UsersController@index'
+Route::get('/user/register',[
+    'as' => 'user.register_get',
+    'uses' => 'UsersController@register'
 ]);
+
+Route::resource('user', 'UsersController');
 
 

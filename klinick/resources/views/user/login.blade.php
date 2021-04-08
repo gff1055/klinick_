@@ -16,7 +16,7 @@
 						'class' => 'formLogin'
 					])!!}
 					
-						{{ csrf_field() }}
+						
 						
 						<span class="logo">KliNicK</span>
 						<br>
@@ -52,7 +52,7 @@
 
 						<hr>
 						
-					Não tem uma conta? <a href="{{'VAZIO' /*route('user.register_get')*/ }}">Crie uma</a>
+					Não tem uma conta? <a href="{{route('user.register_get') }}">Crie uma</a>
 
 					{!! Form::close() !!}
 				</div>
