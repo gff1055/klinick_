@@ -53,9 +53,6 @@ class UsersController extends Controller{
         ];
 
         
-
-         //var_dump($dadosAut);
-
 /*        if(Auth::login($dadosAut));
         else{
             echo 'aconteceu algo';
@@ -66,8 +63,7 @@ class UsersController extends Controller{
 
 
         // Efetuando login
-        try
-        {
+        try {
         
             // Se a criptografia de senha esta habilitada
             // é executado o metodo especifico
@@ -81,56 +77,32 @@ class UsersController extends Controller{
             {
                 $user = $this->repository->findWhere(['email' => $dadosLogin->get('username')])->first();
                 
-
+   
                 // O usuario existe?
-                if(!$user)
-                    throw new Exception("Email/Login invalido");
+                if(!$user){
+                    //throw new Exception("Email/Login invalido");
+                    //A variavel '$loginFeedback' armazena o status da requisicao se houve sucesso/erro
+                    $loginFeedback['success'] = false;
+                    $loginFeedback['message'] = "O Email/Login nao existe";
+                    echo json_encode($loginFeedback);                   // Converte a variavel '$loginFeedback' em JSON
+                    return;
+                }
                 
                 // A senha esta correta?
-                if($user->password != $dadosLogin->get('password'))
-                    throw new Exception("SENHA INVALIDA");
-
-//*                $databaseData = DB::select('select * from users where username = ? or email = ?', [$dadosLogin->get('username'), $dadosLogin->get('username')]);*/
-              
-                /* Se o usuario nao existe,
-                a operacao é sinalizada como false e é enviado mensagem para a view */
-//*                if(!$databaseData){
-
-//*                    throw new Exception("Email/Login invalido");
-
-                    // COM JAVASCRIPT
-                    /*$loginFeedback['success'] = false;
-                    $loginFeedback['message'] = "O Email/Login nao existe";
-                    
-                    echo json_encode($loginFeedback);
-                    return;*/
+                if($user->password != $dadosLogin->get('password')){
+                    $loginFeedback['success'] = false;
+                    $loginFeedback['message'] = "Senha invalida";
+                    echo json_encode($loginFeedback);                   // Converte a variavel '$loginFeedback' em JSON
+                    return;
+                    //throw new Exception("SENHA INVALIDA");
+                }
                 
-//*                }
-
-                /* Se o usuario existir, os dados do mesmo sao carregados */
-//*                else{
-
-//*                    $user = new User();
-//*                    $user->loadDataLogin($databaseData[0]);
-
-                    /* Se a senha informada for diferente da cadastrada é enviado
-                    o alerta para a view*/
-//*                    if($user->password != $dadosLogin->get('password')){
-
-//*                        throw new Exception("sENHA INVALIDA");
-                    
-                        // COM JAVASCRIPT
-                        /*$loginFeedback['success'] = false;
-                        $loginFeedback['message'] = "Senha invalida";
-                    
-                        echo json_encode($loginFeedback);
-                        return;*/
-                    
-//*                    }
-                
-//*                }
-
                 Auth::login($user);
+                $loginFeedback['success'] = true;
+                echo json_encode($loginFeedback);                   // Converte a variavel '$loginFeedback' em JSON
+                return;
+                    
+                //}
                 /*if(Auth::login($user))
                 echo 'nada';
                 else{
@@ -138,7 +110,7 @@ class UsersController extends Controller{
                 }*/
             }
 
-            return redirect()->route('user.index');
+            //return redirect()->route('user.index');
             /*$loginFeedback['success'] = true;
             $loginFeedback['check'] = Auth::check();
             // echo Auth::user();
@@ -193,10 +165,10 @@ class UsersController extends Controller{
         echo "HAAAA";
 
         if(Auth::check() == true){
-            echo "logado";
+            echo "logado: ola   ".Auth::user()->name;
         }
 
-        dd(Auth::user());
+        //dd(Auth::user());
 
 
 

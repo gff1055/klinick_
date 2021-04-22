@@ -357,7 +357,7 @@ form input[disabled]:hover{
 
 /*Estilo do formulario de login*/
 .formLogin{										
-	background-color: #ffffff;
+	background-color: #eee;
 	margin-top: 1%;
 	width: 400px;
 	text-align: center;
@@ -377,6 +377,10 @@ form input[disabled]:hover{
 /* Estilo da div que contem o formulario de cadastro */
 .divUserRegisterForm form{
 	width: 100%;
+}
+
+.formUserRegister{
+	background-color: #eee;
 }
 
 /*Titulo do formulario*/

@@ -11,8 +11,8 @@
 			<section id="conteudo-view">
 				<div class="divFormLogin">
 					{!!Form::open([
-						'route'=>'user.login_post',
-						'method'=>'post',
+						//'route'=>'user.login_post',
+						//'method'=>'post',
 						'class' => 'formLogin'
 					])!!}
 					
@@ -65,7 +65,7 @@
 		<script>
 			
 		</script>
-		<!--<script src="{{asset('js/validateLogin.js')}}"></script>-->
+		<script src="{{asset('js/validateLogin.js')}}"></script>
 	</body>
 	
 @endsection
