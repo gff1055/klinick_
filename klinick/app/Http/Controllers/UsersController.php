@@ -67,7 +67,6 @@ class UsersController extends Controller{
         
             // Se a criptografia de senha esta habilitada
             // é executado o metodo especifico
-
             if(env('PASSWORD_HASH')){
                 Auth::attempt($dadosAut, false);
             }
@@ -78,7 +77,7 @@ class UsersController extends Controller{
                 $user = $this->repository->findWhere(['email' => $dadosLogin->get('username')])->first();
                 
    
-                // O usuario existe?
+                // Se o usuario nao existir é enviado um alerta
                 if(!$user){
                     //throw new Exception("Email/Login invalido");
                     //A variavel '$loginFeedback' armazena o status da requisicao se houve sucesso/erro
@@ -88,7 +87,7 @@ class UsersController extends Controller{
                     return;
                 }
                 
-                // A senha esta correta?
+                // Se a senha não for compativel é enviado um alerta
                 if($user->password != $dadosLogin->get('password')){
                     $loginFeedback['success'] = false;
                     $loginFeedback['message'] = "Senha invalida";
@@ -101,13 +100,6 @@ class UsersController extends Controller{
                 $loginFeedback['success'] = true;
                 echo json_encode($loginFeedback);                   // Converte a variavel '$loginFeedback' em JSON
                 return;
-                    
-                //}
-                /*if(Auth::login($user))
-                echo 'nada';
-                else{
-                    echo 'aconteceu algo';
-                }*/
             }
 
             //return redirect()->route('user.index');
@@ -190,24 +182,24 @@ class UsersController extends Controller{
 
         // O usuario sendo cadastrado com sucesso, ou nao,
         // os dados referentes são enviados para a view
-        if($request['success']){
-
-            /*echo json_encode($request);
-            return;*/
-            $user = $request['data'];
+        if($request[0]['success']){
+            Auth::login($user);
+            echo json_encode($request);
+            return;
+            //$user = $request['data'];
         }
 
         else{
-            /*echo json_encode($request);
-            return;*/
-            $user = null;
+            echo json_encode($request);
+            return;
+            //$user = null;
         }
 
 
-        $user = $this->repository->findWhere(['email' => $registeredData['email']])->first();
-        //dd($user);
-        Auth::login($user);
-        return redirect()->route('user.index');
+        //      $user = $this->repository->findWhere(['email' => $registeredData['email']])->first();
+        //      dd($user);
+        //      Auth::login($user);
+        //      return redirect()->route('user.index');
 
         /*return view('user.index',[
             'user' => $user,

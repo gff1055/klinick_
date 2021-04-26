@@ -39,56 +39,56 @@ class UserService{
 			$this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE);
 
 			// Inicializando uma variavel com o feedback da existencia(ou nao) do usuario informado
-//*			$userExist = DB::select('select * from users where username = ?', [$data['username']]);
+			$userExist = DB::select('select * from users where username = ?', [$data['username']]);
 
 			// Inicializando array que lista os erros ou sucesso no cadastro
-//*			$arrayDataFeedback = [];
+			$arrayDataFeedback = [];
 			
 			// Se já existir um usuario cadastrado com os dados fornecidos
 			// o array indicando falha é enviado para a view
-//*			if($userExist){
+			if($userExist){
 				
-//*				$arrayDataFeedback[] = [
-//*					'success' => false,
-//*					'code' => '55418313',
-//*					'message' => 'Já exite uma conta com esse nome de usuario',
-//*					'data' => null
-//*				];
+				$arrayDataFeedback[] = [
+					'success' => false,
+					'code' => '55418313',
+					'message' => 'Já exite uma conta com esse nome de usuario',
+					'data' => null
+				];
 	
-//*			}
+			}
 
 			// Variavel recebe o feedback da existencia(ou nao) do email informado
-//*			$emailExist = DB::select('select * from users where email = ?', [$data['email']]);
+			$emailExist = DB::select('select * from users where email = ?', [$data['email']]);
 
 			// Se já existir um email cadastrado com os dados fornecidos
 			// o array indicando falha é enviado para a view
-//*			if($emailExist){
+			if($emailExist){
 				
-//*				$arrayDataFeedback[] = [
-//*					'success' => false,
-//*					'code' => '341313',
-//*					'message' => 'Já exite uma conta associada com esse email',
-//*					'data' => null
-//*				];
+				$arrayDataFeedback[] = [
+					'success' => false,
+					'code' => '341313',
+					'message' => 'Já exite uma conta associada com esse email',
+					'data' => null
+				];
 	
-//*			}
+			}
 
-			/* Se não existir nenhum nome de usuario/email cadastrado com os dados fornecidos
-			o array indicando sucesso é enviado para a view */
-//*			if(!$userExist && !$emailExist){
+			// Se não existir nenhum nome de usuario/email cadastrado com os dados fornecidos
+			// o array indicando sucesso é enviado para a view
+			if(!$userExist && !$emailExist){
 	
 				$user = $this->repository->create($data);
 		
-//*				$arrayDataFeedback[] = [
-//*					'success' => true,
-//*					'code' => '538',
-//*					'message' => 'Usuario Cadastrado',
-//*					'data' => $user
-//*				];
+				$arrayDataFeedback[] = [
+					'success' => true,
+					'code' => '538',
+					'message' => 'Usuario Cadastrado',
+					'data' => $user
+				];
 
-//*			}
+			}
 
-//*			return $arrayDataFeedback;
+			return $arrayDataFeedback;
 	
 		}
 
