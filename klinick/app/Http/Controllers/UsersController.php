@@ -44,22 +44,11 @@ class UsersController extends Controller{
     
     public function login(Request $dadosLogin){
 
-        /*var_dump($dadosLogin->all());*/
-
         // recebendo dados inseridos pelo usuario
         $dadosAut = [
             'email' => $dadosLogin->get('username'),
             'password' => $dadosLogin->get('password')
         ];
-
-        
-/*        if(Auth::login($dadosAut));
-        else{
-            echo 'aconteceu algo';
-        }*/
-
-//        var_dump(Auth::check());
-
 
 
         // Efetuando login
@@ -72,11 +61,9 @@ class UsersController extends Controller{
             }
 
             // A criptografia de senha nao esta habilitada
-            else
-            {
+            else{
                 $user = $this->repository->findWhere(['email' => $dadosLogin->get('username')])->first();
-                
-   
+                   
                 // Se o usuario nao existir é enviado um alerta
                 if(!$user){
                     //throw new Exception("Email/Login invalido");
@@ -102,28 +89,12 @@ class UsersController extends Controller{
                 return;
             }
 
-            //return redirect()->route('user.index');
-            /*$loginFeedback['success'] = true;
-            $loginFeedback['check'] = Auth::check();
-            // echo Auth::user();
-            
-            echo json_encode($loginFeedback);
-            return;*/
-        
         }
 
         /* Quando houver uma excecao, ela será mostrada na view */
         catch(Exception $e){
-        
-//*            $loginFeedback['success'] = false;
-//*            $loginFeedback['message'] = $e->getMessage();
-        
-//*            echo json_encode($loginFeedback);
-//*            return;
-        
             return $e->getMessage();
         }
-    
     }
 
 
@@ -135,35 +106,25 @@ class UsersController extends Controller{
      * RETORNO:     view propriamente dita
      */
     public function register(){
-    
         return view('user.register');
-    
     }
     
     
     
     
     public function index(){
-        /*if(Auth::check() == true){
-            echo "logado";
-        }
-        else if(Auth::check() == false){
-            echo "nao logado";
-        }
-        else{
-            echo "algo errado";
-        }*/
-//*     return view('user.index');
-        echo "HAAAA";
+    
+        // Se nao tiver nenhum usuario autenticado, 
+        // é passado uma mensagem padrao
+        if(!Auth::check())                          
+            $nameTemp = "indefinido";
+        
+        // Se tiver alguem autenticado,
+        // é passado o nome do usuario 
+        else
+            $nameTemp = Auth::user()->name;
 
-        if(Auth::check() == true){
-            echo "logado: ola   ".Auth::user()->name;
-        }
-
-        //dd(Auth::user());
-
-
-
+        return view('user.index', ["name" => $nameTemp]);
             
     }
 
@@ -183,8 +144,8 @@ class UsersController extends Controller{
         // O usuario sendo cadastrado com sucesso, ou nao,
         // os dados referentes são enviados para a view
         if($request[0]['success']){
-            Auth::login($user);
-            echo json_encode($request);
+            Auth::login($request[0]['data']);       // Efetua login do usuario no sistema
+            echo json_encode($request);             // Decodifica em json
             return;
             //$user = $request['data'];
         }
@@ -195,25 +156,10 @@ class UsersController extends Controller{
             //$user = null;
         }
 
-
-        //      $user = $this->repository->findWhere(['email' => $registeredData['email']])->first();
-        //      dd($user);
-        //      Auth::login($user);
-        //      return redirect()->route('user.index');
-
-        /*return view('user.index',[
-            'user' => $user,
-//            'request' => $request
-        ]);*/
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+
     public function show($id){
 
         $user = $this->repository->find($id);

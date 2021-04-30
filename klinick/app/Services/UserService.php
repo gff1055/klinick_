@@ -47,14 +47,12 @@ class UserService{
 			// Se já existir um usuario cadastrado com os dados fornecidos
 			// o array indicando falha é enviado para a view
 			if($userExist){
-				
 				$arrayDataFeedback[] = [
 					'success' => false,
 					'code' => '55418313',
 					'message' => 'Já exite uma conta com esse nome de usuario',
 					'data' => null
 				];
-	
 			}
 
 			// Variavel recebe o feedback da existencia(ou nao) do email informado
@@ -85,16 +83,13 @@ class UserService{
 					'message' => 'Usuario Cadastrado',
 					'data' => $user
 				];
-
 			}
 
 			return $arrayDataFeedback;
-	
 		}
 
 		// Em caso de excecao, o array indicando excecao é enviado para a view
 		catch(Exception $except){
-			
 			return[
 				'success' => 'false',
 				'message' => 'Erro interno',

@@ -151,7 +151,7 @@ $(function(){
 			// Escopo da requisicao
 			$.ajax({
 				url: "/user",
-				type: "post",
+				type: "POST",
 				data: $(this).serialize(),
 				dataType: "json",
 
@@ -164,7 +164,7 @@ $(function(){
 					// Se a resposta da operacao for uma falha,
 					// é verificado qual tipo de erro ocorreu
 					console.log(answer);
-					if(!answer[0].success){
+					if(answer[0].success==false){
 						alert("Um ou mais campos possuem informações não válidas. Verifique")
 
 						// O array de resposta é percorrido 
@@ -174,7 +174,7 @@ $(function(){
 							// Se o nome de usuario informado ja estiver sendo usado em outra conta,
 							// os dados sao apagados no formulario e
 							// é enviado um alerta para o usuario
-							if(answer.code == '55418313'){
+							if(answer[ind].code == '55418313'){
 
 								idInputUserName = $('#idInputUserName');
 								idInputUserName.css("border-color","red");
@@ -182,11 +182,10 @@ $(function(){
 
 								feedbackUserName.css("color","red");
 								feedbackUserName.html("  (ERRO: Já existe uma conta cadastrada com o nome de usuario informado. Digite outro)");
-
 							}
 
 							// O mesmo acontece com o email... 
-							else if(answer.code == '341313'){
+							else if(answer[ind].code == '341313'){
 
 								idInputEmail = $('#idInputEmail');
 								idInputEmail.css("border-color","red");
@@ -201,25 +200,21 @@ $(function(){
 							else{
 								console.log("FALHA GERAL....");
 							}
-
 						}
-
 					}
 
 					// Se a resposta da operacao for sucesso,
 					// o usuario é redirecionado para a	view do usuario 
 					else{
-						console.log("kibe");	
-						//window.location.href = "/user";
+						window.location.href = "/user";
 					}
+				},
 
+				error: function(response){
+					console.log(response);
 				}
-
 			});
-
 		}
-
 	});
-
 })
 

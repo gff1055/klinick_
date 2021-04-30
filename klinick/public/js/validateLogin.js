@@ -24,19 +24,25 @@ $(function(){
 			dataType: 'json',					// Tipo dos dados
 
 			// Funcao a ser executada em caso de sucesso no envio da requisicao
-			success: function(response){
-								
-				if(response.success === true){	// Se os dados de login conferem o usuario é direcionado para a pagina
+			success: function(response){		
+				
+				// Se os dados de login conferem
+				// o usuario é direcionado para a pagina
+				if(response.success === true){
 					window.location.href = "/user";
 				}
 
-				else{							// Se os dados de login nao conferem, é exibido o feedback
+				// Se os dados de login nao conferem, 
+				// é exibido o feedback
+				else{
 					$('#feedbackLogin').removeClass("d-none").html(response.message);
 					$('#feedbackLogin').css("color","red");
 					$('#feedbackLogin').css("background-color","pink");
 
 				}
-			}
+			},
+
+			
 		});
 	});
 });
