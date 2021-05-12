@@ -52,7 +52,7 @@
 
 		<br><br><span id="passwordWarning"></span>
 		{!! Form::password('password', [
-			'class'=>'atrForm atrFormSizeHalf',
+			'class'=>'atrForm atrFormSizeHalf requiredField',
 			'id' => 'password',
 			'placeholder'=>'Senha'
 		]) !!}
@@ -75,7 +75,8 @@
 		<br><br>
 		{!! Form::text('dataNasc', null, [
 			'class' => 'atrForm atrFormSizeHalf',
-			'placeholder' => 'Data de Nascimento'
+			'id' => 'inputBirthday',
+			'placeholder' => 'Data de Nascimento (dia/mes/ano)'
 		]) !!}
 
 		{!!Form::Label('sexo', 'Sexo: ')!!}
@@ -84,7 +85,7 @@
 			'feminino' => 'Feminino'
 		),[
 			'class'=>'atrForm',
-		]) !!}
+		]) !!}	
 
 		<br><br><span class="requiredFieldLabel">*Campo obrigatorio</span>
 		{!! Form::text('phone', null, [

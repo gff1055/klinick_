@@ -1,12 +1,10 @@
 
 password = document.getElementById('password');							// Campo de senha
-
 checkPassword = document.getElementById('checkPassword');				// Campo de checagem de senha
-
 submitUserRegister = document.getElementById('submitUserRegister');		// Elemento submit
 submitUserRegister.disabled = true;										// Desabilitando o elemento submit
-
 passwordWarning = document.getElementById('passwordWarning');			// Area de aviso de checagem de senha
+inputBirthday = document.getElementById('inputBirthday');
 
 
 
@@ -39,7 +37,7 @@ feedbackPassword = function(){
 	// Se a senha foi digitada corretamente nos dois campos,
 	// o botao de submit é habilitado
 	// e a area de avisos fica em branco.
-	if(checkValue(password.value, checkPassword.value) == 1){
+	if(checkValue(password.value, checkPassword.value) == true){
 		submitUserRegister.disabled = false;
 		passwordWarning.innerHTML = "";
 	}
@@ -47,7 +45,7 @@ feedbackPassword = function(){
 	// Se a senha nao foi digitada corretamente nos dois campos,
 	// é exibido o alerta
 	// e o botao de cadastro é desabilitado
-	else if(checkValue(password.value, checkPassword.value) == -1){
+	else if(checkValue(password.value, checkPassword.value) == false){
 		submitUserRegister.disabled = true;
 		passwordWarning.style.color = "#ff0000";
 		passwordWarning.style.fontSize = "0.8em";
@@ -62,38 +60,26 @@ Funcao: 	checkValue
 Objetivo: 	Testar se os valores passados sao iguais
 Argumentos: dois valores
 Retorno:
-	1:	Os valores sao iguais
-	0:	Os valores sao iguais pois ambos estao em branco
-	-1:	Os valores sao diferentes
+	true:	Os valores sao iguais
+	false:	Os valores sao diferentes
 */
 
 checkValue = function(d1, d2){
 
 	var rtrnValue;
 
-	// Se os dados sao iguais,
-	// ele testa se os dados são mesmo iguais ou se eles estão apenas
-	// em branco 
-	if(d1 == d2){
-	
-		// Se os dados nao estao em branco retorna 1
-		if(d1 != ""){
-			rtrnValue = 1;
-		}
-	
-		// Se os dados estao em branco retorna 0
-		else{
-			rtrnValue = 0;
-		}
-	
-	}
+	// Se os dados sao iguais, retornqa true
+	if(d1 == d2) rtrnValue = true;
 
-	// Se os dados nao sao iguais retorna -1
-	else{
-		rtrnValue = -1;
-	}
+	// Se os dados nao sao iguais retorna false
+	else rtrnValue = false;
 	
 	return rtrnValue;
+}
+
+
+function dateConverter(date){
+	return americanDate = date.split('/').reverse().join('/');
 }
 
 
@@ -108,9 +94,7 @@ $(function(){
 	$('.formUserRegister').submit(function(event){
 
 		event.preventDefault();
-
 		blankFieldCounter = 0;						// Variavel que conta os campos que estao em branco
-
 		var requiredField = $('.requiredField');	// Variavel que recebe a referencia dos campos obrigatorios do formulario
 
 		// Percorre os campos obrigatorios do formulario para verificar se tem algum campo em branco
@@ -124,29 +108,27 @@ $(function(){
 			}
 
 			// Caso contrario o campo é realçado com o estilo original
-			else{
+			else
 				requiredField[i].style.borderColor = "";
-			}
 		}
 
 		// Se existir campos em branco é exibido um alerta para o usuario
-		if(blankFieldCounter){
+		if(blankFieldCounter)
 			alert("Existem campos obrigatorios não preenchidos")
-		}
-
+		
 		// Se nao existir campos em branco a operacao de cadastro continua...
 		else{
 
 			feedbackUserName = $('#feedbackUserName');					// Exibe avisos sobre o username 
 			feedbackEmail = $('#feedbackEmail'); 						// Exibe avisos sobre o Email 
 
+
 			// Resetando a area de avisos no rotulo dos formularios
-			if(feedbackUserName[0].textContent!=""){
-				feedbackUserName.html("");
-			}
-			if(feedbackEmail[0].textContent!=""){
-				feedbackEmail.html("");
-			}
+			if(feedbackUserName[0].textContent!="") feedbackUserName.html("");
+			if(feedbackEmail[0].textContent!="") feedbackEmail.html("");
+
+			inputBirthday.value = dateConverter(inputBirthday.value);	// Converte a data para o padrao americano (AAAA/MM/DD)
+			
 
 			// Escopo da requisicao
 			$.ajax({
@@ -197,17 +179,13 @@ $(function(){
 							}
 
 							// No caso de ocorrer outra falha...
-							else{
-								console.log("FALHA GERAL....");
-							}
+							else console.log("FALHA GERAL....");
 						}
 					}
 
 					// Se a resposta da operacao for sucesso,
 					// o usuario é redirecionado para a	view do usuario 
-					else{
-						window.location.href = "/user";
-					}
+					else window.location.href = "/user";
 				},
 
 				error: function(response){

@@ -4,6 +4,7 @@ inputMenuSandwich = document.getElementById("inputMenuSandwich");		// referencia
 body = document.getElementsByTagName("body")[0];						// referencia do body do documento
 menuToggle = document.getElementById("menuToggle");						// referencia do menu
 menu = document.getElementById("menu");
+buttonExitUser = document.getElementsByClassName("buttonExitUser")[0];
 flagCloseMenuBar = false;												// flag que indica se o menu esta aberto ou nao
 
 
@@ -28,4 +29,13 @@ inputMenuSandwich.addEventListener("click", function(e){
 /** Evento no body é acionado e o menu suspenso é fechado */
 body.addEventListener("click", function(e){
 	inputMenuSandwich.checked = false;
+});
+
+
+
+buttonExitUser.addEventListener("click", function(e){
+	if(!confirm("Tem certeza que deseja efetuar logout nessa conta?")){
+		e.preventDefault();
+		inputMenuSandwich.checked = false;
+	}
 });

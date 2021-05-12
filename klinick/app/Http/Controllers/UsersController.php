@@ -42,7 +42,7 @@ class UsersController extends Controller{
      *                  'message' -> mensagem explicando o motivo do erro/excecao
      */
     
-    public function login(Request $dadosLogin){
+/*    public function login(Request $dadosLogin){
 
         // recebendo dados inseridos pelo usuario
         $dadosAut = [
@@ -66,7 +66,6 @@ class UsersController extends Controller{
                    
                 // Se o usuario nao existir é enviado um alerta
                 if(!$user){
-                    //throw new Exception("Email/Login invalido");
                     //A variavel '$loginFeedback' armazena o status da requisicao se houve sucesso/erro
                     $loginFeedback['success'] = false;
                     $loginFeedback['message'] = "O Email/Login nao existe";
@@ -91,11 +90,23 @@ class UsersController extends Controller{
 
         }
 
-        /* Quando houver uma excecao, ela será mostrada na view */
+        // Quando houver uma excecao, ela será mostrada na view 
         catch(Exception $e){
             return $e->getMessage();
         }
     }
+*/
+
+
+
+    /**
+     * FUNCAO:          Logout
+     * OBJETIVO:        Encerrar a sessao do usuario corrente
+     */
+/*    public function logout(){
+        Auth::logout();
+        return redirect()->route('user.login_get'); // MANDA O USUARIO PARA A ROTA APOS o logout
+    }*/
 
 
 
@@ -115,15 +126,13 @@ class UsersController extends Controller{
     public function index(){
     
         // Se nao tiver nenhum usuario autenticado, 
-        // é passado uma mensagem padrao
-        if(!Auth::check())                          
-            $nameTemp = "indefinido";
+        // é redirecionado para a rota de login
+        if(!Auth::check())
+            return redirect()->route('user.login_get');
         
         // Se tiver alguem autenticado,
-        // é passado o nome do usuario 
-        else
-            $nameTemp = Auth::user()->name;
-
+        // é redirecionado para a rota do usuario 
+        $nameTemp = Auth::user()->name;
         return view('user.index', ["name" => $nameTemp]);
             
     }

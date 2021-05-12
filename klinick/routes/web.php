@@ -24,7 +24,12 @@ Route::get('/login', [
 /** Rota POST onde são enviado os dados de login fornecidos*/
 Route::post('/login',[
     'as' => 'user.login_post',
-    'uses' => 'UsersController@login'
+    'uses' => 'Controller@login'
+]);
+
+Route::get('/logout', [
+    'as' => 'user.logout',
+    'uses' => 'Controller@logout'
 ]);
 
 Route::get('/register',[
