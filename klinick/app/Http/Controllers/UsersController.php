@@ -167,6 +167,10 @@ class UsersController extends Controller{
 
     }
 
+    public function settings(){
+        return view('user.settings');
+    }
+
 
 
     public function show($id){

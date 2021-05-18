@@ -37,6 +37,11 @@ Route::get('/register',[
     'uses' => 'UsersController@register'
 ]);
 
+Route::get('/user/settings',[
+    'as' => 'user.settings',
+    'uses' => 'UsersController@settings'
+]);
+
 Route::resource('user', 'UsersController');
 
 

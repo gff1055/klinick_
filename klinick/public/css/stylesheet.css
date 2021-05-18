@@ -25,12 +25,15 @@ body{
 }
 
 
+
+
+
 /* CONFIGURACOES GERAIS DO MENU DA BARRA SUPERIOS */
 
 /* Menu do topo da pagina inicial */
 .topMenuBar{
-	background-color:  #009900;
-	color: #eeeeee;
+	background-color:  #eeeeee;
+	color: #009900;
 	display: flex;
 	align-items: center;
 	font-size: 16px;
@@ -40,7 +43,7 @@ body{
 
 /* Logo ao lado do menu na pagina inicial */
 .topMenuBar .logo{
-	color: #eeeeee;
+	color: #009900;
 	font-size: 32px;
 	margin-right: 16px;
 }
@@ -52,19 +55,20 @@ body{
 
 }
 
+
 /* Links do menu */
 .itemTopMenuBar a{
-	color: #fff;
+	color: #009900;
 	border-radius: 8px;
 	padding: 10px;
 }
 
 /* Links do menu ao passar o mouse */
 .itemTopMenuBar a:hover{
-	color: #fff;
+	color: #009900;
 	text-decoration: none;
-	background-color: #006600;
-	transition: .3s;
+	background-color: #cdcdcd;
+	transition: .1s;
 }
 
 .beginning{
@@ -137,7 +141,7 @@ body{
 	margin-bottom: 5px;
 	position: relative;
 
-	background: #cdcdcd;
+	background: #009900;
 	border-radius: 3px;
 
 	z-index: 1;
@@ -215,47 +219,16 @@ body{
 }
 
 
-/* Icone do menu sanduiche da barra superior */
-/*.topMenuBar .menuSandwich div div{
-	width: 24px;
-	height: 2px;
-	background-color: #eeeeee;
-	margin: 4px 0;
-}
-
-/* Rotulo "menu" no menu sanduiche da barra superior */
-/*.topMenuBar .menuSandwich div{
-	margin-right: 4px;
-}
-
-/* Menu sanduiche */
-/*.menuSandwich{
-	padding: 8px;
-	margin-left: 16px;
-	margin-right: 12px;
-	display: flex;
-}
-
-.subMenuSandwich{
-	/*display: none;*/
-/*	z-index: 1;
-}
-
-/* Menu sanduiche ao passar o mouse por cima */
-/*.menuSandwich:hover{
-	background-color: 006600;
-	border-radius: 8px;
-	transition: .2s;
-	cursor: pointer;
-}
-
-
 /* Area de escolha de tipo de acesso */
 
 .logo{
 	font-family: 'Lobster', cursive;
 	color: #009900/*#477F6D*/;
 }
+
+
+
+
 
 
 /** ESTILO GERAL DOS FORMULARIOS **/
@@ -333,7 +306,7 @@ form input[disabled]:hover{
 }
 
 
-/*Configuracoes da area de login do usuario*/
+/*CONFIGURACOES DA AREA DE LOGIN DE USUARIO*/
 
 /* Estilo do body da pagina de login */
 .bodyPaginaLoginUser{								
@@ -370,6 +343,8 @@ form input[disabled]:hover{
 
 
 
+
+
 /*CONFIGURACOES DA PAGINA DE CADASTRO DE NOVOS USUARIO*/
 
 
@@ -394,10 +369,54 @@ form input[disabled]:hover{
 }
 
 
+
+
+
+
+
 /* CONFIGURACOES DA PAGINA INICIAL DO USUARIO */
 
 .iconMenuToggle{
 	margin-right: 1em;
 }
+
+
+
+
+/* ESTILOS DA SECAO 'CONFIGURACOES' DO USUARIO*/
+.configurationArea{
+	display: grid;
+	padding: 8px;
+}
+
+.layoutArea{
+	grid-template-columns: 25% 75%;
+}
+
+.configurationSideMenu{
+	background-color: #cdcdcd;
+	padding: 8px;
+	padding-left: 16px;
+	text-decoration: none;
+}
+
+.configurationSideMenuOption{
+	padding-bottom: 16px;
+	padding-top: 16px;
+	text-decoration: none;
+}
+
+.configurationSideMenuOption:hover{
+	background-color: #009900;
+}
+
+
+
+.configurationContent{
+	background-color: #888888;
+	padding: 8px;
+}
+
+
 
 
