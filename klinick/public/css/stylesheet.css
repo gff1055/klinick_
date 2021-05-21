@@ -48,24 +48,29 @@ body{
 	margin-right: 16px;
 }
 
-/* Item do menu da pagina inicial */
-.itemTopMenuBar{
-	margin: 4px;
+.itemTopMenuBar_logo{
 	margin-right: 16px;
-
+	margin-left: 16px;
 }
 
 
+/* Item do menu da pagina inicial */
+.itemTopMenuBar{
+	margin: 0px;
+	margin-right: 0px;
+
+}
+
 /* Links do menu */
 .itemTopMenuBar a{
-	color: #009900;
-	border-radius: 8px;
-	padding: 10px;
+	color: #666666;
+	border-radius: 0px;
+	padding: 14px;
 }
 
 /* Links do menu ao passar o mouse */
 .itemTopMenuBar a:hover{
-	color: #009900;
+	color: #666666;
 	text-decoration: none;
 	background-color: #cdcdcd;
 	transition: .1s;
@@ -141,7 +146,7 @@ body{
 	margin-bottom: 5px;
 	position: relative;
 
-	background: #009900;
+	background: #666666;
 	border-radius: 3px;
 
 	z-index: 1;
@@ -369,11 +374,6 @@ form input[disabled]:hover{
 }
 
 
-
-
-
-
-
 /* CONFIGURACOES DA PAGINA INICIAL DO USUARIO */
 
 .iconMenuToggle{
@@ -393,6 +393,8 @@ form input[disabled]:hover{
 	grid-template-columns: 25% 75%;
 }
 
+
+
 .configurationSideMenu{
 	background-color: #cdcdcd;
 	padding: 8px;
@@ -400,14 +402,27 @@ form input[disabled]:hover{
 	text-decoration: none;
 }
 
-.configurationSideMenuOption{
-	padding-bottom: 16px;
-	padding-top: 16px;
+.configurationSideMenu a{
 	text-decoration: none;
 }
 
+.configurationSideMenuOption{
+	padding-bottom: 16px;
+	padding-top: 16px;
+	color: #666666;
+}
+
+a .configurationSideMenuOption{
+	padding-bottom: 24px;
+	padding-top: 24px;
+	padding-left: 8px;
+	padding-right: 100px;
+	background-color: red;
+}
+
 .configurationSideMenuOption:hover{
-	background-color: #009900;
+	background-color: #cdcdcd;
+	text-decoration: none;
 }
 
 

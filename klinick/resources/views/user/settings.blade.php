@@ -9,12 +9,12 @@
 
 
 <div class="configurationArea layoutArea">
-	<nav class="sideConfigurationMenu">
+	<nav class="configurationSideMenu">
 		<ul>
-			<a href=""><li class="configurationSideMenuOption">Informacoes pessoais</li></a>
-			<a href=""><li class="configurationSideMenuOption">Login e Segurança</li></a>
-			<a href=""><li class="configurationSideMenuOption">Desativar conta</li></a>
-		<ul>
+			<a href="#"><li class="configurationSideMenuOption ">Informacoes pessoais</li></a>
+			<a href="#"><li class="configurationSideMenuOption ">Login e Segurança</li></a>
+			<a href="#"><li class="configurationSideMenuOption ">Desativar conta</li></a>
+		</ul>
 	</nav>
 	
 	<div class="configurationContent">

@@ -1,6 +1,6 @@
 <section class="topMenuBar">
 	
-	<div class="itemTopMenuBar">
+	<div class="itemTopMenuBar_logo">
 		<div id="menuToggle">
 			<input type="checkbox" id="inputMenuSandwich"/>
 			<span></span>
@@ -54,7 +54,7 @@
 			</ul>
 		</div>-->
 	
-	<div class="itemTopMenuBar"><span class="logo">KlinicK</span></div>
+	<div class="itemTopMenuBar_logo"><span class="logo">KlinicK</span></div>
 	<div class="itemTopMenuBar"><a href="#">Seguranca</a></div>
 	<div class="itemTopMenuBar"><a href="#">Ajuda</a></div>
 	<div class="itemTopMenuBar" id="optionContact"><a href="#">Contato</a></div>
