@@ -34,12 +34,20 @@ function(){
 
 feedbackPassword = function(){
 
-	// Se a senha foi digitada corretamente nos dois campos,
-	// o botao de submit é habilitado
-	// e a area de avisos fica em branco.
+	// Se a senha for igual nos dois campos,
+	// testa novamente para saber se as senhas sao iguais de fato, ou se estão apenas em branco
 	if(checkValue(password.value, checkPassword.value) == true){
-		submitUserRegister.disabled = false;
-		passwordWarning.innerHTML = "";
+
+		// Se os campos estiverem em branco, o botao de submit é desativado
+		if(password.value == ""){
+			submitUserRegister.disabled = true;
+		}
+
+		// Caso contrario, o botao de submit é ativado
+		else{
+			submitUserRegister.disabled = false;
+			passwordWarning.innerHTML = "";
+		}
 	}
 
 	// Se a senha nao foi digitada corretamente nos dois campos,
@@ -68,7 +76,7 @@ checkValue = function(d1, d2){
 
 	var rtrnValue;
 
-	// Se os dados sao iguais, retornqa true
+	// Se os dados sao iguais, retorna true
 	if(d1 == d2) rtrnValue = true;
 
 	// Se os dados nao sao iguais retorna false
@@ -96,6 +104,7 @@ $(function(){
 		event.preventDefault();
 		blankFieldCounter = 0;						// Variavel que conta os campos que estao em branco
 		var requiredField = $('.requiredField');	// Variavel que recebe a referencia dos campos obrigatorios do formulario
+		var requiredFieldLabel = $('.requiredFieldLabel');
 
 		// Percorre os campos obrigatorios do formulario para verificar se tem algum campo em branco
 		for(var i = 0; i < requiredField.length; i++){
@@ -104,6 +113,7 @@ $(function(){
 			// o contador de campos em branco incrementado
 			if(requiredField[i].value == ""){
 				requiredField[i].style.borderColor = "red";
+				requiredFieldLabel[i].style.color = "red";
 				blankFieldCounter++;
 			}
 
@@ -145,7 +155,7 @@ $(function(){
 
 					// Se a resposta da operacao for uma falha,
 					// é verificado qual tipo de erro ocorreu
-					console.log(answer);
+					//console.log(answer);
 					if(answer[0].success==false){
 						alert("Um ou mais campos possuem informações não válidas. Verifique")
 

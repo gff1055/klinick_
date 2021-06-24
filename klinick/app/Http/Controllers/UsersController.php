@@ -168,7 +168,12 @@ class UsersController extends Controller{
     }
 
     public function settings(){
-        return view('user.settings');
+        // Se nao tiver nenhum usuario autenticado, 
+        // é redirecionado para a rota de login
+        if(!Auth::check())
+            return redirect()->route('user.login_get');
+        else
+            return view('user.settings', ["user" => Auth::user()]);
     }
 
 

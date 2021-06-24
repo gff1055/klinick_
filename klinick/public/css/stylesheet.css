@@ -4,6 +4,13 @@ C, pC, atr:	0, 0, 1, 0
 Id			0, 1, 0, 0
 inl			1, 0, 0, 0
 */
+@viewport {
+	width: device-width;
+	zoom: 1;
+  }
+
+  
+@media screen and (min-width: 400px) {
 
 *{												/*Resetando os estilos do navegador*/
 	padding: 0px;
@@ -20,8 +27,154 @@ inl			1, 0, 0, 0
 
 /* body */
 
-body{
-	min-width: 560px
+/*body{
+	min-width: 700px
+}*/
+
+
+
+
+/** ESTILO GERAL DOS FORMULARIOS **/
+
+
+form{											
+	padding: 30px;
+	width: fit-content;
+	height: auto;
+	border-radius: 25px;
+}
+
+/* Logotipo no formluarios*/
+form .logo{										
+	font-size: 48px;
+}
+
+/* Icone nos formularios */
+form .icone{									
+	color: #00997a/*#477F6D*/;
+}
+
+/* Estilo geral dos atributos dos formularios */
+.atrForm{										
+	font-size: 16px;
+	margin: 8px 0px 8px 0px;
+	border-radius: 8px;
+	padding: 8px;
+	width: 100%;
+	border-color: #333333;
+}
+
+.indicatorFieldRequired{
+	color: red;
+	font-weight: bold;
+}
+
+/* Estilo de campos que ocupam metade do formulario */
+.atrFormSizeHalf{
+	/*width: 49.5%;*/
+}
+
+/* Div que contem botoes submit dos formularios */
+form .divBtEnviar{
+	text-align: center;
+}
+
+/* Estilo do botao submit do formulario*/
+form .divBtEnviar input[type="submit"]{
+	width: 50%;
+}
+
+/* Botoes submit dos formularios */
+form input[type="submit"]{						
+	background-color: /*#5BA28B*/#00997a;
+	font-weight: bold;
+	color: white;
+	margin-top: 32px;
+}
+
+/* Botoes submit ao passar o mouse por cima */
+form input[type="submit"]:hover{				
+	background-color: #006650;
+}
+
+/* Campos de texto e campos de senha */
+form input[type="text"], form input[type="password"]{	
+	text-shadow: 10px, 10px;
+	border: 1px solid #888888;
+}
+
+/* Atributos desabilitados */
+form input[disabled]{							
+	background-color: /*#477F6D*/#888888;
+}
+
+/* Atributos desabilitados quando passar o mouse por cima */
+form input[disabled]:hover{						
+	background-color: /*#477F6D*/#888888;
+}
+
+
+
+/*CONFIGURACOES DA AREA DE LOGIN DE USUARIO*/
+
+/* Estilo do body da pagina de login */
+.bodyPaginaLoginUser{								
+	background-image: url("/images/frontdesk.png");
+	background-size: cover;
+	font-family: Verdana, "sans-serif";	
+}
+
+/* Camada escura em cima da imagem de fundo */
+.divMaskBackgroundImage{
+	background-color: rgba(0,0,0,.5);
+}
+
+.divFormLogin{									/* Estilo da div que abriga o formulario de login */
+	height: 100%;								/* Altura da area dor formulario */
+	min-height: 100%;							/* Altura minima da area dor formulario */
+	display: flex;								/* Flexbox */
+	align-items: center;						/*Alinha form no centro*/
+	justify-content: center;					/*Alinha form no centro*/
+}
+
+/*Estilo do formulario de login*/
+.formLogin{										
+	background-color: #eee;
+	margin-top: 1%;
+	width: 400px;
+	text-align: center;
+}
+
+/* Estilo dos atributos do formulario de login */
+.formLogin .atrForm{
+	width: 82%;
+}
+
+
+
+
+
+/*CONFIGURACOES DA PAGINA DE CADASTRO DE NOVOS USUARIO*/
+
+
+
+/* Estilo da div que contem o formulario de cadastro */
+.divUserRegisterForm form{
+	width: 100%;
+}
+
+.formUserRegister{
+	background-color: #eee;
+}
+
+/*Titulo do formulario*/
+.formUserRegisterTitle{
+	text-align: center;
+}
+
+.labelField{
+	font-size: 1em;
+	font-weight: bold;
 }
 
 
@@ -33,7 +186,7 @@ body{
 /* Menu do topo da pagina inicial */
 .topMenuBar{
 	background-color:  #eeeeee;
-	color: #009900;
+	color: #00997a;
 	display: flex;
 	align-items: center;
 	font-size: 16px;
@@ -43,7 +196,7 @@ body{
 
 /* Logo ao lado do menu na pagina inicial */
 .topMenuBar .logo{
-	color: #009900;
+	color: #00997a;
 	font-size: 32px;
 	margin-right: 16px;
 }
@@ -83,12 +236,14 @@ body{
 	margin: 8px;
 }
 
-#optionContact{
-	flex-grow: 10;
-}
+/*#optionContact{
+	
+}*/
 
 #optionBeDoctor{
-	white-space: nowrap;	
+	white-space: nowrap;
+	flex-grow: 10;
+	text-align: right;
 }
 
 
@@ -215,7 +370,7 @@ body{
 }
 
 #menu li:hover{
-	background-color: #009900;
+	background-color: #00997a;
 }
 
 
@@ -228,7 +383,7 @@ body{
 
 .logo{
 	font-family: 'Lobster', cursive;
-	color: #009900/*#477F6D*/;
+	color: #00997a;
 }
 
 
@@ -236,142 +391,7 @@ body{
 
 
 
-/** ESTILO GERAL DOS FORMULARIOS **/
 
-
-form{											
-	padding: 30px;
-	width: fit-content;
-	height: auto;
-	border-radius: 25px;
-}
-
-/* Logotipo no formluarios*/
-form .logo{										
-	font-size: 48px;
-}
-
-/* Icone nos formularios */
-form .icone{									
-	color: #009900/*#477F6D*/;
-}
-
-/* Estilo geral dos atributos dos formularios */
-.atrForm{										
-	font-size: 16px;
-	margin: 8px 0px 8px 0px;
-	border-radius: 8px;
-	padding: 8px;
-	width: 100%;
-	border-color: #333333;
-}
-
-/* Estilo de campos que ocupam metade do formulario */
-.atrFormSizeHalf{
-	width: 49.5%;
-}
-
-/* Div que contem botoes submit dos formularios */
-form .divBtEnviar{
-	text-align: center;
-}
-
-/* Estilo do botao submit do formulario*/
-form .divBtEnviar input[type="submit"]{
-	width: 50%;
-}
-
-/* Botoes submit dos formularios */
-form input[type="submit"]{						
-	background-color: /*#5BA28B*/#009900;
-	font-weight: bold;
-	color: white;
-	margin-top: 32px;
-}
-
-/* Botoes submit ao passar o mouse por cima */
-form input[type="submit"]:hover{				
-	background-color: /*#477F6D*/#006600;
-}
-
-/* Campos de texto e campos de senha */
-form input[type="text"], form input[type="password"]{	
-	text-shadow: 10px, 10px;
-	border: 1px solid #888888;
-}
-
-/* Atributos desabilitados */
-form input[disabled]{							
-	background-color: /*#477F6D*/#888888;
-}
-
-/* Atributos desabilitados quando passar o mouse por cima */
-form input[disabled]:hover{						
-	background-color: /*#477F6D*/#888888;
-}
-
-
-/*CONFIGURACOES DA AREA DE LOGIN DE USUARIO*/
-
-/* Estilo do body da pagina de login */
-.bodyPaginaLoginUser{								
-	background-image: url("/images/frontdesk.png");
-	background-size: cover;
-	font-family: Verdana, "sans-serif";	
-}
-
-/* Camada escura em cima da imagem de fundo */
-.divMaskBackgroundImage{
-	background-color: rgba(0,0,0,.5);
-}
-
-.divFormLogin{									/* Estilo da div que abriga o formulario de login */
-	height: 100%;								/* Altura da area dor formulario */
-	min-height: 100%;							/* Altura minima da area dor formulario */
-	display: flex;								/* Flexbox */
-	align-items: center;						/*Alinha form no centro*/
-	justify-content: center;					/*Alinha form no centro*/
-}
-
-/*Estilo do formulario de login*/
-.formLogin{										
-	background-color: #eee;
-	margin-top: 1%;
-	width: 400px;
-	text-align: center;
-}
-
-/* Estilo dos atributos do formulario de login */
-.formLogin .atrForm{
-	width: 82%;
-}
-
-
-
-
-
-/*CONFIGURACOES DA PAGINA DE CADASTRO DE NOVOS USUARIO*/
-
-
-
-/* Estilo da div que contem o formulario de cadastro */
-.divUserRegisterForm form{
-	width: 100%;
-}
-
-.formUserRegister{
-	background-color: #eee;
-}
-
-/*Titulo do formulario*/
-.formUserRegisterTitle{
-	text-align: center;
-}
-
-.requiredFieldLabel{
-	font-size: 0.8em;
-	font-style: italic;
-}
 
 
 /* CONFIGURACOES DA PAGINA INICIAL DO USUARIO */
@@ -384,7 +404,31 @@ form input[disabled]:hover{
 
 
 /* ESTILOS DA SECAO 'CONFIGURACOES' DO USUARIO*/
-.configurationArea{
+.divOptionSettingMenu{
+	text-align: center;
+	/*background-color: #dddddd;*/
+	background-color:#00997a	;
+	padding-bottom: 16px;
+	padding-top: 16px;
+	display: block;
+	
+	/*display: flex;								/* Flexbox */
+	/*align-items: center;						/*Alinha form no centro*/
+	/*justify-content: center;					/*Alinha form no centro*/
+	
+}
+
+.divOptionSettingMenu:hover{
+	background-color: #006650;
+}
+
+
+.s{
+	font-size: 1em;
+	font-weight: bold;
+	color: #eeeeee;
+}
+/*.configurationArea{
 	display: grid;
 	padding: 8px;
 }
@@ -397,9 +441,9 @@ form input[disabled]:hover{
 
 .configurationSideMenu{
 	background-color: #cdcdcd;
-	padding: 8px;
-	padding-left: 16px;
-	text-decoration: none;
+	/*padding: 8px;
+	padding-left: 16px;*/
+/*	text-decoration: none;
 }
 
 .configurationSideMenu a{
@@ -425,13 +469,12 @@ a .configurationSideMenuOption{
 	text-decoration: none;
 }
 
-
-
 .configurationContent{
 	background-color: #888888;
 	padding: 8px;
+}*/
+
+
+
+
 }
-
-
-
-

@@ -10,10 +10,10 @@
 @section('content')
 
 	<section class="topMenuBar">
-		<div class="itemTopMenuBar"><span class="logo">KlinicK</span></div>
+		<!--<div class="itemTopMenuBar"><span class="logo">KlinicK</span></div>
 		<div class="itemTopMenuBar"><a href="#">Seguranca</a></div>
 		<div class="itemTopMenuBar"><a href="#">Ajuda</a></div>
-		<div class="itemTopMenuBar"><a href="#">Contato</a></div>
+		<div class="itemTopMenuBar"><a href="#">Contato</a></div>-->
 	</section>
 
 	<div class="divUserRegisterForm">
@@ -32,7 +32,9 @@
 		</div>
 		
 		<br>
-		<span class="requiredFieldLabel">*Campo obrigatorio</span>
+		<span class="indicatorFieldRequired">*</span>
+		<span class="labelField">Nome </span>
+		<br>É o nome que será exibido no chat ao conversar com seu paciente/médico e será exibido na sua pagina de perfil(no caso de médicos).
 		{!! Form::text('name', null, [
 			'class' => 'atrForm requiredField',
 			'placeholder' => 'Nome'
@@ -41,7 +43,8 @@
 
 		<br>
 		<br>
-		<span class="requiredFieldLabel" id="idLabelUserName">*Campo obrigatorio </span>
+		<span class="indicatorFieldRequired">*</span>
+		<span class="labelField" id="idLabelUserName">Nome de usuario </span>
 		<span class="requiredFieldLabel" id="feedbackUserName"></span>
 		
 		{!! Form::text('username', null, [
@@ -50,13 +53,19 @@
 			'id' => 'idInputUserName'
 		]) !!}
 
-		<br><br><span id="passwordWarning"></span>
+		<br><br>
+		<span class="indicatorFieldRequired">*</span>
+		<span class="labelField">Senha</span>
+		<br>
+		<span id="passwordWarning"></span>
 		{!! Form::password('password', [
-			'class'=>'atrForm atrFormSizeHalf requiredField',
+			'class'=>'atrForm  requiredField atrFormSizeHalf',
 			'id' => 'password',
 			'placeholder'=>'Senha'
 		]) !!}
-
+		<br><br>
+		<span class="indicatorFieldRequired">*</span>
+		<span class="labelField">Confirmar senha</span>
 		{!! Form::password('checkPassword', [
 			'class'=>'atrForm atrFormSizeHalf',
 			'id' => 'checkPassword',
@@ -64,8 +73,9 @@
 		]) !!}
 
 		<br><br>
-		<span class="requiredFieldLabel" id="idLabelEmail">*Campo obrigatorio </span>
-		<span class="requiredFieldLabel" id="feedbackEmail"></span>
+		<span class="indicatorFieldRequired">*</span>
+		<span class="labelField" id="idLabelEmail">Email </span>
+		<span class="labelField" id="feedbackEmail"></span>
 		{!! Form::text('email', null, [
 			'class' => 'atrForm requiredField',
 			'placeholder' => 'Email',
@@ -73,13 +83,15 @@
 		]) !!}
 		
 		<br><br>
+		<span class="labelField">Data de nascimento </span>
 		{!! Form::text('dataNasc', null, [
 			'class' => 'atrForm atrFormSizeHalf',
 			'id' => 'inputBirthday',
 			'placeholder' => 'Data de Nascimento (dia/mes/ano)'
 		]) !!}
 
-		{!!Form::Label('sexo', 'Sexo: ')!!}
+		<br><br>
+		<span class="labelField">Sexo: </span>
 		{!! Form::select('sexo', array(
 			'masculino' => 'Masculino',
 			'feminino' => 'Feminino'
@@ -87,11 +99,19 @@
 			'class'=>'atrForm',
 		]) !!}	
 
-		<br><br><span class="requiredFieldLabel">*Campo obrigatorio</span>
+		<br><br>
+		<span class="indicatorFieldRequired">*</span>
+		<span class="labelField">Fone</span>
 		{!! Form::text('phone', null, [
 			'class' => 'atrForm requiredField',
 			'placeholder' => 'Fone'
 		]) !!}
+
+		<br><br>
+		<span class="labelField">Campos indicados com </span>
+		<span class="indicatorFieldRequired">*</span>
+		<span class="labelField"> são de preenchimento obrigatorio</span>
+		<br>
 
 		<div class="divBtEnviar">
 		{!!Form::submit('Criar conta',[

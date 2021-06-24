@@ -55,9 +55,9 @@
 		</div>-->
 	
 	<div class="itemTopMenuBar_logo"><span class="logo">KlinicK</span></div>
-	<div class="itemTopMenuBar"><a href="#">Seguranca</a></div>
+	<!--<div class="itemTopMenuBar"><a href="#">Seguranca</a></div>
 	<div class="itemTopMenuBar"><a href="#">Ajuda</a></div>
-	<div class="itemTopMenuBar" id="optionContact"><a href="#">Contato</a></div>
+	<div class="itemTopMenuBar" id="optionContact"><a href="#">Contato</a></div>-->
 	<div class="itemTopMenuBar" id="optionBeDoctor">
 	<a href={{route('user.register_get')}}><!-- user temporario aqui é doctor -->
 		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-badge-fill" viewBox="0 0 16 16">
