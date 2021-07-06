@@ -21,14 +21,14 @@
 		conteudo
 	</div>-->
 	<div class="row">
-		<div class="col divOptionSettingMenu">
+		<div class="col divOptionSettingMenu" id="divOptionSettingMenuSelected">
 			<div>
-			<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#eeeeee" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
-				<path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
-			  </svg>
+				<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#eeeeee" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+					<path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
+				</svg>
 			</div>
 			<div>
-			  <span class="s">Dados pessoais</span>
+				<span class="optionSettingMenu">Dados pessoais</span>
 			</div>
 		</div>
 		<div class="col divOptionSettingMenu">
@@ -38,7 +38,7 @@
 				</svg>
 			</div>
 			<div>
-				<span class="s">Login e Segurança</span>
+				<span class="optionSettingMenu">Login e Segurança</span>
 			</div>
 		</div>
 		<div class="col divOptionSettingMenu">
@@ -48,37 +48,48 @@
 				</svg>
 			</div>
 			<div>
-				<span class="s">Desativar conta</span>
+				<span class="optionSettingMenu">Desativar conta</span>
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col">
-			<span class="labelField"> Nome: </span>
-			<br>
-			{{$user->name}}
-			<br><br><br>
 
-			<span class="labelField"> Telefone: </span>
-			<br>
-			{{$user->phone}}
-			<br><br><br>
-		</div>
+	{!! Form::open([
+		//'route' => 'user.store',
+		'class' => 'formUpdate'
+	])
+	!!}
 	
-		<div class="col">
-			<span class="labelField"> Sexo: </span>
-			<br>
-			{{$user->sexo}}
-			<br><br><br>
-	
+		<span class="labelField"> Nome: </span><br>
+		{!! Form::text('name', $user->name, [
+				'class' => 'atrForm requiredField',
+			]) !!}<br>
+		<span class="notice">
+			Este nome será exibido no chat ao conversar com seu paciente/médico e tambem será exibido no seu perfil de médico
+		</span>
+		<br><br>
+				
+		<span class="labelField"> Telefone: </span><br>
+		{!! Form::text('phone', $user->phone, [
+				'class' => 'atrForm requiredField',
+			]) !!}<br>
+		<br><br>
 			
-	
-			<span class="labelField"> Nascimento: </span>
-			<br>
-			{{$user->dataNasc}}
-			<br><br><br>
+		<span class="labelField"> Sexo: </span><br>
+		{!! Form::select('genre', array(
+				'masculino' => 'Masculino',
+				'feminino' => 'Feminino'
+			),
+			'masculino',
+			[
+				'class'=>'atrForm',
+			]) !!}
+		<br><br>
+			
+		<span class="labelField"> Nascimento: </span><br>
+		{{$user->dataNasc}}
+		<br><br>
 
-		</div>
-	</div>
+	{!!Form::close()!!}
+		
 </div>
 @endsection

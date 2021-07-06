@@ -392,8 +392,6 @@ form input[disabled]:hover{
 
 
 
-
-
 /* CONFIGURACOES DA PAGINA INICIAL DO USUARIO */
 
 .iconMenuToggle{
@@ -403,7 +401,11 @@ form input[disabled]:hover{
 
 
 
+
+
+
 /* ESTILOS DA SECAO 'CONFIGURACOES' DO USUARIO*/
+
 .divOptionSettingMenu{
 	text-align: center;
 	/*background-color: #dddddd;*/
@@ -422,12 +424,43 @@ form input[disabled]:hover{
 	background-color: #006650;
 }
 
+#divOptionSettingMenuSelected{
+	background-color: #006650;
+}
 
-.s{
+
+.optionSettingMenu{
 	font-size: 1em;
 	font-weight: bold;
 	color: #eeeeee;
 }
+
+.formUpdate{
+	margin-top: 24px;
+}
+
+.formUpdate .title{
+	font-size: .9em;
+	font-weight: bold;
+}
+
+.formUpdate .notice{
+	font-size: .8em;
+	color: gray;
+}
+
+.formUpdate .labels{
+	margin: 16px;
+	text-align: right;
+}
+
+
+.formUpdate .data{
+	margin: 16px;
+	text-align: left;
+}
+
+
 /*.configurationArea{
 	display: grid;
 	padding: 8px;
