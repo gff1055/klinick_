@@ -153,7 +153,7 @@ class UsersController extends Controller{
         // O usuario sendo cadastrado com sucesso, ou nao,
         // os dados referentes são enviados para a view
         if($request[0]['success']){
-            Auth::login($request[0]['data']);       // Efetua login do usuario no sistema
+            Auth::login($request[0]['data']);       // Efetua login do usuario recem cadastrado no sistema
             echo json_encode($request);             // Decodifica em json
             return;
             //$user = $request['data'];
@@ -220,35 +220,27 @@ class UsersController extends Controller{
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function update(UserUpdateRequest $request, $id){
-        try {
+        
+        define('DATA_PERSONAL',1);
+        define('DATA_SECURITY',2);
+                
+        $request = $this->service->update($request->all(), DATA_PERSONAL);             // Chamando o serviço de atualizacao de dados
+        dd($request);
 
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
-
-            $user = $this->repository->update($request->all(), $id);
-
-            $response = [
-                'message' => 'User updated.',
-                'data'    => $user->toArray(),
-            ];
-
-            if ($request->wantsJson()) {
-
-                return response()->json($response);
-            }
-
-            return redirect()->back()->with('message', $response['message']);
-        } catch (ValidatorException $e) {
-
-            if ($request->wantsJson()) {
-
-                return response()->json([
-                    'error'   => true,
-                    'message' => $e->getMessageBag()
-                ]);
-            }
-
-            return redirect()->back()->withErrors($e->getMessageBag())->withInput();
+        // O usuario sendo cadastrado com sucesso, ou nao,
+        // os dados referentes são enviados para a view
+        /*if($request[0]['success']){
+            Auth::login($request[0]['data']);       // Efetua login do usuario no sistema
+            echo json_encode($request);             // Decodifica em json
+            return;
+            //$user = $request['data'];
         }
+
+        else{
+            echo json_encode($request);
+            return;
+            //$user = null;
+        }*/
     }
 
 

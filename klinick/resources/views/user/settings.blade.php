@@ -53,43 +53,53 @@
 		</div>
 	</div>
 
-	{!! Form::open([
-		//'route' => 'user.store',
+	{!! Form::model($user, [
+		'route' => [
+			'user.update',
+			$user->id
+		],
+		'method' => 'put',
 		'class' => 'formUpdate'
 	])
 	!!}
 	
 		<span class="labelField"> Nome: </span><br>
-		{!! Form::text('name', $user->name, [
-				'class' => 'atrForm requiredField',
-			]) !!}<br>
 		<span class="notice">
 			Este nome será exibido no chat ao conversar com seu paciente/médico e tambem será exibido no seu perfil de médico
 		</span>
+		{!! Form::text('name', $user->name, [
+				'class' => 'atrForm',
+		]) !!}<br>
+		
 		<br><br>
 				
 		<span class="labelField"> Telefone: </span><br>
 		{!! Form::text('phone', $user->phone, [
-				'class' => 'atrForm requiredField',
-			]) !!}<br>
+				'class' => 'atrForm',
+		]) !!}<br>
 		<br><br>
-			
+					
 		<span class="labelField"> Sexo: </span><br>
 		{!! Form::select('genre', array(
 				'masculino' => 'Masculino',
 				'feminino' => 'Feminino'
 			),
-			'masculino',
+			$user->sexo,
 			[
 				'class'=>'atrForm',
-			]) !!}
-		<br><br>
-			
-		<span class="labelField"> Nascimento: </span><br>
-		{{$user->dataNasc}}
+		]) !!}
 		<br><br>
 
+		<div class="divBtEnviar">
+			{!!Form::submit('Atualizar',[
+				'class' => 'atrForm',
+				'id' => ''
+			])
+			!!}
+		</div>
+
 	{!!Form::close()!!}
+	<br><br>
 		
 </div>
 @endsection

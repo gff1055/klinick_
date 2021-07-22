@@ -86,9 +86,9 @@ checkValue = function(d1, d2){
 }
 
 
-function dateConverter(date){
+/*function dateConverter(date){
 	return americanDate = date.split('/').reverse().join('/');
-}
+}*/
 
 
 
@@ -134,10 +134,10 @@ $(function(){
 
 
 			// Resetando a area de avisos no rotulo dos formularios
-			if(feedbackUserName[0].textContent!="") feedbackUserName.html("");
+			//if(feedbackUserName[0].textContent!="") feedbackUserName.html("");
 			if(feedbackEmail[0].textContent!="") feedbackEmail.html("");
 
-			inputBirthday.value = dateConverter(inputBirthday.value);	// Converte a data para o padrao americano (AAAA/MM/DD)
+			//inputBirthday.value = dateConverter(inputBirthday.value);	// Converte a data para o padrao americano (AAAA/MM/DD)
 			
 
 			// Escopo da requisicao

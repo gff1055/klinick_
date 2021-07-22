@@ -34,24 +34,23 @@
 			<br>
 			<span class="indicatorFieldRequired">*</span>
 			<span class="labelField">Nome </span>
-			<br>É o nome que será exibido no chat ao conversar com seu paciente/médico e será exibido na sua pagina de perfil(no caso de médicos).
+			<br>
+			<span class="notice"> Use seu nome e sobrenome, pois o mesmo será visivel no chat ao conversar com seu médico. E será exibido no seu perfil de médico.</span>
 			{!! Form::text('name', null, [
 				'class' => 'atrForm requiredField',
 				'placeholder' => 'Nome'
 			]) !!}
 
 
-			<br>
-			<br>
-			<span class="indicatorFieldRequired">*</span>
+			<!--<span class="indicatorFieldRequired">*</span>
 			<span class="labelField" id="idLabelUserName">Nome de usuario </span>
 			<span class="requiredFieldLabel" id="feedbackUserName"></span>
 		
-			{!! Form::text('username', null, [
+			{!! /*Form::text('username', null, [
 				'class' => 'atrForm requiredField',
 				'placeholder' => 'Usuario',
 				'id' => 'idInputUserName'
-			]) !!}
+			])*/"teste" !!}-->
 
 			<br><br>
 			<span class="indicatorFieldRequired">*</span>
@@ -82,13 +81,12 @@
 				'id' => 'idInputEmail'
 			]) !!}
 		
-			<br><br>
-			<span class="labelField">Data de nascimento </span>
-			{!! Form::text('dataNasc', null, [
+			<!--<span class="labelField">Data de nascimento </span>
+			{!! /*Form::text('dataNasc', null, [
 				'class' => 'atrForm atrFormSizeHalf',
 				'id' => 'inputBirthday',
 				'placeholder' => 'Data de Nascimento (dia/mes/ano)'
-			]) !!}
+			])*/"teste" !!}-->
 
 			<br><br>
 			<span class="labelField">Sexo: </span>
@@ -100,8 +98,8 @@
 			]) !!}	
 
 			<br><br>
-			<span class="indicatorFieldRequired">*</span>
-			<span class="labelField">Fone</span>
+			<span class="labelField">Fone</span><br>
+			<span class="notice">O numero de telefone não será visivel para outros usuarios</span>
 			{!! Form::text('phone', null, [
 				'class' => 'atrForm requiredField',
 				'placeholder' => 'Fone'

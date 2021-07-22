@@ -54,6 +54,12 @@ form .icone{
 	color: #00997a/*#477F6D*/;
 }
 
+/* Avisos ou esclarecimentos no formulario */
+form .notice{
+	font-size: .8em;
+	color: gray;
+}
+
 /* Estilo geral dos atributos dos formularios */
 .atrForm{										
 	font-size: 16px;
@@ -437,16 +443,12 @@ form input[disabled]:hover{
 
 .formUpdate{
 	margin-top: 24px;
+	width: 100%;
 }
 
 .formUpdate .title{
 	font-size: .9em;
 	font-weight: bold;
-}
-
-.formUpdate .notice{
-	font-size: .8em;
-	color: gray;
 }
 
 .formUpdate .labels{
@@ -458,6 +460,10 @@ form input[disabled]:hover{
 .formUpdate .data{
 	margin: 16px;
 	text-align: left;
+}
+
+.formUpdate .atrForm{
+	
 }
 
 
