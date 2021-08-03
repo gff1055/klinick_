@@ -223,8 +223,9 @@ class UsersController extends Controller{
         
         define('DATA_PERSONAL',1);
         define('DATA_SECURITY',2);
+        
                 
-        $request = $this->service->update($request->all(), DATA_PERSONAL);             // Chamando o serviço de atualizacao de dados
+        $request = $this->service->update($request->all(), DATA_PERSONAL, $id);             // Chamando o serviço de atualizacao de dados
         dd($request);
 
         // O usuario sendo cadastrado com sucesso, ou nao,

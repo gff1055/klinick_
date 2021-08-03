@@ -5,7 +5,7 @@ body = document.getElementsByTagName("body")[0];						// referencia do body do d
 menuToggle = document.getElementById("menuToggle");						// referencia do menu
 menu = document.getElementById("menu");
 buttonExitUser = document.getElementsByClassName("buttonExitUser")[0];
-flagCloseMenuBar = false;												// flag que indica se o menu esta aberto ou nao
+flagCloseMenuBar = true;												// flag que indica se o menu esta aberto ou nao
 
 
 

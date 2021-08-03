@@ -54,33 +54,41 @@
 	</div>
 
 	{!! Form::model($user, [
-		'route' => [
+		/*'route' => [
 			'user.update',
 			$user->id
-		],
+		],*/
 		'method' => 'put',
 		'class' => 'formUpdate'
 	])
 	!!}
 	
-		<span class="labelField"> Nome: </span><br>
+		<span class="labelField"> Nome: </span>
+		<br>
 		<span class="notice">
 			Este nome será exibido no chat ao conversar com seu paciente/médico e tambem será exibido no seu perfil de médico
 		</span>
 		{!! Form::text('name', $user->name, [
 				'class' => 'atrForm',
-		]) !!}<br>
+		]) !!}
 		
-		<br><br>
+		<br>
+		<br>
+		<br>
 				
-		<span class="labelField"> Telefone: </span><br>
+		<span class="labelField"> Telefone: </span>
+		<br>
 		{!! Form::text('phone', $user->phone, [
 				'class' => 'atrForm',
-		]) !!}<br>
-		<br><br>
+		]) !!}
+		
+		<br>
+		<br>
+		<br>
 					
-		<span class="labelField"> Sexo: </span><br>
-		{!! Form::select('genre', array(
+		<span class="labelField"> Sexo: </span>
+		<br>
+		{!! Form::select('sexo', array(
 				'masculino' => 'Masculino',
 				'feminino' => 'Feminino'
 			),
@@ -88,9 +96,17 @@
 			[
 				'class'=>'atrForm',
 		]) !!}
-		<br><br>
+
+		<br>
+		<br>
 
 		<div class="divBtEnviar">
+			<a href={{route('user.index')}}>
+				{!!Form::button('Voltar',[
+					'class' => 'atrForm',
+					'id' => ''
+				])!!}
+			</a>
 			{!!Form::submit('Atualizar',[
 				'class' => 'atrForm',
 				'id' => ''
@@ -102,4 +118,7 @@
 	<br><br>
 		
 </div>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
+<script src="{{asset('js/updateDataPersonal.js')}}"></script>
 @endsection

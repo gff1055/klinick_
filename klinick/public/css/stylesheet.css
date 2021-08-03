@@ -85,9 +85,22 @@ form .divBtEnviar{
 	text-align: center;
 }
 
+
+/* Estilo do botao do formulario*/
+form .divBtEnviar button{
+	width: 40%;
+	font-weight: bold;
+}
+
+form .divBtEnviar button:hover{
+	width: 40%;
+	font-weight: bold;
+	background-color: #aaa;
+}
+
 /* Estilo do botao submit do formulario*/
 form .divBtEnviar input[type="submit"]{
-	width: 50%;
+	width: 40%;
 }
 
 /* Botoes submit dos formularios */

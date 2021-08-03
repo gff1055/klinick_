@@ -112,6 +112,11 @@
 			<br>
 
 			<div class="divBtEnviar">
+					<a href={{route('user.index')}}>{!!Form::button('Home',[
+							'class' => 'atrForm',
+							'id' => ''
+						])
+						!!}</a>
 				{!!Form::submit('Criar conta',[
 					'class' => 'atrForm',
 					'id' => 'submitUserRegister'
