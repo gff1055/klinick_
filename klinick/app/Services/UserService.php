@@ -130,9 +130,7 @@ class UserService{
 				// Se já existir um email cadastrado com os dados fornecidos
 				// o array indicando falha é enviado para a view
 				if($emailExist){
-
 					$hasConflictData = true;		// acionada flag de conflito de dados
-				
 					$arrayDataFeedback[] = [		// Carregando Array com o codigo de erro
 						'success' => false,
 						'code' => '341313',

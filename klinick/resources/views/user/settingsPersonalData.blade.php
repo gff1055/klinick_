@@ -120,5 +120,39 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
-<script src="{{asset('js/updateDataPersonal.js')}}"></script>
+<script>
+	$(function(){
+
+	/**
+	 * Funcao	: anonima associada com o evento de enviar(submeter) formulario
+	 * Objetivo	: Fazer a validacao das informações e o enviar o formulario para cadastro
+	 */
+		$('.formUpdate').submit(function(event){
+
+			event.preventDefault();
+
+			// Escopo da requisicao
+			$.ajax({
+				url: "/user/updating/personal_data",
+				type: "PUT",
+				data: $(this).serialize(),
+				dataType: "json",
+
+				/**
+				 * Funcao	: success
+				 * Objetivo	: validar os dados do formulario e fazer o cadastro
+				 */
+				success: function(answer){
+					alert("Dados atualizados")
+					window.location.href = "/user";
+				},
+
+				error: function(response){
+					console.log(response);
+				}
+			});
+		});
+	})
+</script>
+<!--<script src="{{asset('js/updateDataPersonal.js')}}"></script>-->
 @endsection

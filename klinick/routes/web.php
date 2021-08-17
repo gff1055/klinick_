@@ -37,9 +37,19 @@ Route::get('/register',[
     'uses' => 'UsersController@register'
 ]);
 
-Route::get('/user/settings',[
-    'as' => 'user.settings',
-    'uses' => 'UsersController@settings'
+Route::get('/user/settings/personal_data',[
+    'as' => 'user.settingsPersonalData',
+    'uses' => 'UsersController@settingsPersonalData'
+]);
+
+Route::get('/user/settings/auth_data',[
+    'as' => 'user.settingsAuthData',
+    'uses' => 'UsersController@settingsAuthData'
+]);
+
+Route::put('/user/updating/personal_data',[
+    'as' => 'user.updatingPersonalData',
+    'uses' => 'UsersController@updatePersonalData'
 ]);
 
 Route::resource('user', 'UsersController');

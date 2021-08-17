@@ -167,13 +167,13 @@ class UsersController extends Controller{
 
     }
 
-    public function settings(){
+    public function settingsPersonalData(){
         // Se nao tiver nenhum usuario autenticado, 
         // é redirecionado para a rota de login
         if(!Auth::check())
             return redirect()->route('user.login_get');
         else
-            return view('user.settings', ["user" => Auth::user()]);
+            return view('user.settingsPersonalData', ["user" => Auth::user()]);
     }
 
 
@@ -210,29 +210,23 @@ class UsersController extends Controller{
     
     
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  UserUpdateRequest $request
-     * @param  string            $id
-     *
-     * @return Response
-     *
-     * @throws \Prettus\Validator\Exceptions\ValidatorException
+     * FUNCAO       :updatePersonalData
+     * OBJETIVO     :Encaminhar os dados pessoais para atualizacao
+     * PARAMETROS   :Dados para atualizar
+     * RETORNO      :Array indicando se houve erro ou falha
      */
-    public function update(UserUpdateRequest $request, $id){
+    public function updatePersonalData(UserUpdateRequest $request){
         
         define('DATA_PERSONAL',1);
-        define('DATA_SECURITY',2);
-        
+        //define('DATA_SECURITY',2);
                 
-        $request = $this->service->update($request->all(), DATA_PERSONAL, $id);             // Chamando o serviço de atualizacao de dados
-        dd($request);
+        $request = $this->service->update($request->all(), DATA_PERSONAL, Auth::user()->id);             // Chamando o serviço de atualizacao de dados
+        //dd($request);
 
         // O usuario sendo cadastrado com sucesso, ou nao,
         // os dados referentes são enviados para a view
-        /*if($request[0]['success']){
-            Auth::login($request[0]['data']);       // Efetua login do usuario no sistema
-            echo json_encode($request);             // Decodifica em json
+        if($request[0]['success']){
+            echo json_encode($request);             // Decodifica em json para envio
             return;
             //$user = $request['data'];
         }
@@ -241,7 +235,7 @@ class UsersController extends Controller{
             echo json_encode($request);
             return;
             //$user = null;
-        }*/
+        }
     }
 
 
