@@ -167,6 +167,11 @@ class UsersController extends Controller{
 
     }
 
+     /**
+     * FUNCAO       : settingsPersonalData
+     * OBJETIVO     : Exibir formulario de alterar dados pessoais
+     * RETORNO      : View de atualizacao de dados
+     */
     public function settingsPersonalData(){
         // Se nao tiver nenhum usuario autenticado, 
         // é redirecionado para a rota de login
@@ -174,6 +179,21 @@ class UsersController extends Controller{
             return redirect()->route('user.login_get');
         else
             return view('user.settingsPersonalData', ["user" => Auth::user()]);
+    }
+
+
+    /**
+     * FUNCAO       : settingsAuthData
+     * OBJETIVO     : Exibir formulario de alterar dados de autenticacao
+     * RETORNO      : View de atualizacao de dados de login
+     */
+    public function settingsAuthData(){
+        // Se nao tiver nenhum usuario autenticado, 
+        // é redirecionado para a rota de login
+        if(!Auth::check())
+            return redirect()->route('user.login_get');
+        else
+            return view('user.settingsAuthData', ["user" => Auth::user()]);
     }
 
 
@@ -217,15 +237,15 @@ class UsersController extends Controller{
      */
     public function updatePersonalData(UserUpdateRequest $request){
         
-        define('DATA_PERSONAL',1);
-        //define('DATA_SECURITY',2);
+        define('DATA_PERSONAL',2);
+        define('PASSWORD',1);
                 
         $request = $this->service->update($request->all(), DATA_PERSONAL, Auth::user()->id);             // Chamando o serviço de atualizacao de dados
         //dd($request);
 
         // O usuario sendo cadastrado com sucesso, ou nao,
         // os dados referentes são enviados para a view
-        if($request[0]['success']){
+        if($request['success']){
             echo json_encode($request);             // Decodifica em json para envio
             return;
             //$user = $request['data'];

@@ -109,14 +109,14 @@ class UserService{
 	 * PARAMETROS
 	 * 	: $data - Dados a serem atualizados
 	 * 	: $typeData -  Tipos de dados
-	 * 		1 -> Dados pessoais
-	 * 		2 -> Dados de autenticacao (Email ou senha)
+	 * 		1 -> Senha
+	 * 		2 -> Dados pessoais
 	 * 	: $id - ID do usuario cujos dados serao atualizados
 	 * RETORNO		: Array com feedback da atualizacao
 	 */
 	public function update($data, $typeData, $id){
 
-		$hasConflictData = false;					// Flag que indica se houve conflito de dados
+		$hasConflictEmail = false;					// Flag que indica se houve conflito de dados
 				
 		try{
 			
@@ -130,8 +130,8 @@ class UserService{
 				// Se já existir um email cadastrado com os dados fornecidos
 				// o array indicando falha é enviado para a view
 				if($emailExist){
-					$hasConflictData = true;		// acionada flag de conflito de dados
-					$arrayDataFeedback[] = [		// Carregando Array com o codigo de erro
+					$hasConflictEmail = true;		// acionada flag de conflito de dados
+					$arrayDataFeedback = [		// Carregando Array com o codigo de erro
 						'success' => false,
 						'code' => '341313',
 						'message' => 'Já exite uma conta associada com esse email',
@@ -142,11 +142,11 @@ class UserService{
 			}
 
 			// Testa se não houver nenhum conflito de dados
-			if(!$hasConflictData){
+			if(!$hasConflictEmail){
 	
 				$user = $this->repository->update($data, $id);			// Atualiza os dados do usuario
 		
-				$arrayDataFeedback[] = [			// Carregado array com os dados e codigo de sucesso
+				$arrayDataFeedback = [			// Carregado array com os dados e codigo de sucesso
 					'success' => true,
 					'code' => '538',
 					'message' => 'Usuario Cadastrado',

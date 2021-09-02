@@ -407,10 +407,6 @@ form input[disabled]:hover{
 
 
 
-
-
-
-
 /* CONFIGURACOES DA PAGINA INICIAL DO USUARIO */
 
 .iconMenuToggle{
@@ -428,7 +424,7 @@ form input[disabled]:hover{
 .divOptionSettingMenu{
 	text-align: center;
 	/*background-color: #dddddd;*/
-	background-color:#00997a	;
+	background-color:#00997a;
 	padding-bottom: 16px;
 	padding-top: 16px;
 	display: block;
@@ -459,7 +455,7 @@ form input[disabled]:hover{
 	width: 100%;
 }
 
-.formUpdate .title{
+/*.formUpdate .title{
 	font-size: .9em;
 	font-weight: bold;
 }
@@ -477,7 +473,7 @@ form input[disabled]:hover{
 
 .formUpdate .atrForm{
 	
-}
+}*/
 
 
 /*.configurationArea{
