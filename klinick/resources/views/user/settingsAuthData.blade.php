@@ -40,7 +40,7 @@
 				</svg>
 			</div>
 			<div>
-				<span class="optionSettingMenu">Login e Segurança</span>
+				<span class="optionSettingMenu">Segurança</span>
 			</div>
 		</div>
 		<div class="col divOptionSettingMenu">
@@ -65,12 +65,9 @@
 	])
 	!!}
 	
-		<span class="labelField"> Nome: </span>
-		<br>
-		<span class="notice">
-			Este nome será exibido no chat ao conversar com seu paciente/médico e tambem será exibido no seu perfil de médico
+		<span class="labelField"> Senha: </span>
 		</span>
-		{!! Form::text('name', $user->name, [
+		{!! Form::password('password', [
 				'class' => 'atrForm',
 		]) !!}
 		
@@ -78,30 +75,16 @@
 		<br>
 		<br>
 				
-		<span class="labelField"> Telefone: </span>
+		<span class="labelField"> Confirmar Senha: </span>
 		<br>
-		{!! Form::text('phone', $user->phone, [
-				'class' => 'atrForm',
+		{!! Form::password('passwordCheck', [
+			'class' => 'atrForm',
 		]) !!}
 		
 		<br>
 		<br>
 		<br>
 					
-		<span class="labelField"> Sexo: </span>
-		<br>
-		{!! Form::select('sexo', array(
-				'masculino' => 'Masculino',
-				'feminino' => 'Feminino'
-			),
-			$user->sexo,
-			[
-				'class'=>'atrForm',
-		]) !!}
-
-		<br>
-		<br>
-
 		<div class="divBtEnviar">
 			<a href={{route('user.index')}}>
 				{!!Form::button('Voltar',[
@@ -123,7 +106,52 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
 <script>
-	
+	$(function(){
+
+	/**
+	 * Funcao	: anonima associada com o evento de enviar(submeter) formulario
+	 * Objetivo	: Fazer a validacao das informações e o enviar o formulario para cadastro
+	 */
+		$('.formUpdate').submit(function(event){
+
+			event.preventDefault();
+
+			// Escopo da requisicao
+			$.ajax({
+				url: "/user/updating/personal_data",
+				type: "PUT",
+				data: $(this).serialize(),
+				dataType: "json",
+
+				/**
+				 * Funcao	: success
+				 * Objetivo	: validar os dados do formulario e fazer o cadastro
+				 */
+				success: function(answer){
+					console.log(answer[0]);
+					feedbackUpdateEmail = $('.indicatorFieldRequired');
+										
+					if(!answer['success']){
+						if(answer['code'] == '341313'){
+							feedbackUpdateEmail.html("Este email ja foi cadastrado por alguem! Escolha outro");
+						}
+						else{
+							feedbackUpdateEmail.html("ERRO");
+						}
+					}
+
+					else{
+						alert("Dados atualizados")
+						window.location.href = "/user";
+					}
+				},
+
+				error: function(response){
+					console.log(response);
+				}
+			});
+		});
+	})
 </script>
 <!--<script src="{{asset('js/updateDataPersonal.js')}}"></script>-->
 @endsection

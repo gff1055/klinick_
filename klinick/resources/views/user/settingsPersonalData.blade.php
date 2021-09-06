@@ -41,7 +41,7 @@
 					</svg>
 				</div>
 				<div>
-					<span class="optionSettingMenu">Login e Segurança</span>
+					<span class="optionSettingMenu">Segurança</span>
 				</div>
 			</a>
 		</div>

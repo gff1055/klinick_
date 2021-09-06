@@ -29,84 +29,29 @@ class UsersController extends Controller{
         $this->repository = $repository;
         $this->service = $service;
     }
-
-
-
-
-    /**
-     * FUNCAO:      login 
-     * OBJETIVO:    Efetuar o login
-     * ARGUMENTOS:  Os dados que contidos nos campos 'nome de usuario' e 'senha'
-     * RETORNO:     Um ARRAY com os seguintes dados
-     *                  'success' -> indica se houve falha ou sucesso no login
-     *                  'message' -> mensagem explicando o motivo do erro/excecao
-     */
     
-/*    public function login(Request $dadosLogin){
+    
 
-        // recebendo dados inseridos pelo usuario
-        $dadosAut = [
-            'email' => $dadosLogin->get('username'),
-            'password' => $dadosLogin->get('password')
-        ];
-
-
-        // Efetuando login
-        try {
-        
-            // Se a criptografia de senha esta habilitada
-            // é executado o metodo especifico
-            if(env('PASSWORD_HASH')){
-                Auth::attempt($dadosAut, false);
-            }
-
-            // A criptografia de senha nao esta habilitada
-            else{
-                $user = $this->repository->findWhere(['email' => $dadosLogin->get('username')])->first();
-                   
-                // Se o usuario nao existir é enviado um alerta
-                if(!$user){
-                    //A variavel '$loginFeedback' armazena o status da requisicao se houve sucesso/erro
-                    $loginFeedback['success'] = false;
-                    $loginFeedback['message'] = "O Email/Login nao existe";
-                    echo json_encode($loginFeedback);                   // Converte a variavel '$loginFeedback' em JSON
-                    return;
-                }
-                
-                // Se a senha não for compativel é enviado um alerta
-                if($user->password != $dadosLogin->get('password')){
-                    $loginFeedback['success'] = false;
-                    $loginFeedback['message'] = "Senha invalida";
-                    echo json_encode($loginFeedback);                   // Converte a variavel '$loginFeedback' em JSON
-                    return;
-                    //throw new Exception("SENHA INVALIDA");
-                }
-                
-                Auth::login($user);
-                $loginFeedback['success'] = true;
-                echo json_encode($loginFeedback);                   // Converte a variavel '$loginFeedback' em JSON
-                return;
-            }
-
-        }
-
-        // Quando houver uma excecao, ela será mostrada na view 
-        catch(Exception $e){
-            return $e->getMessage();
-        }
-    }
-*/
-
-
-
-    /**
-     * FUNCAO:          Logout
-     * OBJETIVO:        Encerrar a sessao do usuario corrente
+     /**
+     * FUNCAO       : isAuthenticated
+     * OBJETIVO     : Funcao que verifica se alguem esta logado antes de redirecionar para uma view
+     * PARAMETROS   : 
+     *      : $yesAuth -> view que sera chamada se alguem estiver logado
+     *      : $dataAuth -> dados a serem passados para a view 'yesAuth'
+     *      : $noAuth -> rota que sera chamada se não houver usuario logado
+     * RETORNO      : view propriamente dita
      */
-/*    public function logout(){
-        Auth::logout();
-        return redirect()->route('user.login_get'); // MANDA O USUARIO PARA A ROTA APOS o logout
-    }*/
+    public function isAuthenticated($yesAuth, $dataAuth, $noAuth){
+        
+        // Se nao tiver nenhum usuario autenticado, 
+        // é redirecionado para a rota de login
+        if(!Auth::check())
+            return redirect()->route($noAuth);
+        
+        // Se tiver alguem autenticado,
+        // é redirecionado para a rota do usuario 
+        return view($yesAuth, $dataAuth);
+    }
 
 
 
@@ -121,19 +66,19 @@ class UsersController extends Controller{
     }
     
     
+
     
-    
+    /**
+     * FUNCAO:      index
+     * OBJETIVO:    acionar a view padrao do site
+     * RETORNO:     retorna a view de login ou a view de perfil do usuario (no caso de usuarios ja logados)
+     */
     public function index(){
-    
-        // Se nao tiver nenhum usuario autenticado, 
-        // é redirecionado para a rota de login
-        if(!Auth::check())
-            return redirect()->route('user.login_get');
-        
-        // Se tiver alguem autenticado,
-        // é redirecionado para a rota do usuario 
-        $nameTemp = Auth::user()->name;
-        return view('user.index', ["name" => $nameTemp]);
+         return $this->isAuthenticated(
+            'user.index',
+            ["name" => Auth::user()->name],
+            'user.login_get'
+        );
             
     }
 
@@ -143,8 +88,8 @@ class UsersController extends Controller{
     /**
      * FUNCAO:      store
      * OBJETIVO:    Cadastrar o usuario
-     * ARGUMENTOS:  Dados do usuario
-     * RETORNO:     Dados necessarios para avaliar se houve falha ou nao no cadastro
+     * ARGUMENTOS:  Dados inseridos pelo usuario
+     * RETORNO:     Feedback com os dados necessarios para avaliar se (nao) houve falha no cadastro
      */
     public function store(UserCreateRequest $request){
         $registeredData = $request;
@@ -173,12 +118,15 @@ class UsersController extends Controller{
      * RETORNO      : View de atualizacao de dados
      */
     public function settingsPersonalData(){
+
         // Se nao tiver nenhum usuario autenticado, 
         // é redirecionado para a rota de login
-        if(!Auth::check())
-            return redirect()->route('user.login_get');
-        else
-            return view('user.settingsPersonalData', ["user" => Auth::user()]);
+        return $this->isAuthenticated(
+            'user.settingsPersonalData',
+            ["user" => Auth::user()],
+            'user.login_get'
+        );
+
     }
 
 
@@ -190,10 +138,12 @@ class UsersController extends Controller{
     public function settingsAuthData(){
         // Se nao tiver nenhum usuario autenticado, 
         // é redirecionado para a rota de login
-        if(!Auth::check())
-            return redirect()->route('user.login_get');
-        else
-            return view('user.settingsAuthData', ["user" => Auth::user()]);
+        return $this->isAuthenticated(
+            'user.settingsAuthData',
+            ["user" => Auth::user()],
+            'user.login_get'
+        );
+
     }
 
 
