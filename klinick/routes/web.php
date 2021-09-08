@@ -52,6 +52,11 @@ Route::put('/user/updating/personal_data',[
     'uses' => 'UsersController@updatePersonalData'
 ]);
 
+Route::put('/user/updating/auth_data',[
+    'as' => 'user.updatingAuthData',
+    'uses' => 'UsersController@updatingAuthData'
+]);
+
 Route::resource('user', 'UsersController');
 
 

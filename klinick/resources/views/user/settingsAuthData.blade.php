@@ -65,9 +65,18 @@
 	])
 	!!}
 	
-		<span class="labelField"> Senha: </span>
+	<span class="labelField"> Senha atual: </span>
+	</span>
+		{!! Form::password('passwordCurrent', [
+			'class' => 'atrForm',
+		]) !!}
+
+	<br>
+	<br>
+	<br>
+	<span class="labelField"> Nova senha: </span>
 		</span>
-		{!! Form::password('password', [
+		{!! Form::password('newPassword', [
 				'class' => 'atrForm',
 		]) !!}
 		
@@ -75,9 +84,9 @@
 		<br>
 		<br>
 				
-		<span class="labelField"> Confirmar Senha: </span>
+		<span class="labelField"> Confirmar nova senha: </span>
 		<br>
-		{!! Form::password('passwordCheck', [
+		{!! Form::password('checkNewPassword', [
 			'class' => 'atrForm',
 		]) !!}
 		
@@ -89,12 +98,12 @@
 			<a href={{route('user.index')}}>
 				{!!Form::button('Voltar',[
 					'class' => 'atrForm',
-					'id' => ''
+					//'id' => ''
 				])!!}
 			</a>
 			{!!Form::submit('Atualizar',[
 				'class' => 'atrForm',
-				'id' => ''
+				//'id' => ''
 			])
 			!!}
 		</div>
@@ -118,7 +127,7 @@
 
 			// Escopo da requisicao
 			$.ajax({
-				url: "/user/updating/personal_data",
+				url: "/user/updating/auth_data",
 				type: "PUT",
 				data: $(this).serialize(),
 				dataType: "json",
