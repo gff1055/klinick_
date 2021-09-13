@@ -49,7 +49,7 @@ Route::get('/user/settings/auth_data',[
 
 Route::put('/user/updating/personal_data',[
     'as' => 'user.updatingPersonalData',
-    'uses' => 'UsersController@updatePersonalData'
+    'uses' => 'UsersController@updatingPersonalData'
 ]);
 
 Route::put('/user/updating/auth_data',[

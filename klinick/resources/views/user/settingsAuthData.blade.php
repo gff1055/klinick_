@@ -119,7 +119,7 @@
 
 	/**
 	 * Funcao	: anonima associada com o evento de enviar(submeter) formulario
-	 * Objetivo	: Fazer a validacao das informações e o enviar o formulario para cadastro
+	 * Objetivo	: Fazer a validacao da senha e enviar a nova senha para atualizacao
 	 */
 		$('.formUpdate').submit(function(event){
 			event.preventDefault();
@@ -127,12 +127,14 @@
 			newPassword 		= $('input[name="newPassword"]');
 			checkNewPassword 	= $('input[name="checkNewPassword"]');
 			
+			// Verifica a confirmacao da nova senha
 			if(newPassword.val() != checkNewPassword.val()){
-				alert("As senhas sao diferentes");
+				alert("As senhas não correspondem");
+				return;
 			}
 
-
-/*			// Escopo da requisicao
+			
+			// Escopo da requisicao
 			$.ajax({
 				url: "/user/updating/auth_data",
 				type: "PUT",
@@ -143,7 +145,7 @@
 				 * Funcao	: success
 				 * Objetivo	: validar os dados do formulario e fazer o cadastro
 				 */
-/*				success: function(answer){
+				success: function(answer){
 					console.log(answer[0]);
 					feedbackUpdateEmail = $('.indicatorFieldRequired');
 										
@@ -166,7 +168,7 @@
 					console.log(response);
 				}
 			});
-*/
+
 		});
 	})
 </script>

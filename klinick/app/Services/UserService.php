@@ -118,15 +118,13 @@ class UserService{
 				
 		try{
 			
-			//$this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE);
-
 			$emailExist = DB::select('select * from users where email = ? and id <> ?', [$data['email'], $id]);					// Variavel recebe o feedback da existencia(ou nao) do email informado
 
 			// Se já existir um email cadastrado com os dados fornecidos
 			// o array indicando falha é enviado para a view
 			if($emailExist){
-				$hasConflictEmail = true;		// acionada flag de conflito de dados
-				$arrayDataFeedback = [		// Carregando Array com o codigo de erro
+				$hasConflictEmail = true;			// acionada flag de conflito de dados
+				$arrayDataFeedback = [				// Carregando Array com o codigo de erro
 					'success' => false,
 					'code' => '341313',
 					'message' => 'Já exite uma conta associada com esse email',
@@ -139,7 +137,7 @@ class UserService{
 	
 				$user = $this->repository->update($data, $id);			// Atualiza os dados do usuario
 		
-				$arrayDataFeedback = [			// Carregado array com os dados e codigo de sucesso
+				$arrayDataFeedback = [				// Carregado array com os dados e codigo de sucesso
 					'success' => true,
 					'code' => '538',
 					'message' => 'Usuario Cadastrado',
