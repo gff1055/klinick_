@@ -66,8 +66,9 @@
 	!!}
 	
 	<span class="labelField"> Senha atual: </span>
+	<span class="indicatorFieldRequired"></span>
 	</span>
-		{!! Form::password('passwordCurrent', [
+		{!! Form::password('password', [
 			'class' => 'atrForm',
 		]) !!}
 
@@ -124,14 +125,21 @@
 		$('.formUpdate').submit(function(event){
 			event.preventDefault();
 
-			newPassword 		= $('input[name="newPassword"]');
-			checkNewPassword 	= $('input[name="checkNewPassword"]');
+			newPassword 		= $('input[name="newPassword"]').val();
+			checkNewPassword 	= $('input[name="checkNewPassword"]').val();
 			
-			// Verifica a confirmacao da nova senha
-			if(newPassword.val() != checkNewPassword.val()){
+			// Verifica o preenchimento da nova senha
+			if(newPassword == ""){
+				alert("A nova senha nao foi inserida");
+				return;
+			}
+			
+
+			else if(newPassword != checkNewPassword){
 				alert("As senhas não correspondem");
 				return;
 			}
+			
 
 			
 			// Escopo da requisicao
@@ -146,12 +154,13 @@
 				 * Objetivo	: validar os dados do formulario e fazer o cadastro
 				 */
 				success: function(answer){
-					console.log(answer[0]);
+					console.log(answer);
+
 					feedbackUpdateEmail = $('.indicatorFieldRequired');
-										
+					console.log(feedbackUpdateEmail);					
 					if(!answer['success']){
-						if(answer['code'] == '341313'){
-							feedbackUpdateEmail.html("Este email ja foi cadastrado por alguem! Escolha outro");
+						if(answer['code'] == '341834'){
+							feedbackUpdateEmail.html("Senha incorreta!");
 						}
 						else{
 							feedbackUpdateEmail.html("ERRO");

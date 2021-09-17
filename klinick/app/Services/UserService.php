@@ -134,13 +134,11 @@ class UserService{
 			
 			// Testa se não houver nenhum conflito de dados
 			if(!$hasConflictEmail){
-	
 				$user = $this->repository->update($data, $id);			// Atualiza os dados do usuario
-		
 				$arrayDataFeedback = [				// Carregado array com os dados e codigo de sucesso
 					'success' => true,
 					'code' => '538',
-					'message' => 'Usuario Cadastrado',
+					'message' => 'Usuario Atualizado',
 					'data' => $user
 				];
 			}
@@ -173,40 +171,33 @@ class UserService{
 	 */
 	public function updateAuthData($data, $id){
 
-		$hasConflictEmail = false;					// Flag que indica se houve conflito de dados
-				
 		try{
-			
-			//$this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE);
-
-			$emailExist = DB::select('select * from users where email = ? and id <> ?', [$data['email'], $id]);					// Variavel recebe o feedback da existencia(ou nao) do email informado
+			// Verifica se a senha inserida esta correta
+			$passwordIsCorrect = DB::select('select * from users where password = ? and id = ?', [$data['password'], $id]);					// Variavel recebe o feedback da existencia(ou nao) do email informado
 
 			// Se já existir um email cadastrado com os dados fornecidos
 			// o array indicando falha é enviado para a view
-			if($emailExist){
-				$hasConflictEmail = true;		// acionada flag de conflito de dados
-				$arrayDataFeedback = [		// Carregando Array com o codigo de erro
-					'success' => false,
-					'code' => '341313',
-					'message' => 'Já exite uma conta associada com esse email',
-					'data' => null
-				];
-			}
-			
-			// Testa se não houver nenhum conflito de dados
-			if(!$hasConflictEmail){
-	
-				$user = $this->repository->update($data, $id);			// Atualiza os dados do usuario
-		
-				$arrayDataFeedback = [			// Carregado array com os dados e codigo de sucesso
+			if($passwordIsCorrect){
+				// Atualizando os dados do usuario
+				$user = $this->repository->update($data, $id);
+				$arrayDataFeedback = [
 					'success' => true,
-					'code' => '538',
-					'message' => 'Usuario Cadastrado',
-					'data' => $user
+					'code' => '34454144',
+					'message' => 'A senha foi atualizada',
+					'data'=>$user
+				];
+			}			
+
+			// Testa se não houver nenhum conflito de dados
+			else{				
+				$arrayDataFeedback = [				
+					'success' => false,
+					'code' => '341834',
+					'message' => 'A senha digitada está incorreta.',
 				];
 			}
 
-			return $arrayDataFeedback;				// Retorna array de feedback do update
+			return $arrayDataFeedback;
 		}
 
 		// Em caso de excecao, o array indicando excecao é enviado para a view

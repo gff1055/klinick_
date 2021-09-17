@@ -167,8 +167,9 @@
 					}
 
 					else{
-						alert("Dados atualizados")
-						window.location.href = "/user";
+						/*alert("Dados atualizados")
+						window.location.href = "/user";*/
+						
 					}
 				},
 

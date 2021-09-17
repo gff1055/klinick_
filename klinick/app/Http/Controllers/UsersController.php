@@ -195,18 +195,18 @@ class UsersController extends Controller{
 
         // O usuario sendo cadastrado com sucesso, ou nao,
         // os dados referentes são enviados para a view
-        if($request['success']){
+//        if($request['success']){
             echo json_encode($request);             // Decodifica em json para envio
             return;
             //$user = $request['data'];
-        }
+//        }
 
-        else{
+/*        else{
             echo json_encode($request);
             return;
             //$user = null;
         }
-    }
+*/    }
 
 
 
