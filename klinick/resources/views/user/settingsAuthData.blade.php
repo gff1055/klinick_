@@ -168,7 +168,7 @@
 					}
 
 					else{
-						alert("Dados atualizados")
+						alert("A senha foi atualizada")
 						window.location.href = "/user";
 					}
 				},

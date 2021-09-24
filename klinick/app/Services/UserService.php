@@ -91,7 +91,7 @@ class UserService{
 
 		// Em caso de excecao, o array indicando excecao é enviado para a view
 		catch(Exception $except){
-			return[
+			return 	[
 				'success' => 'false',
 				'message' => 'Erro interno',
 				'data' => null
@@ -172,20 +172,21 @@ class UserService{
 	public function updateAuthData($data, $id){
 
 		try{
-			// Verifica se a senha inserida esta correta
+			// Confirma se a senha digitada esta correta
 			$passwordIsCorrect = DB::select('select * from users where password = ? and id = ?', [$data['password'], $id]);					// Variavel recebe o feedback da existencia(ou nao) do email informado
 
 			// Se já existir um email cadastrado com os dados fornecidos
 			// o array indicando falha é enviado para a view
 			if($passwordIsCorrect){
-				// Atualizando os dados do usuario
-				$user = $this->repository->update($data, $id);
-				$arrayDataFeedback = [
-					'success' => true,
-					'code' => '34454144',
-					'message' => 'A senha foi atualizada',
-					'data'=>$user
-				];
+				$successUpdate = DB::update('update users set password = ? where id = ?', [$data['newPassword'], $id]);
+				
+				// Se a atualizacao ocorrer sem erros, é enviado um array de confirmacao.
+				if($successUpdate){
+					$arrayDataFeedback = [
+						'success' => true,
+						'code' => '34454144',
+					];
+				}
 			}			
 
 			// Testa se não houver nenhum conflito de dados

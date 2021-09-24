@@ -189,9 +189,8 @@ class UsersController extends Controller{
      * RETORNO      :Array indicando se houve erro ou falha
      */
     public function updatingAuthData(UserUpdateRequest $request){
-        
         $request = $this->service->updateAuthData($request->all(), Auth::user()->id);             // Chamando o serviço de atualizacao de dados
-        //dd($request);
+        
 
         // O usuario sendo cadastrado com sucesso, ou nao,
         // os dados referentes são enviados para a view
