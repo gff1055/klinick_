@@ -144,6 +144,7 @@
 
 			// Escopo da requisicao
 			$.ajax({
+
 				url: "/user/updating/personal_data",
 				type: "PUT",
 				data: $(this).serialize(),
@@ -154,23 +155,39 @@
 				 * Objetivo	: validar os dados do formulario e fazer o cadastro
 				 */
 				success: function(answer){
-					console.log(answer[0]);
+
 					feedbackUpdateEmail = $('.indicatorFieldRequired');
-										
+
+					// Se nao houve sucesso na atualizacao
+					// é verificado...					
 					if(!answer['success']){
+
+						// ... se houve erro no email
 						if(answer['code'] == '341313'){
+
 							feedbackUpdateEmail.html("Este email ja foi cadastrado por alguem! Escolha outro");
+
 						}
+
+						// ... ou ocorreu um erro desconhecido
 						else{
+
 							feedbackUpdateEmail.html("ERRO");
+
 						}
+
 					}
 
+					// Se houve sucesso
+					// é exibida uma mensagem na tela
+					// e o usuario é redirecionado para a pagina principal
 					else{
+
 						alert("Dados atualizados")
 						window.location.href = "/user";
 						
 					}
+
 				},
 
 				error: function(response){

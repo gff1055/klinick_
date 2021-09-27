@@ -1,33 +1,44 @@
+// Campo de senha
+password 					= document.getElementById('password');
+// Campo de checagem de senha
+checkPassword 				= document.getElementById('checkPassword');
+// Elemento submit
+submitUserRegister 			= document.getElementById('submitUserRegister');		
+// Desabilitando o elemento submit
+submitUserRegister.disabled = true;
+// Area de aviso de checagem de senha
+passwordWarning 			= document.getElementById('passwordWarning');
 
-password = document.getElementById('password');							// Campo de senha
-checkPassword = document.getElementById('checkPassword');				// Campo de checagem de senha
-submitUserRegister = document.getElementById('submitUserRegister');		// Elemento submit
-submitUserRegister.disabled = true;										// Desabilitando o elemento submit
-passwordWarning = document.getElementById('passwordWarning');			// Area de aviso de checagem de senha
-inputBirthday = document.getElementById('inputBirthday');
+inputBirthday 				= document.getElementById('inputBirthday');
 
 
 
 
 checkPassword.addEventListener("keyup",
+
 /**
  * Funcao: Anonima associada ao evento de pressionamento de tecla
  * Objetivo: Checar se a senha foi digitada corretamente nos campos 'senha' e 'confirmar senha'
  */
-function(){
+ function(){
+
 	feedbackPassword();
+
 },false);
 
 
 
 
 password.addEventListener("keyup",
+
 /**
  * Funcao: Anonima associada ao evento de pressionamento de tecla
  * Objetivo: Checar se a senha foi digitada corretamente nos campos 'senha' e 'confirmar senha'
  */
 function(){
+
 	feedbackPassword();
+
 },false);
 
 
@@ -40,13 +51,17 @@ feedbackPassword = function(){
 
 		// Se os campos estiverem em branco, o botao de submit é desativado
 		if(password.value == ""){
+
 			submitUserRegister.disabled = true;
+
 		}
 
 		// Caso contrario, o botao de submit é ativado
 		else{
+
 			submitUserRegister.disabled = false;
 			passwordWarning.innerHTML = "";
+
 		}
 	}
 
@@ -54,11 +69,14 @@ feedbackPassword = function(){
 	// é exibido o alerta
 	// e o botao de cadastro é desabilitado
 	else if(checkValue(password.value, checkPassword.value) == false){
+
 		submitUserRegister.disabled = true;
 		passwordWarning.style.color = "#ff0000";
 		passwordWarning.style.fontSize = "0.8em";
 		passwordWarning.innerHTML = "*As senhas nao coincidem ou nao foram preenchidas<br>";
+
 	}
+
 }
 
 
@@ -86,11 +104,6 @@ checkValue = function(d1, d2){
 }
 
 
-/*function dateConverter(date){
-	return americanDate = date.split('/').reverse().join('/');
-}*/
-
-
 
 
 $(function(){
@@ -102,9 +115,9 @@ $(function(){
 	$('.formUserRegister').submit(function(event){
 
 		event.preventDefault();
-		blankFieldCounter = 0;						// Variavel que conta os campos que estao em branco
-		var requiredField = $('.requiredField');	// Variavel que recebe a referencia dos campos obrigatorios do formulario
-		var requiredFieldLabel = $('.requiredFieldLabel');
+		blankFieldCounter 		= 0;						// Variavel que conta os campos que estao em branco
+		var requiredField 		= $('.requiredField');	// Variavel que recebe a referencia dos campos obrigatorios do formulario
+		var requiredFieldLabel 	= $('.requiredFieldLabel');
 
 		// Percorre os campos obrigatorios do formulario para verificar se tem algum campo em branco
 		for(var i = 0; i < requiredField.length; i++){
@@ -112,9 +125,11 @@ $(function(){
 			// Se tiver um campo em branco ele é realçado em vermelho e
 			// o contador de campos em branco incrementado
 			if(requiredField[i].value == ""){
+
 				requiredField[i].style.borderColor = "red";
 				requiredFieldLabel[i].style.color = "red";
 				blankFieldCounter++;
+			
 			}
 
 			// Caso contrario o campo é realçado com o estilo original
@@ -134,14 +149,11 @@ $(function(){
 
 
 			// Resetando a area de avisos no rotulo dos formularios
-			//if(feedbackUserName[0].textContent!="") feedbackUserName.html("");
 			if(feedbackEmail[0].textContent!="") feedbackEmail.html("");
-
-			//inputBirthday.value = dateConverter(inputBirthday.value);	// Converte a data para o padrao americano (AAAA/MM/DD)
-			
 
 			// Escopo da requisicao
 			$.ajax({
+			
 				url: "/user",
 				type: "POST",
 				data: $(this).serialize(),
@@ -157,6 +169,7 @@ $(function(){
 					// é verificado qual tipo de erro ocorreu
 					//console.log(answer);
 					if(answer[0].success==false){
+			
 						alert("Um ou mais campos possuem informações não válidas. Verifique")
 
 						// O array de resposta é percorrido 
@@ -201,8 +214,12 @@ $(function(){
 				error: function(response){
 					console.log(response);
 				}
+
 			});
+
 		}
+
 	});
+	
 })
 

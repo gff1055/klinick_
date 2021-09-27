@@ -22,9 +22,6 @@ class UsersController extends Controller{
     protected $repository;
     protected $service;
     
-    //reformulacao
-    //protected $validator;
-
     public function __construct(UserRepository $repository, UserService $service){
         $this->repository = $repository;
         $this->service = $service;
@@ -97,17 +94,18 @@ class UsersController extends Controller{
 
         // O usuario sendo cadastrado com sucesso, ou nao,
         // os dados referentes são enviados para a view
-        if($request[0]['success']){
-            Auth::login($request[0]['data']);       // Efetua login do usuario recem cadastrado no sistema
-            echo json_encode($request);             // Decodifica em json
+
+		if($request[0]['success']){
+			// Efetua login do usuario recem cadastrado no sistema
+			Auth::login($request[0]['data']);
+			// Decodifica em json   
+            echo json_encode($request);
             return;
-            //$user = $request['data'];
         }
 
         else{
             echo json_encode($request);
             return;
-            //$user = null;
         }
     }
 
@@ -140,7 +138,8 @@ class UsersController extends Controller{
      * RETORNO      : View de atualizacao de dados de login
      */
     public function settingsAuthData(){
-        // Se nao tiver nenhum usuario autenticado, 
+
+		// Se nao tiver nenhum usuario autenticado, 
         // é redirecionado para a rota de login
         return $this->isAuthenticated(
             'user.settingsAuthData',
@@ -162,20 +161,19 @@ class UsersController extends Controller{
     public function updatingPersonalData(UserUpdateRequest $request){
         
         $request = $this->service->updatePersonalData($request->all(), Auth::user()->id);             // Chamando o serviço de atualizacao de dados
-        //dd($request);
 
         // O usuario sendo cadastrado com sucesso, ou nao,
         // os dados referentes são enviados para a view
-        if($request['success']){
-            echo json_encode($request);             // Decodifica em json para envio
+
+		if($request['success']){
+			// Decodifica em json para envio
+            echo json_encode($request);             
             return;
-            //$user = $request['data'];
         }
 
         else{
             echo json_encode($request);
             return;
-            //$user = null;
         }
     }
 
@@ -191,26 +189,14 @@ class UsersController extends Controller{
     public function updatingAuthData(UserUpdateRequest $request){
         $request = $this->service->updateAuthData($request->all(), Auth::user()->id);             // Chamando o serviço de atualizacao de dados
         
-
-        // O usuario sendo cadastrado com sucesso, ou nao,
-        // os dados referentes são enviados para a view
-//        if($request['success']){
-            echo json_encode($request);             // Decodifica em json para envio
-            return;
-            //$user = $request['data'];
-//        }
-
-/*        else{
-            echo json_encode($request);
-            return;
-            //$user = null;
-        }
-*/    }
+        // O feedback da operacado de atualizacão é enviado para a view
+		echo json_encode($request);
+		return;
+	}
 
 
 
-
-    public function show($id){
+	public function show($id){
 
         $user = $this->repository->find($id);
 
@@ -222,9 +208,12 @@ class UsersController extends Controller{
         }
 
         return view('users.show', compact('user'));
-    }
+	}
+	
 
-    /**
+
+
+	/**
      * Show the form for editing the specified resource.
      *
      * @param  int $id
@@ -236,23 +225,19 @@ class UsersController extends Controller{
         $user = $this->repository->find($id);
 
         return view('users.edit', compact('user'));
-    }
-    
-    
-    
-    
-    
+	}
+	
 
 
-    /**
+
+	/**
      * Remove the specified resource from storage.
      *
      * @param  int $id
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id){
         $deleted = $this->repository->delete($id);
 
         if (request()->wantsJson()) {

@@ -123,27 +123,30 @@
 	 * Objetivo	: Fazer a validacao da senha e enviar a nova senha para atualizacao
 	 */
 		$('.formUpdate').submit(function(event){
+			
 			event.preventDefault();
-
 			newPassword 		= $('input[name="newPassword"]').val();
 			checkNewPassword 	= $('input[name="checkNewPassword"]').val();
 			
 			// Verifica o preenchimento da nova senha
 			if(newPassword == ""){
+
 				alert("A nova senha nao foi inserida");
 				return;
+
 			}
 			
-
+			// Verifica se a nova senha foi checada
 			else if(newPassword != checkNewPassword){
+
 				alert("As senhas não correspondem");
 				return;
-			}
-			
 
+			}
 			
 			// Escopo da requisicao
 			$.ajax({
+
 				url: "/user/updating/auth_data",
 				type: "PUT",
 				data: $(this).serialize(),
@@ -154,25 +157,39 @@
 				 * Objetivo	: validar os dados do formulario e fazer o cadastro
 				 */
 				success: function(answer){
-					console.log(answer);
 
 					feedbackUpdateEmail = $('.indicatorFieldRequired');
-					console.log(feedbackUpdateEmail);					
+					
+					// Se nao houve sucesso na atualizacao,
+					// é verificado ...
 					if(!answer['success']){
+					
+						// ... se a senha está incorreta ou...
 						if(answer['code'] == '341834'){
+					
 							feedbackUpdateEmail.html("Senha incorreta!");
+					
 						}
+					
+						// ... se houve outro erro
 						else{
+					
 							feedbackUpdateEmail.html("ERRO");
+					
 						}
+					
 					}
 
+					// Se houver sucesso na atualizacao
+					// é enviada uma mensagem na tela e 
+					// o usuario é redirecionado para a pagina inicial
 					else{
 						alert("A senha foi atualizada")
 						window.location.href = "/user";
 					}
 				},
 
+				// Erro na requisicao
 				error: function(response){
 					console.log(response);
 				}

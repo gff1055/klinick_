@@ -38,30 +38,13 @@ class UserService{
 			
 			$this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE);
 
-			// Inicializando uma variavel com o feedback da existencia(ou nao) do usuario informado
-			/*$userExist = DB::select('select * from users where username = ?', [$data['username']]);
-
-			// Inicializando array que lista os erros ou sucesso no cadastro
-			$arrayDataFeedback = [];
-			
-			// Se já existir um usuario cadastrado com os dados fornecidos
-			// o array indicando falha é enviado para a view
-			if($userExist){
-				$arrayDataFeedback[] = [
-					'success' => false,
-					'code' => '55418313',
-					'message' => 'Já exite uma conta com esse nome de usuario',
-					'data' => null
-				];
-			}*/
-
 			// Variavel recebe o feedback da existencia(ou nao) do email informado
 			$emailExist = DB::select('select * from users where email = ?', [$data['email']]);
 
 			// Se já existir um email cadastrado com os dados fornecidos
 			// o array indicando falha é enviado para a view
 			if($emailExist){
-				
+			
 				$arrayDataFeedback[] = [
 					'success' => false,
 					'code' => '341313',
@@ -84,6 +67,7 @@ class UserService{
 					'message' => 'Usuario Cadastrado',
 					'data' => $user
 				];
+
 			}
 
 			return $arrayDataFeedback;
@@ -91,6 +75,7 @@ class UserService{
 
 		// Em caso de excecao, o array indicando excecao é enviado para a view
 		catch(Exception $except){
+
 			return 	[
 				'success' => 'false',
 				'message' => 'Erro interno',
@@ -123,24 +108,30 @@ class UserService{
 			// Se já existir um email cadastrado com os dados fornecidos
 			// o array indicando falha é enviado para a view
 			if($emailExist){
+
 				$hasConflictEmail = true;			// acionada flag de conflito de dados
+
 				$arrayDataFeedback = [				// Carregando Array com o codigo de erro
 					'success' => false,
 					'code' => '341313',
 					'message' => 'Já exite uma conta associada com esse email',
 					'data' => null
 				];
+
 			}
 			
 			// Testa se não houver nenhum conflito de dados
 			if(!$hasConflictEmail){
+
 				$user = $this->repository->update($data, $id);			// Atualiza os dados do usuario
+
 				$arrayDataFeedback = [				// Carregado array com os dados e codigo de sucesso
 					'success' => true,
 					'code' => '538',
 					'message' => 'Usuario Atualizado',
 					'data' => $user
 				];
+
 			}
 
 			return $arrayDataFeedback;				// Retorna array de feedback do update
@@ -172,30 +163,35 @@ class UserService{
 	public function updateAuthData($data, $id){
 
 		try{
+
 			// Confirma se a senha digitada esta correta
 			$passwordIsCorrect = DB::select('select * from users where password = ? and id = ?', [$data['password'], $id]);					// Variavel recebe o feedback da existencia(ou nao) do email informado
 
-			// Se já existir um email cadastrado com os dados fornecidos
-			// o array indicando falha é enviado para a view
+			// Se a senha digitada estiver correta, é feita a troca pela nova senha
 			if($passwordIsCorrect){
+
 				$successUpdate = DB::update('update users set password = ? where id = ?', [$data['newPassword'], $id]);
 				
-				// Se a atualizacao ocorrer sem erros, é enviado um array de confirmacao.
+				// Se a troca  ocorrer sem erros, o array de resposta é gerado
 				if($successUpdate){
+
 					$arrayDataFeedback = [
 						'success' => true,
 						'code' => '34454144',
 					];
+
 				}
 			}			
 
-			// Testa se não houver nenhum conflito de dados
+			// Se a senha digitada não estiver correta, é gerado o feedback
 			else{				
+
 				$arrayDataFeedback = [				
 					'success' => false,
 					'code' => '341834',
 					'message' => 'A senha digitada está incorreta.',
 				];
+
 			}
 
 			return $arrayDataFeedback;
