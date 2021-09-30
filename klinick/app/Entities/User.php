@@ -20,7 +20,8 @@ class User extends Authenticatable
 
     protected $hidden = ['password', 'remember_token',];
 
-    public function setPasswordAttribute($pPassword){
+	public function setPasswordAttribute($pPassword)
+	{
         $this->attributes['password'] = env('PASSWORD_HASH') ? bcrypt($pPassword) : $pPassword;
         //$this->attributes['password'] = bcrypt($pSenha);
     }

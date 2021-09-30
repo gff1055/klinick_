@@ -11,7 +11,8 @@ flagCloseMenuBar = true;												// flag que indica se o menu esta aberto ou 
 
 
 /** Funcao impede o evento 'click' ser acionado no body e o menu fechar */
-menu.addEventListener("click", function(e){
+menu.addEventListener("click", function(e)
+{
 	e.stopPropagation();
 }, false);
 
@@ -19,7 +20,8 @@ menu.addEventListener("click", function(e){
 
 
 /** Funcao impede o evento 'click' ser acionado no body e o menu fechar */
-inputMenuSandwich.addEventListener("click", function(e){
+inputMenuSandwich.addEventListener("click", function(e)
+{
 	e.stopPropagation();
 }, false);
 
@@ -27,14 +29,17 @@ inputMenuSandwich.addEventListener("click", function(e){
 
 
 /** Evento no body é acionado e o menu suspenso é fechado */
-body.addEventListener("click", function(e){
+body.addEventListener("click", function(e)
+{
 	inputMenuSandwich.checked = false;
 });
 
 
 
-buttonExitUser.addEventListener("click", function(e){
-	if(!confirm("Tem certeza que deseja efetuar logout nessa conta?")){
+buttonExitUser.addEventListener("click", function(e)
+{
+	if(!confirm("Tem certeza que deseja efetuar logout nessa conta?"))
+	{
 		e.preventDefault();
 		inputMenuSandwich.checked = false;
 	}

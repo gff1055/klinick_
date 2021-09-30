@@ -57,6 +57,11 @@ Route::put('/user/updating/auth_data',[
     'uses' => 'UsersController@updatingAuthData'
 ]);
 
+Route::get('/user/settings/delete',[
+    'as' => 'user.settingsDeleteUser',
+    'uses' => 'UsersController@settingsDeleteUser'
+]);
+
 Route::resource('user', 'UsersController');
 
 

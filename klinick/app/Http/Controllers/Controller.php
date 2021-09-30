@@ -98,11 +98,17 @@ class Controller extends BaseController
 
 
 
-    public function userLogin(){
-        if(!Auth::check())
-            return view('user.login');
-        else
-            return redirect()->route('user.index');
+	public function userLogin()
+	{
+		if(!Auth::check())
+		{
+			return view('user.login');
+		}
+		
+		else
+		{
+			return redirect()->route('user.index');
+		}
     }
 
     /**
