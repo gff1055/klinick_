@@ -210,12 +210,12 @@ class UsersController extends Controller
 
 
 
-	public function settingsDeleteUser()
+	public function settingsDelete()
 	{
 		// Se nao tiver nenhum usuario autenticado, 
         // é redirecionado para a rota de login
         return $this->isAuthenticated(
-            'user.settingsDeleteUser',
+            'user.settingsDelete',
             ["user" => Auth::user()],
             'user.login_get'
         );

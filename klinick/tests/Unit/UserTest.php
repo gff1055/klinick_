@@ -5,7 +5,7 @@ namespace Tests\Unit;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Http\UsersController;
+use App\Entities\User;
 
 class UserTest extends TestCase
 {
@@ -14,8 +14,17 @@ class UserTest extends TestCase
      *
      * @return void
      */
-    public function test_if_only_users_logged_can_access_delete_link(){
-		$response = $this->get('/user/settings/auth_data')->assertRedirect('/login');
+	public function test_if_users_not_logged_in_are_redirected_to_the_login_route()
+	{
 		$response = $this->get('/user/settings/delete')->assertRedirect('/login');
-    }
+	}
+
+
+	public function test_if_users_logged_in_can_access_the_site()
+	{
+		$user = factory(User::class)->create();
+
+		$response = $this->actingAs($user)->get('/user')->assertStatus(200);
+		$response = $this->actingAs($user)->get('/user/settings/delete')->assertStatus(200);
+	}
 }
