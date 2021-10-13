@@ -185,5 +185,4 @@
 		});
 	})
 </script>
-<!--<script src="{{asset('js/updateDataPersonal.js')}}"></script>-->
 @endsection

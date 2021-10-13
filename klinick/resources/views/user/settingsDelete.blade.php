@@ -51,53 +51,37 @@
 			'user.update',
 			$user->id
 		],*/
-		'method' => 'put',
+		'method' => '',
 		'class' => 'formUpdate'
 	])
 	!!}
-	
-	<span class="labelField"> Senha atual: </span>
-	<span class="indicatorFieldRequired"></span>
-	</span>
-		{!! Form::password('password', [
-			'class' => 'atrForm',
-		]) !!}
 
-	<br>
-	<br>
-	<br>
-	<span class="labelField"> Nova senha: </span>
+		<h4> Confirme a sua senha</h4>
+		<br>
+		<span class="notice">
+			Preencha sua solicitação de desativação inserindo a senha associada a sua conta.
 		</span>
-		{!! Form::password('newPassword', [
+		<br>
+		<br>
+	
+		<span class="labelField"> Senha: </span>
+		<span class="indicatorFieldRequired"></span>
+			{!! Form::password('password', [
 				'class' => 'atrForm',
-		]) !!}
-		
+				'placeholder' => 'Senha'
+			]) !!}
+
 		<br>
 		<br>
 		<br>
 				
-		<span class="labelField"> Confirmar nova senha: </span>
-		<br>
-		{!! Form::password('checkNewPassword', [
-			'class' => 'atrForm',
-		]) !!}
-		
-		<br>
-		<br>
-		<br>
-					
 		<div class="divBtEnviar">
 			<a href={{route('user.index')}}>
-				{!!Form::button('Voltar',[
+				{!!Form::button('Desativar',[
 					'class' => 'atrForm',
 					//'id' => ''
 				])!!}
 			</a>
-			{!!Form::submit('Atualizar',[
-				'class' => 'atrForm',
-				//'id' => ''
-			])
-			!!}
 		</div>
 
 	{!!Form::close()!!}
@@ -107,13 +91,13 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
 <script>
-	$(function(){
+/*	$(function(){
 
 	/**
 	 * Funcao	: anonima associada com o evento de enviar(submeter) formulario
 	 * Objetivo	: Fazer a validacao da senha e enviar a nova senha para atualizacao
 	 */
-		$('.formUpdate').submit(function(event){
+/*		$('.formUpdate').submit(function(event){
 			
 			event.preventDefault();
 			newPassword 		= $('input[name="newPassword"]').val();
@@ -147,7 +131,7 @@
 				 * Funcao	: success
 				 * Objetivo	: validar os dados do formulario e fazer o cadastro
 				 */
-				success: function(answer){
+/*				success: function(answer){
 
 					feedbackUpdateEmail = $('.indicatorFieldRequired');
 					
@@ -187,7 +171,6 @@
 			});
 
 		});
-	})
+	})*/
 </script>
-<!--<script src="{{asset('js/updateDataPersonal.js')}}"></script>-->
 @endsection

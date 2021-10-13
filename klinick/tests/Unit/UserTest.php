@@ -20,11 +20,11 @@ class UserTest extends TestCase
 	}
 
 
-	public function test_if_users_logged_in_can_access_the_site()
+	public function test_if_users_logged_in_can_access_the_delete_link()
 	{
 		$user = factory(User::class)->create();
 
-		$response = $this->actingAs($user)->get('/user')->assertStatus(200);
 		$response = $this->actingAs($user)->get('/user/settings/delete')->assertStatus(200);
+		$response = $this->actingAs($user)->delete("/user/{$user->id}")->assertStatus(200);
 	}
 }

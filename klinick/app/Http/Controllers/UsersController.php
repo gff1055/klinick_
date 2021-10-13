@@ -266,7 +266,7 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id){
-        $deleted = $this->repository->delete($id);
+        /*$deleted = $this->repository->delete($id);
 
         if (request()->wantsJson()) {
 
@@ -276,6 +276,7 @@ class UsersController extends Controller
             ]);
         }
 
-        return redirect()->back()->with('message', 'User deleted.');
+		return redirect()->back()->with('message', 'User deleted.');*/
+		return view('user.register');
     }
 }
