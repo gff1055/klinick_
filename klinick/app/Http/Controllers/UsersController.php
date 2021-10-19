@@ -17,16 +17,16 @@ use Illuminate\Support\Facades\DB;
 use Auth;
 use Exception;
 
-class UsersController extends Controller
-{
+class UsersController extends Controller{
     
     protected $repository;
     protected $service;
     
-	public function __construct(UserRepository $repository, UserService $service)
-	{
+	public function __construct(UserRepository $repository, UserService $service){
+
         $this->repository = $repository;
-        $this->service = $service;
+		$this->service = $service;
+		
     }
     
     
@@ -40,19 +40,21 @@ class UsersController extends Controller
      *      : $noAuth -> rota que sera chamada se não houver usuario logado
      * RETORNO      : view propriamente dita
      */
-	public function isAuthenticated($yesAuth, $dataAuth, $noAuth)
-	{
+	public function isAuthenticated($yesAuth, $dataAuth, $noAuth){
+
         // Se nao tiver nenhum usuario autenticado, 
         // é redirecionado para a rota de login
-		if(!Auth::check())
-		{
+		if(!Auth::check()){
+
             return redirect()->route($noAuth);
+		
 		}
 		
         // Se tiver alguem autenticado,
         // é redirecionado para a rota do usuario 
         return view($yesAuth, $dataAuth);
-    }
+	
+	}
 
 
 
@@ -62,9 +64,10 @@ class UsersController extends Controller
      * OBJETIVO:    acionar a view para cadastro de novo usuario
      * RETORNO:     view propriamente dita
      */
-	public function register()
-	{
-        return view('user.register');
+	public function register(){
+
+		return view('user.register');
+		
     }
     
     
@@ -75,8 +78,8 @@ class UsersController extends Controller
      * OBJETIVO:    acionar a view padrao do site
      * RETORNO:     retorna a view de login ou a view de perfil do usuario (no caso de usuarios ja logados)
      */
-	public function index()
-	{
+	public function index(){
+
          return $this->isAuthenticated(
             'user.index',
             ["name" => Auth::user()->name],
@@ -94,29 +97,31 @@ class UsersController extends Controller
      * ARGUMENTOS:  Dados inseridos pelo usuario
      * RETORNO:     Feedback com os dados necessarios para avaliar se (nao) houve falha no cadastro
      */
-	public function store(UserCreateRequest $request)
-	{
+	public function store(UserCreateRequest $request){
+
         $registeredData = $request;
         $request = $this->service->store($request->all());
 
         // O usuario sendo cadastrado com sucesso, ou nao,
         // os dados referentes são enviados para a view
 
-		if($request[0]['success'])
-		{
+		if($request[0]['success']){
 			// Efetua login do usuario recem cadastrado no sistema
 			Auth::login($request[0]['data']);
 			// Decodifica em json   
             echo json_encode($request);
-            return;
+			return;
+			
         }
 
-		else
-		{
+		else{
+
             echo json_encode($request);
             return;
-        }
-    }
+		
+		}
+	
+	}
 
 
 
@@ -126,8 +131,7 @@ class UsersController extends Controller
      * OBJETIVO     : Exibir formulario de alterar dados pessoais
      * RETORNO      : View de atualizacao de dados
      */
-	public function settingsPersonalData()
-	{
+	public function settingsPersonalData(){
 
         // Se nao tiver nenhum usuario autenticado, 
         // é redirecionado para a rota de login
@@ -147,8 +151,7 @@ class UsersController extends Controller
      * OBJETIVO     : Exibir formulario de alterar dados de autenticacao
      * RETORNO      : View de atualizacao de dados de login
      */
-	public function settingsAuthData()
-	{
+	public function settingsAuthData(){
 
 		// Se nao tiver nenhum usuario autenticado, 
         // é redirecionado para a rota de login
@@ -169,24 +172,27 @@ class UsersController extends Controller
      * PARAMETROS   :Dados para atualizar
      * RETORNO      :Array indicando se houve erro ou falha
      */
-	public function updatingPersonalData(UserUpdateRequest $request)
-	{        
+	public function updatingPersonalData(UserUpdateRequest $request){
+
         $request = $this->service->updatePersonalData($request->all(), Auth::user()->id);             // Chamando o serviço de atualizacao de dados
 
         // O usuario sendo cadastrado com sucesso, ou nao,
         // os dados referentes são enviados para a view
 
-		if($request['success'])
-		{
+		if($request['success']){
+
 			// Decodifica em json para envio
             echo json_encode($request);             
-            return;
-        }
-		else
-		{
+			return;
+			
+		}
+		
+		else{
+
             echo json_encode($request);
             return;
-        }
+		}
+		
     }
 
 
@@ -198,20 +204,21 @@ class UsersController extends Controller
      * PARAMETROS   :Dados para atualizar
      * RETORNO      :Array indicando se houve erro ou falha
      */
-	public function updatingAuthData(UserUpdateRequest $request)
-	{
+	public function updatingAuthData(UserUpdateRequest $request){
+
         $request = $this->service->updateAuthData($request->all(), Auth::user()->id);             // Chamando o serviço de atualizacao de dados
         
         // O feedback da operacado de atualizacão é enviado para a view
 		echo json_encode($request);
 		return;
+	
 	}
 
 
 
 
-	public function settingsDelete()
-	{
+	public function settingsDelete(){
+
 		// Se nao tiver nenhum usuario autenticado, 
         // é redirecionado para a rota de login
         return $this->isAuthenticated(
@@ -266,6 +273,7 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id){
+		
         /*$deleted = $this->repository->delete($id);
 
         if (request()->wantsJson()) {
@@ -277,6 +285,8 @@ class UsersController extends Controller
         }
 
 		return redirect()->back()->with('message', 'User deleted.');*/
-		return view('user.register');
-    }
+		//return view('user.register');
+
+	}
+	
 }

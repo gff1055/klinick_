@@ -188,18 +188,25 @@
 					// é enviada uma mensagem na tela e 
 					// o usuario é redirecionado para a pagina inicial
 					else{
+
 						alert("A senha foi atualizada")
 						window.location.href = "/user";
+
 					}
+
 				},
 
 				// Erro na requisicao
 				error: function(response){
+
 					console.log(response);
+
 				}
+
 			});
 
 		});
+		
 	})
 </script>
 @endsection

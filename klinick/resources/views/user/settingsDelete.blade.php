@@ -47,11 +47,11 @@
 	</div>
 
 	{!! Form::model($user, [
-		/*'route' => [
-			'user.update',
+		'route' => [
+			'user.destroy',
 			$user->id
-		],*/
-		'method' => '',
+		],
+		'method' => 'delete',
 		'class' => 'formUpdate'
 	])
 	!!}
@@ -76,12 +76,11 @@
 		<br>
 				
 		<div class="divBtEnviar">
-			<a href={{route('user.index')}}>
-				{!!Form::button('Desativar',[
-					'class' => 'atrForm',
-					//'id' => ''
-				])!!}
-			</a>
+			{!!Form::submit('Desativar',[
+				'class' => 'atrForm',
+				//'id' => ''
+			])
+			!!}
 		</div>
 
 	{!!Form::close()!!}
@@ -91,39 +90,28 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
 <script>
-/*	$(function(){
+	$(function(){
 
 	/**
 	 * Funcao	: anonima associada com o evento de enviar(submeter) formulario
 	 * Objetivo	: Fazer a validacao da senha e enviar a nova senha para atualizacao
 	 */
-/*		$('.formUpdate').submit(function(event){
+		$('.formUpdate').submit(function(event){
 			
 			event.preventDefault();
-			newPassword 		= $('input[name="newPassword"]').val();
-			checkNewPassword 	= $('input[name="checkNewPassword"]').val();
-			
-			// Verifica o preenchimento da nova senha
-			if(newPassword == ""){
+			password = $('input[name="password"]').val();
 
-				alert("A nova senha nao foi inserida");
+			// Verifica o preenchimento da senha
+			if(password == ""){
+				alert("rr");
 				return;
-
-			}
-			
-			// Verifica se a nova senha foi checada
-			else if(newPassword != checkNewPassword){
-
-				alert("As senhas não correspondem");
-				return;
-
 			}
 			
 			// Escopo da requisicao
 			$.ajax({
 
-				url: "/user/updating/auth_data",
-				type: "PUT",
+				url: ,
+				type: ,
 				data: $(this).serialize(),
 				dataType: "json",
 
@@ -131,10 +119,8 @@
 				 * Funcao	: success
 				 * Objetivo	: validar os dados do formulario e fazer o cadastro
 				 */
-/*				success: function(answer){
+				success: function(answer){
 
-					feedbackUpdateEmail = $('.indicatorFieldRequired');
-					
 					// Se nao houve sucesso na atualizacao,
 					// é verificado ...
 					if(!answer['success']){
@@ -146,7 +132,7 @@
 					
 						}
 					
-						// ... se houve outro erro
+					// ... se houve outro erro
 						else{
 					
 							feedbackUpdateEmail.html("ERRO");
@@ -159,8 +145,7 @@
 					// é enviada uma mensagem na tela e 
 					// o usuario é redirecionado para a pagina inicial
 					else{
-						alert("A senha foi atualizada")
-						window.location.href = "/user";
+					
 					}
 				},
 
@@ -171,6 +156,6 @@
 			});
 
 		});
-	})*/
+	})
 </script>
 @endsection
