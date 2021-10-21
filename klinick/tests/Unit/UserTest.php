@@ -26,7 +26,7 @@ class UserTest extends TestCase
 		$user = factory(User::class)->create();
 
 		$response = $this->actingAs($user)->get('/user/settings/delete')->assertStatus(200);
-		$response = $this->actingAs($user)->delete("/user/{$user->id}")->assertStatus(200);
+		$response = $this->actingAs($user)->delete("/user/delete")->assertStatus(200);
 	
 	}
 

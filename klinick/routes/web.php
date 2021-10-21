@@ -62,6 +62,11 @@ Route::get('/user/settings/delete',[
     'uses' => 'UsersController@settingsDelete'
 ]);
 
+Route::get('/user/delete',[
+    'as' => 'user.delete',
+    'uses' => 'UsersController@deleteUser'
+]);
+
 Route::resource('user', 'UsersController');
 
 
