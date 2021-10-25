@@ -170,16 +170,12 @@
 					
 						// ... se a senha está incorreta ou...
 						if(answer['code'] == '341834'){
-					
 							feedbackUpdateEmail.html("Senha incorreta!");
-					
 						}
 					
 						// ... se houve outro erro
 						else{
-					
 							feedbackUpdateEmail.html("ERRO");
-					
 						}
 					
 					}

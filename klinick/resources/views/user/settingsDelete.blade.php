@@ -107,55 +107,31 @@
 				return;
 			}
 			
-			else{
-				// Escopo da requisicao
-				$.ajax({
+			// Escopo da requisicao
+			$.ajax({
 
-					url: "/user/delete",
-					type: "DELETE",
-					data: $(this).serialize(),
-					dataType: "json",
+				url: "/user/delete",
+				type: "DELETE",
+				data: $(this).serialize(),
+				dataType: "json",
 
-					/**
-					 * Funcao	: success
-					 * Objetivo	: validar os dados do formulario e fazer o cadastro
-					 */
-/*					success: function(answer){
+				/**
+				 * Funcao	: success
+				 * Objetivo	: validar os dados do formulario e fazer o cadastro
+				 */
+				success: function(answer){
+					console.log(answer);
+				},
 
-						// Se nao houve sucesso na atualizacao,
-						// é verificado ...
-						if(!answer['success']){
-					
-							// ... se a senha está incorreta ou...
-							if(answer['code'] == '341834'){
-								feedbackUpdateEmail.html("Senha incorreta!");
-							}
-					
-						// ... se houve outro erro
-							else{
-								feedbackUpdateEmail.html("ERRO");
-							}
-					
-						}
+				// Erro na requisicao
+				error: function(response){
+					console.log(response);
+				}
 
-						// Se houver sucesso na atualizacao
-						// é enviada uma mensagem na tela e 
-						// o usuario é redirecionado para a pagina inicial
-						else{
-					
-						}
-					},
-
-					// Erro na requisicao
-					error: function(response){
-						console.log(response);
-					}
-
-				});
-
-			}*/
+			});
 
 		});
+
 	})
 </script>
 @endsection

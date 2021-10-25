@@ -264,7 +264,7 @@ class UsersController extends Controller{
 	
 	
 	
-	public function deleteUser(){
+	public function deleteUser(UserUpdateRequest $request){
 		
         /*$deleted = $this->repository->delete($id);
 
@@ -274,10 +274,11 @@ class UsersController extends Controller{
                 'message' => 'User deleted.',
                 'deleted' => $deleted,
             ]);
-        }
+		}
+		
 
 		return redirect()->back()->with('message', 'User deleted.');*/
-		return view('user.register');
+		return $request->all();
 	}
 
 
