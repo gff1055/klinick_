@@ -15,12 +15,10 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Auth;
 
 
-class Controller extends BaseController
-{
+class Controller extends BaseController{
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     
-    public function __construct(UserRepository $repository, UserValidator $validator)
-    {
+    public function __construct(UserRepository $repository, UserValidator $validator){
         $this->repository = $repository;
         $this->validator = $validator;
     }
@@ -35,8 +33,7 @@ class Controller extends BaseController
      *                  'message' -> mensagem explicando o motivo do erro/excecao
      */
     
-    public function login(Request $dadosLogin)
-    {
+    public function login(Request $dadosLogin){
 
         // recebendo dados inseridos pelo usuario
         $dadosAut = [
@@ -46,24 +43,20 @@ class Controller extends BaseController
 
 
         // Efetuando login
-        try
-        {
+        try{
         
             // Se a criptografia de senha esta habilitada
             // é executado o metodo especifico
-            if(env('PASSWORD_HASH'))
-            {
+            if(env('PASSWORD_HASH')){
                 Auth::attempt($dadosAut, false);
             }
 
             // A criptografia de senha nao esta habilitada
-            else
-            {
+            else{
                 $user = $this->repository->findWhere(['email' => $dadosLogin->get('username')])->first();
                    
                 // Se o usuario nao existir é enviado um alerta
-                if(!$user)
-                {
+                if(!$user){
                     //A variavel '$loginFeedback' armazena o status da requisicao se houve sucesso/erro
                     $loginFeedback['success'] = false;
                     $loginFeedback['message'] = "O Email/Login nao existe";
@@ -72,8 +65,7 @@ class Controller extends BaseController
                 }
                 
                 // Se a senha não for compativel é enviado um alerta
-                if($user->password != $dadosLogin->get('password'))
-                {
+                if($user->password != $dadosLogin->get('password')){
                     $loginFeedback['success'] = false;
                     $loginFeedback['message'] = "Senha invalida";
                     echo json_encode($loginFeedback);                   // Converte a variavel '$loginFeedback' em JSON
@@ -86,27 +78,29 @@ class Controller extends BaseController
                 echo json_encode($loginFeedback);                   // Converte a variavel '$loginFeedback' em JSON
                 return;
             }
-
-        }
+		}
 
         /* Quando houver uma excecao, ela será mostrada na view */
-        catch(Exception $e)
-        {
+        catch(Exception $e){
             return $e->getMessage();
         }
     }
 
 
+	/**
+     * FUNCAO:		userLogin
+     * OBJETIVO:	Verifica se o usuario atual está logado
+     * RETORNO:		view de login ou index
+     */
+	public function userLogin(){
 
-	public function userLogin()
-	{
-		if(!Auth::check())
-		{
+		// Se o usuario não estiver logado, é exibida a view de login
+		if(!Auth::check()){
 			return view('user.login');
 		}
-		
-		else
-		{
+
+		// Se o usuario já estiver logado, é redirecionado para a pagina inicial
+		else{
 			return redirect()->route('user.index');
 		}
     }
@@ -116,8 +110,7 @@ class Controller extends BaseController
      * OBJETIVO:        Encerrar a sessao do usuario corrente
      * RETORNO:         Rota inicial de login
      */
-    public function logout()
-    {
+    public function logout(){
         Auth::logout();
         return redirect()->route('user.login_get'); // MANDA O USUARIO PARA A ROTA APOS o logout
     }

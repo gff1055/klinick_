@@ -134,18 +134,13 @@
 			
 			// Verifica o preenchimento da nova senha
 			if(newPassword == ""){
-
 				alert("A nova senha nao foi inserida");
 				return;
-
 			}
-			
 			// Verifica se a nova senha foi checada
 			else if(newPassword != checkNewPassword){
-
 				alert("As senhas não correspondem");
 				return;
-
 			}
 			
 			// Escopo da requisicao
@@ -167,42 +162,30 @@
 					// Se nao houve sucesso na atualizacao,
 					// é verificado ...
 					if(!answer['success']){
-					
 						// ... se a senha está incorreta ou...
 						if(answer['code'] == '341834'){
 							feedbackUpdateEmail.html("Senha incorreta!");
 						}
-					
 						// ... se houve outro erro
 						else{
 							feedbackUpdateEmail.html("ERRO");
 						}
-					
 					}
-
 					// Se houver sucesso na atualizacao
 					// é enviada uma mensagem na tela e 
 					// o usuario é redirecionado para a pagina inicial
 					else{
-
 						alert("A senha foi atualizada")
 						window.location.href = "/user";
-
 					}
-
 				},
 
 				// Erro na requisicao
 				error: function(response){
-
 					console.log(response);
-
 				}
-
 			});
-
 		});
-		
 	})
 </script>
 @endsection

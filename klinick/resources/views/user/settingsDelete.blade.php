@@ -98,15 +98,15 @@
 		$('.formUpdate').submit(function(event){
 			
 			event.preventDefault();
-
 			password = $('input[name="password"]').val();
+			feedbackInputPassword = $('.indicatorFieldRequired');
+			feedbackInputPassword.html("");
 
 			// Verifica o preenchimento da senha
 			if(password == ""){
 				alert("Senha nao digitada");
 				return;
 			}
-			
 			// Escopo da requisicao
 			$.ajax({
 
@@ -120,7 +120,14 @@
 				 * Objetivo	: validar os dados do formulario e fazer o cadastro
 				 */
 				success: function(answer){
-					console.log(answer);
+					if(answer['success']){
+						console.log("OK");
+					}
+
+					else{
+						feedbackInputPassword.html("Senha inserida está incorreta");
+					}
+//					console.log(answer);
 				},
 
 				// Erro na requisicao

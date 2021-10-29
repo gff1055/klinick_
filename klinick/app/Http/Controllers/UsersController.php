@@ -45,11 +45,8 @@ class UsersController extends Controller{
         // Se nao tiver nenhum usuario autenticado, 
         // é redirecionado para a rota de login
 		if(!Auth::check()){
-
             return redirect()->route($noAuth);
-		
 		}
-		
         // Se tiver alguem autenticado,
         // é redirecionado para a rota do usuario 
         return view($yesAuth, $dataAuth);
@@ -65,9 +62,7 @@ class UsersController extends Controller{
      * RETORNO:     view propriamente dita
      */
 	public function register(){
-
 		return view('user.register');
-		
     }
     
     
@@ -80,13 +75,13 @@ class UsersController extends Controller{
      */
 	public function index(){
 
-         return $this->isAuthenticated(
+		return $this->isAuthenticated(
             'user.index',
             ["name" => Auth::user()->name],
             'user.login_get'
-        );
-            
-    }
+        );    
+
+	}
 
 
 
@@ -113,12 +108,9 @@ class UsersController extends Controller{
 			return;
 			
         }
-
 		else{
-
             echo json_encode($request);
             return;
-		
 		}
 	
 	}
@@ -178,17 +170,12 @@ class UsersController extends Controller{
 
         // O usuario sendo cadastrado com sucesso, ou nao,
         // os dados referentes são enviados para a view
-
 		if($request['success']){
-
 			// Decodifica em json para envio
             echo json_encode($request);             
 			return;
-			
 		}
-		
 		else{
-
             echo json_encode($request);
             return;
 		}
@@ -206,7 +193,7 @@ class UsersController extends Controller{
      */
 	public function updatingAuthData(UserUpdateRequest $request){
 
-        $request = $this->service->updateAuthData($request->all(), Auth::user()->id);             // Chamando o serviço de atualizacao de dados
+		$request = $this->service->updateAuthData($request->all(), Auth::user()->id);             // Chamando o serviço de atualizacao de dados
         
         // O feedback da operacado de atualizacão é enviado para a view
 		echo json_encode($request);
@@ -278,7 +265,20 @@ class UsersController extends Controller{
 		
 
 		return redirect()->back()->with('message', 'User deleted.');*/
-		return $request->all();
+		$dataUser = [
+			"password" => $request->all()["password"],
+			"id" => Auth::user()->id
+		];
+
+		$answer = $this->service->delete($dataUser);
+		
+
+		if($answer['success']){
+			Auth::logout();
+			return redirect()->route('user.login_get'); // MANDA O USUARIO PARA A ROTA APOS o logout
+		}
+		echo json_encode($answer);
+		return;
 	}
 
 

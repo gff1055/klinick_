@@ -9,6 +9,7 @@ use Prettus\Validator\Contracts\ValidatorInterface;
 use Illuminate\Support\Facades\DB;
 
 class UserService{
+
 	private $repository;
 	private $validator;
 
@@ -31,13 +32,13 @@ class UserService{
 	 * 					'data' 		-> os dados enviados
 	 */
 	
-	 public function store($data){	
+	public function store($data){
+
 		try{			
 			$this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE);
-
 			// Variavel recebe o feedback da existencia(ou nao) do email informado
 			$emailExist = DB::select('select * from users where email = ?', [$data['email']]);
-
+			
 			// Se já existir um email cadastrado com os dados fornecidos
 			// o array indicando falha é enviado para a view
 			if($emailExist){		
@@ -48,13 +49,12 @@ class UserService{
 					'data' => null
 				];
 			}
-
+			
 			// Se não existir nenhum nome de usuario/email cadastrado com os dados fornecidos
 			// o array indicando sucesso é enviado para a view
 			//if(!$userExist && !$emailExist){
 			else{	
 				$user = $this->repository->create($data);
-		
 				$arrayDataFeedback[] = [
 					'success' => true,
 					'code' => '538',
@@ -63,10 +63,9 @@ class UserService{
 				];
 
 			}
-
 			return $arrayDataFeedback;
 		}
-
+		
 		// Em caso de excecao, o array indicando excecao é enviado para a view
 		catch(Exception $except){
 			return [
@@ -75,7 +74,6 @@ class UserService{
 				'data' => null
 			];
 		}
-	
 	}
 
 
@@ -90,16 +88,17 @@ class UserService{
 	 * RETORNO		: Array com feedback da atualizacao
 	 */
 	public function updatePersonalData($data, $id){
-		$hasConflictEmail = false;					// Flag que indica se houve conflito de dados
-				
+		
+		// Flag que indica se houve conflito de dados
+		$hasConflictEmail = false;					
+		
 		try{			
 			$emailExist = DB::select('select * from users where email = ? and id <> ?', [$data['email'], $id]);					// Variavel recebe o feedback da existencia(ou nao) do email informado
-
+			
 			// Se já existir um email cadastrado com os dados fornecidos
 			// o array indicando falha é enviado para a view
 			if($emailExist){
 				$hasConflictEmail = true;			// acionada flag de conflito de dados
-
 				$arrayDataFeedback = [				// Carregando Array com o codigo de erro
 					'success' => false,
 					'code' => '341313',
@@ -111,7 +110,6 @@ class UserService{
 			// Testa se não houver nenhum conflito de dados
 			if(!$hasConflictEmail){
 				$user = $this->repository->update($data, $id);			// Atualiza os dados do usuario
-
 				$arrayDataFeedback = [				// Carregado array com os dados e codigo de sucesso
 					'success' => true,
 					'code' => '538',
@@ -121,7 +119,7 @@ class UserService{
 			}
 			return $arrayDataFeedback;				// Retorna array de feedback do update
 		}
-
+		
 		// Em caso de excecao, o array indicando excecao é enviado para a view
 		catch(Exception $except){
 			return[
@@ -129,6 +127,17 @@ class UserService{
 				'message' => 'Erro interno',
 				'data' => null
 			];
+		}
+	}
+
+
+	public function checkUser($password, $id){
+		$query = DB::select('select * from users where password = ? and id = ?', [$password, $id]);
+		if($query){
+			return true;
+		}
+		else{
+			return false;
 		}
 	}
 
@@ -145,11 +154,10 @@ class UserService{
 	 * RETORNO		: Array com feedback da atualizacao
 	 */
 	public function updateAuthData($data, $id){
-
 		try{
 			// Confirma se a senha digitada esta correta
-			$passwordIsCorrect = DB::select('select * from users where password = ? and id = ?', [$data['password'], $id]);					// Variavel recebe o feedback da existencia(ou nao) do email informado
-
+			$passwordIsCorrect = $this->checkUser($data['password'], $id);					// Variavel recebe o feedback da existencia(ou nao) do email informado
+			
 			// Se a senha digitada estiver correta, é feita a troca pela nova senha
 			if($passwordIsCorrect){
 				$successUpdate = DB::update('update users set password = ? where id = ?', [$data['newPassword'], $id]);
@@ -162,20 +170,17 @@ class UserService{
 					];
 				}
 			}			
-
+			
 			// Se a senha digitada não estiver correta, é gerado o feedback
 			else{	
-
 				$arrayDataFeedback = [				
 					'success' => false,
 					'code' => '341834',
 					'message' => 'A senha digitada está incorreta.',
 				];
 			}
-
 			return $arrayDataFeedback;
 		}
-
 		// Em caso de excecao, o array indicando excecao é enviado para a view
 		catch(Exception $except){
 			return[
@@ -186,10 +191,31 @@ class UserService{
 		}
 	}
 
-	public function delete(){
+	public function delete($user){
+		$checkingUser = $this->checkUser($user['password'], $user['id']);
 
+		if($checkingUser){
+
+			/*DELETE FROM
+        [ tabela ]
+        WHERE
+        [ condicao_de_busca ];*/
+
+			$arrayDataFeedback = [				
+				'success' => true,
+				'code' => '341834',
+				/*'message' => 'O usuario foi excluido',*/
+			];
+		}
+		else{
+			$arrayDataFeedback = [				
+				'success' => false,
+				'code' => '341834',
+				/*'message' => 'A senha digitada está incorreta.',*/
+			];
+		}
+		return $arrayDataFeedback;
 	}
-
 }
 
 
