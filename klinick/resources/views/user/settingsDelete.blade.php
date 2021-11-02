@@ -107,6 +107,7 @@
 				alert("Senha nao digitada");
 				return;
 			}
+			
 			// Escopo da requisicao
 			$.ajax({
 
@@ -121,24 +122,20 @@
 				 */
 				success: function(answer){
 					if(answer['success']){
-						console.log("OK");
+						//window.location.href = "/login";
+						console.log(answer);
 					}
-
 					else{
 						feedbackInputPassword.html("Senha inserida está incorreta");
 					}
-//					console.log(answer);
 				},
 
 				// Erro na requisicao
 				error: function(response){
 					console.log(response);
 				}
-
 			});
-
-		});
-
+		});	
 	})
 </script>
 @endsection

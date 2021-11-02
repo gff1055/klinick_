@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Repositories\UserRepository;
 use App\Validators\UserValidator;
 use Prettus\Validator\Contracts\ValidatorInterface;
+use App\Entities\User;
 
 use Illuminate\Support\Facades\DB;
 
@@ -196,14 +197,15 @@ class UserService{
 
 		if($checkingUser){
 
-			/*DELETE FROM
+			$fdb_UserExclusion = User::find($user['id']);/*DELETE FROM
         [ tabela ]
         WHERE
         [ condicao_de_busca ];*/
 
 			$arrayDataFeedback = [				
 				'success' => true,
-				'code' => '341834',
+				'code' => '888',
+				'data' => $fdb_UserExclusion
 				/*'message' => 'O usuario foi excluido',*/
 			];
 		}

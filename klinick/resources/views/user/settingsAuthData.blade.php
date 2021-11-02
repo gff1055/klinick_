@@ -176,7 +176,7 @@
 					// o usuario é redirecionado para a pagina inicial
 					else{
 						alert("A senha foi atualizada")
-						window.location.href = "/user";
+						window.location.href = "/login";
 					}
 				},
 

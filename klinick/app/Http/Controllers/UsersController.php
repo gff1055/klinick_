@@ -274,8 +274,8 @@ class UsersController extends Controller{
 		
 
 		if($answer['success']){
-			Auth::logout();
-			return redirect()->route('user.login_get'); // MANDA O USUARIO PARA A ROTA APOS o logout
+			//Auth::logout();
+			//return redirect()->route('user.login_get'); // MANDA O USUARIO PARA A ROTA APOS o logout
 		}
 		echo json_encode($answer);
 		return;
