@@ -168,6 +168,7 @@
 						}
 						// ... se houve outro erro
 						else{
+							console.log(answer);
 							feedbackUpdateEmail.html("ERRO");
 						}
 					}

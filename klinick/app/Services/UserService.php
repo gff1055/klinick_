@@ -133,9 +133,12 @@ class UserService{
 
 
 	public function checkUser($password, $id){
-		$query = DB::select('select * from users where password = ? and id = ?', [$password, $id]);
+		$query = DB::select('select * from users where password like ? and id = ?', [$password, $id]);
 		if($query){
 			return true;
+			/*return [
+				'senha_digitada' => $password
+			];*/
 		}
 		else{
 			return false;
@@ -157,7 +160,8 @@ class UserService{
 	public function updateAuthData($data, $id){
 		try{
 			// Confirma se a senha digitada esta correta
-			$passwordIsCorrect = $this->checkUser($data['password'], $id);					// Variavel recebe o feedback da existencia(ou nao) do email informado
+			$passwordIsCorrect = $this->checkUser($data['password'], $id);			// Variavel recebe o feedback da existencia(ou nao) do email informado
+			//$passwordIsCorrect = DB::select("select * from users where password like ? and id = ?", [$data['password'], $id]);			// Variavel recebe o feedback da existencia(ou nao) do email informado
 			
 			// Se a senha digitada estiver correta, é feita a troca pela nova senha
 			if($passwordIsCorrect){
@@ -168,6 +172,13 @@ class UserService{
 					$arrayDataFeedback = [
 						'success' => true,
 						'code' => '34454144',
+					];
+				}
+
+				else{
+					$arrayDataFeedback = [
+						'Resume' => 'Erro interno na atualizacao',
+						'Erro' => $successUpdate
 					];
 				}
 			}			
@@ -193,11 +204,13 @@ class UserService{
 	}
 
 	public function delete($user){
+
 		$checkingUser = $this->checkUser($user['password'], $user['id']);
 
 		if($checkingUser){
 
-			$fdb_UserExclusion = User::find($user['id']);/*DELETE FROM
+			$opDelete = DB::select("select * from users where id = ?", [4]);
+			/*DELETE FROM
         [ tabela ]
         WHERE
         [ condicao_de_busca ];*/
@@ -205,17 +218,16 @@ class UserService{
 			$arrayDataFeedback = [				
 				'success' => true,
 				'code' => '888',
-				'data' => $fdb_UserExclusion
-				/*'message' => 'O usuario foi excluido',*/
+				'data' => $opDelete
 			];
 		}
 		else{
 			$arrayDataFeedback = [				
 				'success' => false,
 				'code' => '341834',
-				/*'message' => 'A senha digitada está incorreta.',*/
 			];
 		}
+
 		return $arrayDataFeedback;
 	}
 }
