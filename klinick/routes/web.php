@@ -32,6 +32,11 @@ Route::get('/logout', [
     'uses' => 'Controller@logout'
 ]);
 
+Route::get('/deactivated', [
+    'as' => 'user.logout',
+    'uses' => 'Controller@deactivated'
+]);
+
 Route::get('/register',[
     'as' => 'user.register_get',
     'uses' => 'UsersController@register'

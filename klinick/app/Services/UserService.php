@@ -209,12 +209,9 @@ class UserService{
 
 		if($checkingUser){
 
-			$opDelete = DB::select("select * from users where id = ?", [4]);
-			/*DELETE FROM
-        [ tabela ]
-        WHERE
-        [ condicao_de_busca ];*/
-
+			//$opDelete = DB::select("select * from users where id = ?", [4]);
+			$opDelete = DB::delete("delete from users where id = ?", [$user['id']]);
+			
 			$arrayDataFeedback = [				
 				'success' => true,
 				'code' => '888',

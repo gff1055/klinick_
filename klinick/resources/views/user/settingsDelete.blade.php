@@ -122,8 +122,8 @@
 				 */
 				success: function(answer){
 					if(answer['success']){
-						//window.location.href = "/login";
-						console.log(answer);
+						window.location.href = "/login";
+						//console.log(answer);
 					}
 					else{
 						feedbackInputPassword.html("Senha inserida está incorreta");

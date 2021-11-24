@@ -455,6 +455,31 @@ form input[disabled]:hover{
 	width: 100%;
 }
 
+/* Estilos da pagina de exclusao */
+
+.divAccountDeleted{
+	text-align: center;
+	/*background-color: #dddddd;*/
+	background-color:#ddd;
+	padding-bottom: 16px;
+	padding-top: 16px;
+	display: block;
+	
+	/*display: flex;								/* Flexbox */
+	/*align-items: center;						/*Alinha form no centro*/
+	/*justify-content: center;					/*Alinha form no centro*/
+	
+}
+
+.divAccountDeleted a{
+	color: #666;
+	font-weight: bolder;
+	/*display: flex;								/* Flexbox */
+	/*align-items: center;						/*Alinha form no centro*/
+	/*justify-content: center;					/*Alinha form no centro*/
+	
+}
+
 /*.formUpdate .title{
 	font-size: .9em;
 	font-weight: bold;

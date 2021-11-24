@@ -113,5 +113,10 @@ class Controller extends BaseController{
     public function logout(){
         Auth::logout();
         return redirect()->route('user.login_get'); // MANDA O USUARIO PARA A ROTA APOS o logout
+	}
+	
+
+	public function deactivated(){
+		return view('user.deactivate');
     }
 }
