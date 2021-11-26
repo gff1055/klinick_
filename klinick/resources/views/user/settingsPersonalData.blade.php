@@ -42,7 +42,7 @@
 				</svg>
 			</div>
 			<div>
-				<span class="optionSettingMenu">Desativar conta</span>
+				<span class="optionSettingMenu">Excluir conta</span>
 			</div>
 			</a>
 		</div>

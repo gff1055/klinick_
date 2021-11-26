@@ -203,7 +203,11 @@ class UsersController extends Controller{
 
 
 
-
+	/**
+     * FUNCAO       :settingsDelete
+     * OBJETIVO     :Direcionar o usuario para a pagina de exclusao
+     * RETORNO      :view da pagina de exclusao ou a pagina de login
+     */
 	public function settingsDelete(){
 
 		// Se nao tiver nenhum usuario autenticado, 
@@ -219,16 +223,12 @@ class UsersController extends Controller{
 
 
 	public function show($id){
-
         $user = $this->repository->find($id);
-
         if (request()->wantsJson()) {
-
             return response()->json([
                 'data' => $user,
             ]);
         }
-
         return view('users.show', compact('user'));
 	}
 	
@@ -243,41 +243,33 @@ class UsersController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function edit($id){
-
         $user = $this->repository->find($id);
-
         return view('users.edit', compact('user'));
 	}
 	
 	
-	
+	/**
+     * FUNCAO       :deleteUser
+     * OBJETIVO     :Encaminhar os dados pessoais para exclusao
+     * RETORNO      :Retorna array com o resultado da operacao de exclusao
+     */
 	public function deleteUser(UserUpdateRequest $request){
-		
-        /*$deleted = $this->repository->delete($id);
-
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'message' => 'User deleted.',
-                'deleted' => $deleted,
-            ]);
-		}
-		
-
-		return redirect()->back()->with('message', 'User deleted.');*/
+	
+		// Cria array com os dados do usuario a ser excluido e ...
 		$dataUser = [
 			"password" => $request->all()["password"],
 			"id" => Auth::user()->id
 		];
 
+		// ... envia esses dados para exclusao
 		$answer = $this->service->delete($dataUser);
 		
 
+		// Se a exclusao ocorrer sem erros, o usuario é deslogado automaticamente
 		if($answer['success']){
 			Auth::logout();
-			//return redirect()->route('user.login_get'); // MANDA O USUARIO PARA A ROTA APOS o logout
 		}
-
+		
 		echo json_encode($answer);
 		return;
 	}

@@ -41,15 +41,12 @@
 				</svg>
 			</div>
 			<div>
-				<span class="optionSettingMenu">Desativar conta</span>
+				<span class="optionSettingMenu">Excluir conta</span>
 			</div>
 		</div>
 	</div>
 
 	{!! Form::model($user, [
-		/*'route' => [
-			'user.delete'
-		],*/
 		'method' => 'delete',
 		'class' => 'formUpdate'
 	])
@@ -58,7 +55,8 @@
 		<h4> Confirme a sua senha</h4>
 		<br>
 		<span class="notice">
-			Preencha sua solicitação de desativação inserindo a senha associada a sua conta.
+			Preencha sua solicitação de exclusão inserindo a senha associada a sua conta.
+			<br><b>ATENÇÃO: </b> Após a exclusão, seu perfil será apagado totalmente dos nossos servidores e não poderá mais ser restaurado
 		</span>
 		<br>
 		<br>
@@ -121,9 +119,11 @@
 				 * Objetivo	: validar os dados do formulario e fazer o cadastro
 				 */
 				success: function(answer){
+
+					// Se houver sucesso na exclusao, o usuario é redirecionado para a tela de confirmação e saída
+					// senão é exibida uma mensagem de preenchimento incorreto
 					if(answer['success']){
-						window.location.href = "/login";
-						//console.log(answer);
+						window.location.href = "/deactivated";
 					}
 					else{
 						feedbackInputPassword.html("Senha inserida está incorreta");

@@ -23,14 +23,19 @@ class UserService{
 
 
 	/**
+	 * 
 	 * FUNCAO		: store
+	 * 
 	 * OBJETIVO		: Armazenar os dados no banco
+	 * 
 	 * ARGUMENTOS	: $data - Os dados a serem armazenados
+	 * 
 	 * RETORNO		: $arrayDataFeedback - ARRAY com as seguintes informações
 	 * 					'success' 	-> indica se houve sucesso ou falha
 	 * 					'code' 		-> codigo do erro
 	 * 					'message' 	-> Mensagem que explica o erro
 	 * 					'data' 		-> os dados enviados
+	 * 
 	 */
 	
 	public function store($data){
@@ -81,12 +86,16 @@ class UserService{
 
 
 	/**
+	 * 
 	 * FUNCAO		: updatePersonalData
+	 * 
 	 * OBJETIVO		: Efetuar a atualizacao dos dados do usuario
-	 * PARAMETROS
-	 * 	: $data	- Dados pessoais a serem atualizados
-	 * 	: $id	- ID do usuario cujos dados serao atualizados
+	 * 
+	 * PARAMETROS	: $data		- Dados pessoais a serem atualizados
+	 * 				: $id 		- ID do usuario cujos dados serao atualizados
+	 * 
 	 * RETORNO		: Array com feedback da atualizacao
+	 * 
 	 */
 	public function updatePersonalData($data, $id){
 		
@@ -132,13 +141,22 @@ class UserService{
 	}
 
 
+	/**
+	 * 
+	 * FUNCAO		: checkUser
+	 * 
+	 * OBJETIVO		: Verifica se a senha associado ao id do usuario esta correta
+	 * 
+	 * PARAMETROS	: $password		- Senha digitada pelo usuario
+	 * 				: $id 			- ID do usuario atual
+	 * 
+	 * RETORNO		: Retorna se a senha esta correta(true) ou nao(false)
+	 * 
+	 */
 	public function checkUser($password, $id){
 		$query = DB::select('select * from users where password like ? and id = ?', [$password, $id]);
 		if($query){
 			return true;
-			/*return [
-				'senha_digitada' => $password
-			];*/
 		}
 		else{
 			return false;
@@ -150,13 +168,17 @@ class UserService{
 
 
 	/**
-	 * FUNCAO		: updateAuthData
-	 * OBJETIVO		: Efetuar a atualizacao da senha do usuario
-	 * PARAMETROS
-	 * 	: $data - Dados a serem atualizados
-	 * 	: $id 	- ID do usuario cujos dados serao atualizados
-	 * RETORNO		: Array com feedback da atualizacao
-	 */
+	 
+	* FUNCAO		: updateAuthData
+	 
+	* OBJETIVO		: Efetuar a atualizacao da senha do usuario
+	 
+	* PARAMETROS	: $data - Dados a serem atualizados
+	* 				: $id 	- ID do usuario cujos dados serao atualizados
+	 
+	* RETORNO		: Array com feedback da atualizacao
+	 
+	*/
 	public function updateAuthData($data, $id){
 		try{
 			// Confirma se a senha digitada esta correta
@@ -165,22 +187,23 @@ class UserService{
 			
 			// Se a senha digitada estiver correta, é feita a troca pela nova senha
 			if($passwordIsCorrect){
+
+				// Após a atualizacao da senha, um array é gerado com o resultado da operacao
 				$successUpdate = DB::update('update users set password = ? where id = ?', [$data['newPassword'], $id]);
 				
-				// Se a troca  ocorrer sem erros, o array de resposta é gerado
 				if($successUpdate){
 					$arrayDataFeedback = [
 						'success' => true,
 						'code' => '34454144',
 					];
 				}
-
 				else{
 					$arrayDataFeedback = [
 						'Resume' => 'Erro interno na atualizacao',
 						'Erro' => $successUpdate
 					];
 				}
+
 			}			
 			
 			// Se a senha digitada não estiver correta, é gerado o feedback
@@ -193,6 +216,7 @@ class UserService{
 			}
 			return $arrayDataFeedback;
 		}
+
 		// Em caso de excecao, o array indicando excecao é enviado para a view
 		catch(Exception $except){
 			return[
@@ -203,15 +227,25 @@ class UserService{
 		}
 	}
 
+
+	/**
+	 * FUNCAO		: delete
+	 
+	 * OBJETIVO		: Efetuar a exclusao do usuario da base de dados
+	 
+	 * PARAMETROS	: $user - Dados do usuario a ser excluido
+	 
+	 * RETORNO		: Array com feedback da atualizacao
+	 */	
 	public function delete($user){
 
+		// Verifica se a senha está correta
 		$checkingUser = $this->checkUser($user['password'], $user['id']);
 
+		// Se a senha estiver correta, o usuario é excluido.
+		// Um array com o resultado da operacao é gerado em ambos os casos
 		if($checkingUser){
-
-			//$opDelete = DB::select("select * from users where id = ?", [4]);
 			$opDelete = DB::delete("delete from users where id = ?", [$user['id']]);
-			
 			$arrayDataFeedback = [				
 				'success' => true,
 				'code' => '888',

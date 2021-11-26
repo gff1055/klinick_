@@ -480,6 +480,12 @@ form input[disabled]:hover{
 	
 }
 
+.divAccountDeleted a:hover{
+	color: #666;
+	font-weight: bolder;
+	text-decoration: none;	
+}
+
 /*.formUpdate .title{
 	font-size: .9em;
 	font-weight: bold;

@@ -33,7 +33,7 @@ Route::get('/logout', [
 ]);
 
 Route::get('/deactivated', [
-    'as' => 'user.logout',
+    'as' => 'user.deactivated',
     'uses' => 'Controller@deactivated'
 ]);
 

@@ -5,13 +5,13 @@
 @extends("templates.basic")
 
 @section("content")
-	@extends('templates.topMenuBar')
+	@extends('templates.topMenuBarUnlogged')
 
 
 <div class="container-fluid">
 	<div class="row">
 		<div class="col divAccountDeleted">
-			<a href="#">
+			<a href="{{route('user.login_get')}}">
 				<div>
 					<br>
 					<br>
@@ -23,7 +23,7 @@
 				</div>
 				<div>
 					<br>
-					<span class="aoptionSettingMenu">Sua conta foi deletada! <br> Clique para ir para a página inicial</span>
+					<span class="aoptionSettingMenu">Sua conta foi deletada! <br> Até a próxima <br><br> Clique para ir para a página inicial</span>
 					<br>
 					<br>
 					<br>
@@ -38,54 +38,4 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
-<script>
-	$(function(){
-
-	/**
-	 * Funcao	: anonima associada com o evento de enviar(submeter) formulario
-	 * Objetivo	: Fazer a validacao da senha e enviar a nova senha para atualizacao
-	 */
-		$('.formUpdate').submit(function(event){
-			
-			event.preventDefault();
-			password = $('input[name="password"]').val();
-			feedbackInputPassword = $('.indicatorFieldRequired');
-			feedbackInputPassword.html("");
-
-			// Verifica o preenchimento da senha
-			if(password == ""){
-				alert("Senha nao digitada");
-				return;
-			}
-			
-			// Escopo da requisicao
-			$.ajax({
-
-				url: "/user/delete",
-				type: "DELETE",
-				data: $(this).serialize(),
-				dataType: "json",
-
-				/**
-				 * Funcao	: success
-				 * Objetivo	: validar os dados do formulario e fazer o cadastro
-				 */
-				success: function(answer){
-					if(answer['success']){
-						window.location.href = "/login";
-						//console.log(answer);
-					}
-					else{
-						feedbackInputPassword.html("Senha inserida está incorreta");
-					}
-				},
-
-				// Erro na requisicao
-				error: function(response){
-					console.log(response);
-				}
-			});
-		});	
-	})
-</script>
 @endsection

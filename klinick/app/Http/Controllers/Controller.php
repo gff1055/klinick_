@@ -116,6 +116,11 @@ class Controller extends BaseController{
 	}
 	
 
+	/**
+     * FUNCAO:          deactivated
+     * OBJETIVO:        Acionar a rota de confirmacao de exclusao e saida do site
+     * RETORNO:         Rota inicial de login
+     */
 	public function deactivated(){
 		return view('user.deactivate');
     }
