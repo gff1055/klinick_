@@ -39,12 +39,12 @@ class CreateDoctorsTable extends Migration
 			$table->string('numberCrm', 16);
 			$table->string('nameSpecialty1', 32);
 			$table->string('numberRqe1', 16);
-			$table->string('nameSpecialty2', 32);
-			$table->string('numberRqe2', 16);
-			$table->string('nameSpecialty3', 32);
-			$table->string('numberRqe3', 16);
-			$table->string('description', 256);
-			$table->string('modePayment', 64);
+			$table->string('nameSpecialty2', 32)->nullable();
+			$table->string('numberRqe2', 16)->nullable();
+			$table->string('nameSpecialty3', 32)->nullable();
+			$table->string('numberRqe3', 16)->nullable();
+			$table->string('description', 256)->nullable();
+			$table->string('modePayment', 64)->nullable();
 			
 			$table->timestamps();
 

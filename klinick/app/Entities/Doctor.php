@@ -22,4 +22,8 @@ class Doctor extends Model implements Transformable
      */
 	protected $fillable = ['user_id','registeredName', 'numberCrm', 'nameSpecialty1', 'numberRqe1', 'nameSpecialty2', 'numberRqe2','nameSpecialty3', 'numberRqe3', 'description'];
 	public $timestamps = true;          // Gerencia as datas de exclusao, edicao, criacao...
+
+	public function user(){
+		return $this->belongsTo(User::class, 'user_id', 'id');
+	}
 }

@@ -25,7 +25,7 @@ class User extends Authenticatable
         //$this->attributes['password'] = bcrypt($pSenha);
 	}
 	
-	public function med(){
-		return $this->hasOne(Doctor::class, 'user_id');
+	public function doctor(){
+		return $this->hasOne(Doctor::class, 'user_id', 'id');
 	}
 }
