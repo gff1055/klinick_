@@ -18,7 +18,11 @@ class DoctorValidator extends LaravelValidator
      * @var array
      */
     protected $rules = [
-        ValidatorInterface::RULE_CREATE => [],
+        ValidatorInterface::RULE_CREATE => [
+			'user_id' => 'required',
+            'registeredName' => 'required',
+            'numberCrm' => 'required',
+		],
         ValidatorInterface::RULE_UPDATE => [],
     ];
 }

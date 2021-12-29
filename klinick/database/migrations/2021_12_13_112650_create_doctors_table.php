@@ -33,16 +33,16 @@ class CreateDoctorsTable extends Migration
 - Modo de pagamento		string64
 			 */
 			$table->increments('id');
-			$table->unsignedInteger('user_id');
+			$table->unsignedInteger('user_id')->unique();
 
 			$table->string('registeredName', 64);
-			$table->string('numberCrm', 16);
-			$table->string('nameSpecialty1', 32);
-			$table->string('numberRqe1', 16);
+			$table->string('numberCrm', 16)->unique();
+			$table->string('nameSpecialty1', 32)->nullable();
+			$table->string('numberRqe1', 16)->unique()->nullable();
 			$table->string('nameSpecialty2', 32)->nullable();
-			$table->string('numberRqe2', 16)->nullable();
+			$table->string('numberRqe2', 16)->unique()->nullable();
 			$table->string('nameSpecialty3', 32)->nullable();
-			$table->string('numberRqe3', 16)->nullable();
+			$table->string('numberRqe3', 16)->unique()->nullable();
 			$table->string('description', 256)->nullable();
 			$table->string('modePayment', 64)->nullable();
 			

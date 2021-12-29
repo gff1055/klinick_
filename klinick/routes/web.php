@@ -74,4 +74,6 @@ Route::delete('/user/delete',[
 
 Route::resource('user', 'UsersController');
 
+Route::resource('doctor', 'DoctorsController');
+
 
