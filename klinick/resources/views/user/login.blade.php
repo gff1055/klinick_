@@ -52,7 +52,7 @@
 
 						<hr>
 						
-					Não tem uma conta? <a href="{{route('user.register_get') }}">Crie uma</a>
+					Não tem uma conta? <a href="{{route('user.create') }}">Crie uma</a>
 
 					{!! Form::close() !!}
 				</div>

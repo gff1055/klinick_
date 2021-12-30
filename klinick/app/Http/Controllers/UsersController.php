@@ -61,8 +61,11 @@ class UsersController extends Controller{
      * OBJETIVO:    acionar a view para cadastro de novo usuario
      * RETORNO:     view propriamente dita
      */
-	public function register(){
+	/*public function register(){
 		return view('user.register');
+	}*/
+	public function create(){
+		return view('user.create');
     }
     
     
