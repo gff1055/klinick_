@@ -40,7 +40,7 @@ class UsersController extends Controller{
      *      : $noAuth -> rota que sera chamada se não houver usuario logado
      * RETORNO      : view propriamente dita
      */
-	public function isAuthenticated($yesAuth, $dataAuth, $noAuth){
+	/*public function isAuthenticated($yesAuth, $dataAuth, $noAuth){
 
         // Se nao tiver nenhum usuario autenticado, 
         // é redirecionado para a rota de login
@@ -50,6 +50,18 @@ class UsersController extends Controller{
         // Se tiver alguem autenticado,
         // é redirecionado para a rota do usuario 
         return view($yesAuth, $dataAuth);
+	
+	}*/
+
+	public function isAuthenticated(){
+
+        // Se nao tiver nenhum usuario autenticado, 
+        // é redirecionado para a rota de login
+		if(Auth::check()){
+            return true;
+		}
+
+		else return false;
 	
 	}
 
@@ -78,11 +90,11 @@ class UsersController extends Controller{
      */
 	public function index(){
 
-		return $this->isAuthenticated(
-            'user.index',
-            ["name" => Auth::user()->name],
-            'user.login_get'
-        );    
+		if($this->isAuthenticated()){
+			return view('user.index', ["name" => Auth::user()->name]);
+		}
+		else
+			return redirect()->route('user.login_get');
 
 	}
 
@@ -130,11 +142,11 @@ class UsersController extends Controller{
 
         // Se nao tiver nenhum usuario autenticado, 
         // é redirecionado para a rota de login
-        return $this->isAuthenticated(
-            'user.settingsPersonalData',
-            ["user" => Auth::user()],
-            'user.login_get'
-        );
+        if($this->isAuthenticated()){
+			return view('user.settingsPersonalData', ["user" => Auth::user()]);
+		}
+		else
+			return redirect()->route('user.login_get');
 
     }
 
@@ -150,11 +162,11 @@ class UsersController extends Controller{
 
 		// Se nao tiver nenhum usuario autenticado, 
         // é redirecionado para a rota de login
-        return $this->isAuthenticated(
-            'user.settingsAuthData',
-            ["user" => Auth::user()],
-            'user.login_get'
-        );
+		if($this->isAuthenticated()){
+			return view('user.settingsAuthData', ["user" => Auth::user()]);
+		}
+		else
+			return redirect()->route('user.login_get');
 
     }
 
@@ -214,14 +226,14 @@ class UsersController extends Controller{
 	public function settingsDelete(){
 
 		// Se nao tiver nenhum usuario autenticado, 
-        // é redirecionado para a rota de login
-        return $this->isAuthenticated(
-            'user.settingsDelete',
-            ["user" => Auth::user()],
-            'user.login_get'
-        );
+		// é redirecionado para a rota de login
+		if($this->isAuthenticated()){
+			return view('user.settingsDelete', ["user" => Auth::user()]);
+		}
+		else
+			return redirect()->route('user.login_get');
 
-    }
+	}
 
 
 
