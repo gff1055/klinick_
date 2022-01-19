@@ -123,5 +123,23 @@ class Controller extends BaseController{
      */
 	public function deactivated(){
 		return view('user.deactivate');
-    }
+	}
+
+
+	/**
+     * FUNCAO       : isAuthenticated
+     * OBJETIVO     : Funcao que verifica se alguem esta logado antes de redirecionar para uma view
+     * RETORNO      : se ha alguem logado
+     */
+	public function isAuthenticated(){
+
+        // Se nao tiver nenhum usuario autenticado, 
+        // é redirecionado para a rota de login
+		if(Auth::check()){
+            return true;
+		}
+
+		else return false;
+	
+	}
 }

@@ -5,21 +5,10 @@
 @extends("templates.basic")
 
 @section("content")
-	@extends('templates.topMenuBar')
+	@include('templates.topMenuBar')
 
 
 <div class="container-fluid">
-<!--	<nav class="row">
-		<ul>
-			<a href="#"><li class="configurationSideMenuOption ">Informacoes pessoais</li></a>
-			<a href="#"><li class="configurationSideMenuOption ">Login e Segurança</li></a>
-			<a href="#"><li class="configurationSideMenuOption ">Desativar conta</li></a>
-		</ul>
-	</nav>
-	
-	<div class="configurationContent">
-		conteudo
-	</div>-->
 	<div class="row">
 		<div class="col divOptionSettingMenu">
 			<a href="{{route('user.settingsPersonalData')}}">

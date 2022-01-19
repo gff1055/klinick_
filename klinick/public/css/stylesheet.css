@@ -248,6 +248,10 @@ form input[disabled]:hover{
 	transition: .1s;
 }
 
+.itemTopMenuBar_logo a:hover{
+	text-decoration: none;
+}
+
 .beginning{
 	font-size: 2em;
 	color: #dddddd;

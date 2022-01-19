@@ -12,6 +12,7 @@ use App\Http\Requests\DoctorUpdateRequest;
 use App\Repositories\DoctorRepository;
 use App\Validators\DoctorValidator;
 
+
 /**
  * Class DoctorsController.
  *
@@ -48,7 +49,7 @@ class DoctorsController extends Controller
      */
     public function index()
     {
-        $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
+        /*$this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
         $doctors = $this->repository->all();
 
         if (request()->wantsJson()) {
@@ -58,7 +59,8 @@ class DoctorsController extends Controller
             ]);
         }
 
-        return view('doctors.index', compact('doctors'));
+		return view('doctors.index', compact('doctors'));*/
+		
     }
 
     /**

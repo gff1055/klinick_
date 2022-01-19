@@ -5,7 +5,7 @@
 @extends("templates.basic")
 
 @section("content")
-	@extends('templates.topMenuBar')
+	@include('templates.topMenuBar')
 
 
 <div class="container-fluid">

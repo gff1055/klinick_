@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\DB;
 use Auth;
 use Exception;
 
+use App\Http\Controllers\Controller;
+
 class UsersController extends Controller{
     
     protected $repository;
@@ -53,7 +55,7 @@ class UsersController extends Controller{
 	
 	}*/
 
-	public function isAuthenticated(){
+	/*public function isAuthenticated(){
 
         // Se nao tiver nenhum usuario autenticado, 
         // é redirecionado para a rota de login
@@ -63,7 +65,7 @@ class UsersController extends Controller{
 
 		else return false;
 	
-	}
+	}*/
 
 
 
@@ -90,7 +92,7 @@ class UsersController extends Controller{
      */
 	public function index(){
 
-		if($this->isAuthenticated()){
+		if(Controller::isAuthenticated()){
 			return view('user.index', ["name" => Auth::user()->name]);
 		}
 		else
@@ -142,7 +144,7 @@ class UsersController extends Controller{
 
         // Se nao tiver nenhum usuario autenticado, 
         // é redirecionado para a rota de login
-        if($this->isAuthenticated()){
+        if(Controller::isAuthenticated()){
 			return view('user.settingsPersonalData', ["user" => Auth::user()]);
 		}
 		else
@@ -162,7 +164,7 @@ class UsersController extends Controller{
 
 		// Se nao tiver nenhum usuario autenticado, 
         // é redirecionado para a rota de login
-		if($this->isAuthenticated()){
+		if(Controller::isAuthenticated()){
 			return view('user.settingsAuthData', ["user" => Auth::user()]);
 		}
 		else
@@ -227,7 +229,7 @@ class UsersController extends Controller{
 
 		// Se nao tiver nenhum usuario autenticado, 
 		// é redirecionado para a rota de login
-		if($this->isAuthenticated()){
+		if(Controller::isAuthenticated()){
 			return view('user.settingsDelete', ["user" => Auth::user()]);
 		}
 		else

@@ -4,6 +4,8 @@
 
 @extends('templates.basic')
 
+
+
 @section('content')
 
 	<body class="bodyPaginaLoginUser">
