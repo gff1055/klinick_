@@ -31,53 +31,11 @@ class UsersController extends Controller{
 		
     }
     
-    
-
-     /**
-     * FUNCAO       : isAuthenticated
-     * OBJETIVO     : Funcao que verifica se alguem esta logado antes de redirecionar para uma view
-     * PARAMETROS   : 
-     *      : $yesAuth -> view que sera chamada se alguem estiver logado
-     *      : $dataAuth -> dados a serem passados para a view 'yesAuth'
-     *      : $noAuth -> rota que sera chamada se não houver usuario logado
-     * RETORNO      : view propriamente dita
-     */
-	/*public function isAuthenticated($yesAuth, $dataAuth, $noAuth){
-
-        // Se nao tiver nenhum usuario autenticado, 
-        // é redirecionado para a rota de login
-		if(!Auth::check()){
-            return redirect()->route($noAuth);
-		}
-        // Se tiver alguem autenticado,
-        // é redirecionado para a rota do usuario 
-        return view($yesAuth, $dataAuth);
-	
-	}*/
-
-	/*public function isAuthenticated(){
-
-        // Se nao tiver nenhum usuario autenticado, 
-        // é redirecionado para a rota de login
-		if(Auth::check()){
-            return true;
-		}
-
-		else return false;
-	
-	}*/
-
-
-
-
     /**
      * FUNCAO:      register
      * OBJETIVO:    acionar a view para cadastro de novo usuario
      * RETORNO:     view propriamente dita
      */
-	/*public function register(){
-		return view('user.register');
-	}*/
 	public function create(){
 		return view('user.create');
     }
@@ -117,8 +75,8 @@ class UsersController extends Controller{
         // O usuario sendo cadastrado com sucesso, ou nao,
         // os dados referentes são enviados para a view
 
+		// Se o cadastro é efetuado o usuario é logado automaticamente
 		if($request[0]['success']){
-			// Efetua login do usuario recem cadastrado no sistema
 			Auth::login($request[0]['data']);
 			// Decodifica em json   
             echo json_encode($request);

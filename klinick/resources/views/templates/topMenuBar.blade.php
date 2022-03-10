@@ -1,5 +1,50 @@
+
+
+<div class="screenMdl">
+		<div class="mdl mdlConfirm">
+			<div class="container">
+				<div class="row">
+					<div class="tituloModal col-10">
+						Cadastro Médico Klinick
+					</div>
+					<div class="col-2">
+						<div class="mdlClose">
+						X
+						</div>
+					</div>
+				</div>
+				<hr/>
+				<div class="row">
+					<div class="col-12">
+					
+					Alguns dados precisarão ser coletados<br>
+					para verificar sua elegibilidade.<br><br>
+		
+					<b>ATENÇÃO:</b> Caso o seu cadastro<br>
+					nao seja aprovado, voce só<br>
+					poderá se cadastrar novamente como<br>
+					medico depois de 90 dias
+					<br>&nbsp
+					</div>
+				</div>
+		
+				<div class="row">
+						
+						<div class="btn btn-secondary col-4 buttonExit">
+							Sair
+						</div>
+						<div class="col-4">
+							
+						</div>
+						<div class="btn btn-success col-4 buttonOk">
+							Ok, entendi
+						</div>
+						
+					</div>
+			</div>
+		</div>
+		</div>
 <section class="topMenuBar">
-	
 	<div class="itemTopMenuBar_logo">
 		<div id="menuToggle">
 			<input type="checkbox" id="inputMenuSandwich"/>
@@ -8,7 +53,7 @@
 			<span></span>
 			<ul id="menu">
 
-				<a href="#"><li>
+				<a href="{{ route('user.index') }}"><li>
 						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-house iconMenuToggle" viewBox="0 0 16 16">
 							<path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
 							<path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
@@ -57,18 +102,18 @@
 	<div class="itemTopMenuBar_logo"><a href="{{route('user.index')}}"><span class="logo">KlinicK</span></a>
 	</div>
 	<div class="itemTopMenuBar" id="optionBeDoctor">
-	<a href="{{ route('doctor.index') }}" class="btn"><!-- user temporario aqui é doctor -->
-		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-badge-fill" viewBox="0 0 16 16">
-			<path fill-rule="evenodd" d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm4.5 0a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zM8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm5 2.755C12.146 12.825 10.623 12 8 12s-4.146.826-5 1.755V14a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-.245z"/>
-		</svg>
-		Quero ser médico(a)</a>
+		<div class="btn">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-badge-fill" viewBox="0 0 16 16">
+					<path fill-rule="evenodd" d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm4.5 0a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zM8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm5 2.755C12.146 12.825 10.623 12 8 12s-4.146.826-5 1.755V14a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-.245z"/>
+				</svg>
+			<div>
+				Quero ser médico(a)
+			</div>
+		</div>
 	</div>
-
-	
-
-	<script src="{{asset('js/topMenuBar.js')}}"></script>
 </section>
 
-<div class="mdl">
-	ssd
-</div>
+
+
+
+<script src="{{asset('js/topMenuBar.js')}}"></script>

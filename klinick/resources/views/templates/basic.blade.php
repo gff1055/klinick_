@@ -8,5 +8,7 @@
 		<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 		<title>{{$title}}</title>
 	</head>
-	@yield('content')
+	<body>
+		@yield('content')
+		</body>
 </html>

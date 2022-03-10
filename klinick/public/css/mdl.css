@@ -1,10 +1,71 @@
 .mdl{
-	width: 500px;
-	height: 500px;
-	background-color: purple;
+	min-width: 300px;
+	min-height: 200px;
+	/*max-height: 200px;
+	max-width: 300px;*/
+	background-color: white;
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	display: none;
+	animation: animate;
+	animation-duration: 800ms;
+	z-index: 3;
+	text-align: center;
+	padding: 10px;
+	font-size: 100%;
+	white-space: nowrap;
+	border-radius: 1em;
+}
+
+.screenMdl{
+	min-width: 100%;
+	min-height: 100%;
+	/*max-height: 200px;
+	max-width: 300px;*/
+	background-color: rgba(0,0,0,0.5);
+	position: absolute;
+	display: none;
+	animation: animate;
+	animation-duration: 100ms;
+	z-index: 3;
+	text-align: center;
+	padding: 10px;
+	font-size: 100%;
+	white-space: nowrap;
+}
+
+/*.screenMdl{
+	width: 1000;
+	height: 1000;
+	background-color: black;
+	z-index: 100;
+	display: none;
+}*/
+
+@keyframes animate{
+	from{opacity: 1;}
+	from{opacity: 0;}
+}
+
+.tituloModal{
+	text-align: justify;
+	font-weight: bolder;
+	font-size: 1em;
+}
+
+.mdlClose{
 	cursor: pointer;
+	border-radius: 2em;
+	background-color: #eee;
+}
+
+.mdlClose:hover{
+	font-weight: bolder;
+	background-color: #ddd;
+}
+
+.mdlBarTitle{
+	text-align: right;
 }

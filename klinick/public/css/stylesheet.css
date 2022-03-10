@@ -10,7 +10,7 @@ inl			1, 0, 0, 0
   }
 
   
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 300px) {
 
 *{												/*Resetando os estilos do navegador*/
 	padding: 0px;
@@ -210,6 +210,7 @@ form input[disabled]:hover{
 	align-items: center;
 	font-size: 16px;
 	font-family: verdana;
+	
 }
 
 
@@ -230,18 +231,19 @@ form input[disabled]:hover{
 .itemTopMenuBar{
 	margin: 0px;
 	margin-right: 0px;
+	
 
 }
 
-/* Links do menu */
-.itemTopMenuBar a{
+/* Links do cabecalho */
+.itemTopMenuBar .btn{
 	color: #666666;
 	border-radius: 0px;
-	padding: 14px;
+	padding: 14px;	
 }
 
-/* Links do menu ao passar o mouse */
-.itemTopMenuBar a:hover{
+/* Links do cabecalho ao passar o mouse */
+.itemTopMenuBar .btn:hover{
 	color: #666666;
 	text-decoration: none;
 	background-color: #cdcdcd;
@@ -259,14 +261,11 @@ form input[disabled]:hover{
 	margin: 8px;
 }
 
-/*#optionContact{
-	
-}*/
-
 #optionBeDoctor{
-	white-space: nowrap;
+	/*white-space: nowrap;*/
 	flex-grow: 10;
 	text-align: right;
+	
 }
 
 

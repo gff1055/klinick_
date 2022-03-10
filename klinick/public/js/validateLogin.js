@@ -27,27 +27,23 @@ $(function()
 			dataType: 'json',					// Tipo dos dados
 
 			// Funcao a ser executada em caso de sucesso no envio da requisicao
-			success: function(response)
-			{
+			success: function(response){
 				// Se os dados de login conferem
 				// o usuario é direcionado para a pagina
-				if(response.success === true)
-				{
+				if(response.success === true){
 					window.location.href = "/user";
 				}
 
 				// Se os dados de login nao conferem, 
 				// é exibido o feedback
-				else
-				{
+				else{
 					$('#feedbackLogin').removeClass("d-none").html(response.message);
 					$('#feedbackLogin').css("color","red");
 					$('#feedbackLogin').css("background-color","pink");
 				}
 			},
 
-			error: function(response)
-			{
+			error: function(response){
 				console.log(response);
 			}
 		});
