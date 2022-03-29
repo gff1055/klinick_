@@ -9,12 +9,7 @@
 
 @section('content')
 
-	<section class="topMenuBar">
-		<!--<div class="itemTopMenuBar"><span class="logo">KlinicK</span></div>
-		<div class="itemTopMenuBar"><a href="#">Seguranca</a></div>
-		<div class="itemTopMenuBar"><a href="#">Ajuda</a></div>
-		<div class="itemTopMenuBar"><a href="#">Contato</a></div>-->
-	</section>
+<div class="formUserRegisterTitleLine"><br></div>
 
 	<div class="divUserRegisterForm">
 		{!! Form::open([
@@ -23,7 +18,7 @@
 			])
 		!!}
 
-	
+		
 			<div class="formUserRegisterTitle">
 				<span class="logo">KliNicK</span>
 				<br>
@@ -148,7 +143,9 @@
 	-->	
 
 		{!!Form::close()!!}
+		<div class="formUserRegisterTitleLine"><br></div>
 	</div>
+	
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
 	<script src="{{asset('js/checkFormRegister.js')}}"></script>

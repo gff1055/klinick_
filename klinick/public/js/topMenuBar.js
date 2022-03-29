@@ -13,13 +13,25 @@ modalBotaoOk = document.getElementsByClassName("buttonOk")[0];
 
 
 
+function clickLeaveModal(event){
+	return (
+		event.target.className.indexOf("screenMdl") != -1
+		|| event.target.className.indexOf("mdlClose") != -1
+		|| event.target.className.indexOf("buttonExit") != -1
+	);
+}
+
+
+function clickContinueModal(event){
+	return event.target.className.indexOf("buttonOk") != -1;
+}
+
+
 
 /** Funcao impede o evento 'click' ser acionado no body e o menu fechar */
 menu.addEventListener("click", function(e){
 	e.stopPropagation();
 }, false);
-
-
 
 
 /** Funcao impede o evento 'click' ser acionado no body e o menu fechar */
@@ -28,15 +40,13 @@ inputMenuSandwich.addEventListener("click", function(e){
 }, false);
 
 
-
-
 /** Evento no body é acionado e o menu suspenso é fechado */
 body.addEventListener("click", function(e){
 	inputMenuSandwich.checked = false;
 });
 
 
-
+/** Evento no botao para sair do site */
 buttonExitUser.addEventListener("click", function(e){
 	if(!confirm("Tem certeza que deseja efetuar logout nessa conta?")){
 		e.preventDefault();
@@ -44,38 +54,33 @@ buttonExitUser.addEventListener("click", function(e){
 	}
 });
 
-
+/** Evento de clique no botao de cadastro de medico */
 optionBeDoctor.addEventListener("click", function(e){
 	modal.style.display = "block";
 	screenMdl.style.display = "block";
 });
 
 
-function houveCliqueParaSair(evento){
-	if(
-		evento.target.className.indexOf("screenMdl") != -1
-		|| evento.target.className.indexOf("mdlClose") != -1
-		|| evento.target.className.indexOf("buttonExit") != -1
-	){
-		return true;
-	}
-	return false;
-}
 
+/**
+ * FUNCAO:		handleModal
+ * OBJETIVO:	administrar o comportamento do modal
+ * PARAMETROS:	evento gerado
+ * RETORNO: 
+ */
+function handleModal(event){
 
-function gerenciaModal(evento){
-	if(houveCliqueParaSair(evento)){
+	if(clickLeaveModal(event)){
 		screenMdl.style.display = "none";
+	}
+
+	else if(clickContinueModal(event)){
+		window.location.href = "/doctor/agreement";
 	}
 }
 
 
 screenMdl.addEventListener("click",function(event){
-	gerenciaModal(event);		
+	handleModal(event);		
 });
-
-
-modalBotaoOk.addEventListener("click", function(){
-	window.location.href = "/user";	
-})
 

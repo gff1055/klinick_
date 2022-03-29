@@ -74,6 +74,11 @@ Route::delete('/user/delete',[
 
 Route::resource('user', 'UsersController');
 
+Route::get('/doctor/agreement',[
+    'as' => 'doctor.agreement',
+    'uses' => 'DoctorsController@agreement'
+]);
+
 Route::resource('doctor', 'DoctorsController');
 
 

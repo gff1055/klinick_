@@ -12,14 +12,10 @@ use App\Http\Requests\DoctorUpdateRequest;
 use App\Repositories\DoctorRepository;
 use App\Validators\DoctorValidator;
 
+use App\Http\Controllers\Controller;
 
-/**
- * Class DoctorsController.
- *
- * @package namespace App\Http\Controllers;
- */
-class DoctorsController extends Controller
-{
+
+class DoctorsController extends Controller{
     /**
      * @var DoctorRepository
      */
@@ -36,19 +32,25 @@ class DoctorsController extends Controller
      * @param DoctorRepository $repository
      * @param DoctorValidator $validator
      */
-    public function __construct(DoctorRepository $repository, DoctorValidator $validator)
-    {
+    public function __construct(DoctorRepository $repository, DoctorValidator $validator){
         $this->repository = $repository;
         $this->validator  = $validator;
-    }
+	}
+	
+	public function agreement(){
+		
+		if(Controller::isAuthenticated()){
+			return view('doctor.agreement');
+		}
+		else{
+			return redirect()->route('user.login_get');
+		}
+	}
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
+
+
+    
+    public function index(){
         /*$this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
         $doctors = $this->repository->all();
 
@@ -61,19 +63,15 @@ class DoctorsController extends Controller
 
 		return view('doctors.index', compact('doctors'));*/
 		
+	}
+	
+
+	public function create(){
+		return view("doctor.create");		
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  DoctorCreateRequest $request
-     *
-     * @return \Illuminate\Http\Response
-     *
-     * @throws \Prettus\Validator\Exceptions\ValidatorException
-     */
-    public function store(DoctorCreateRequest $request)
-    {
+
+    public function store(DoctorCreateRequest $request){
         try {
 
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
@@ -103,15 +101,8 @@ class DoctorsController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
+	
+	public function show($id){
         $doctor = $this->repository->find($id);
 
         if (request()->wantsJson()) {
@@ -124,32 +115,15 @@ class DoctorsController extends Controller
         return view('doctors.show', compact('doctor'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
+
+    public function edit($id){
         $doctor = $this->repository->find($id);
 
         return view('doctors.edit', compact('doctor'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  DoctorUpdateRequest $request
-     * @param  string            $id
-     *
-     * @return Response
-     *
-     * @throws \Prettus\Validator\Exceptions\ValidatorException
-     */
-    public function update(DoctorUpdateRequest $request, $id)
-    {
+
+	public function update(DoctorUpdateRequest $request, $id){
         try {
 
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
@@ -182,15 +156,7 @@ class DoctorsController extends Controller
     }
 
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
+    public function destroy($id){
         $deleted = $this->repository->delete($id);
 
         if (request()->wantsJson()) {

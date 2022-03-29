@@ -9,12 +9,9 @@
 
 @section('content')
 
-	<section class="topMenuBar">
-		<!--<div class="itemTopMenuBar"><span class="logo">KlinicK</span></div>
-		<div class="itemTopMenuBar"><a href="#">Seguranca</a></div>
-		<div class="itemTopMenuBar"><a href="#">Ajuda</a></div>
-		<div class="itemTopMenuBar"><a href="#">Contato</a></div>-->
-	</section>
+@include('templates.topMenuBar')
+
+<div class="formUserRegisterTitleLine"><br></div>	
 
 	<div class="divUserRegisterForm">
 		{!! Form::open([

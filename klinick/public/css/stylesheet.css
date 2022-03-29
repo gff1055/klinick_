@@ -186,6 +186,12 @@ form input[disabled]:hover{
 	background-color: #eee;
 }
 
+
+.formUserRegisterTitleLine{
+	text-align: center;
+	background-color: #00997a;
+}
+
 /*Titulo do formulario*/
 .formUserRegisterTitle{
 	text-align: center;

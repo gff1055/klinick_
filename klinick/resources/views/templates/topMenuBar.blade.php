@@ -20,10 +20,9 @@
 					Alguns dados precisarão ser coletados<br>
 					para verificar sua elegibilidade.<br><br>
 		
-					<b>ATENÇÃO:</b> Caso o seu cadastro<br>
-					nao seja aprovado, voce só<br>
-					poderá se cadastrar novamente como<br>
-					medico depois de 90 dias
+					<b>ATENÇÃO:</b> Caso não seja aprovado,<br>
+					voce só poderá se cadastrar novamente para<br>
+					ser medico Klinick depois de 90 dias
 					<br>&nbsp
 					</div>
 				</div>
