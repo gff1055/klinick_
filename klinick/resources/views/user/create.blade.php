@@ -28,7 +28,7 @@
 		
 			<br>
 			<span class="indicatorFieldRequired">*</span>
-			<span class="labelField">Nome </span>
+			<span class="labelField requiredFieldLabel">Nome </span>
 			<br>
 			<span class="notice"> Use seu nome e sobrenome, pois o mesmo será visivel no chat ao conversar com seu médico. E será exibido no seu perfil de médico.</span>
 			{!! Form::text('name', null, [
@@ -48,16 +48,19 @@
 			])*/"teste" !!}-->
 
 			<br><br>
+			
 			<span class="indicatorFieldRequired">*</span>
 			<span class="labelField">Senha</span>
 			<br>
 			<span id="passwordWarning"></span>
 			{!! Form::password('password', [
-				'class'=>'atrForm  requiredField atrFormSizeHalf',
+				'class'=>'atrForm  atrFormSizeHalf',
 				'id' => 'password',
 				'placeholder'=>'Senha'
 			]) !!}
+			
 			<br><br>
+			
 			<span class="indicatorFieldRequired">*</span>
 			<span class="labelField">Confirmar senha</span>
 			{!! Form::password('checkPassword', [
@@ -67,8 +70,9 @@
 			]) !!}
 
 			<br><br>
+			
 			<span class="indicatorFieldRequired">*</span>
-			<span class="labelField" id="idLabelEmail">Email </span>
+			<span class="labelField requiredFieldLabel" id="idLabelEmail">Email </span>
 			<span class="labelField" id="feedbackEmail"></span>
 			{!! Form::text('email', null, [
 				'class' => 'atrForm requiredField',
@@ -84,6 +88,7 @@
 			])*/"teste" !!}-->
 
 			<br><br>
+			
 			<span class="labelField">Sexo: </span>
 			{!! Form::select('sexo', array(
 				'masculino' => 'Masculino',
@@ -93,35 +98,41 @@
 			]) !!}	
 
 			<br><br>
+			
 			<span class="labelField">Fone</span><br>
 			<span class="notice">O numero de telefone não será visivel para outros usuarios</span>
 			{!! Form::text('phone', null, [
-				'class' => 'atrForm requiredField',
+				'class' => 'atrForm',
 				'placeholder' => 'Fone'
 			]) !!}
 
 			<br><br>
+			
 			<span class="labelField">Campos indicados com </span>
 			<span class="indicatorFieldRequired">*</span>
 			<span class="labelField"> são de preenchimento obrigatorio</span>
+			
 			<br>
 
 			<div class="divBtEnviar">
-					<a href={{route('user.index')}}>{!!Form::button('Home',[
-							'class' => 'atrForm',
-							'id' => ''
-						])
-						!!}</a>
+				<a href={{route('user.index')}}>{!!Form::button('Voltar',[
+					'class' => 'atrForm',
+					'id' => ''
+					])
+				!!}</a>
 				{!!Form::submit('Criar conta',[
 					'class' => 'atrForm',
 					'id' => 'submitUserRegister'
 				])
 				!!}
 			</div>
+			
 			<br>
+			
 			<div class="formUserRegisterTitle">
 				Ao me cadastrar eu concordo com os <a href="">termos e usos</a> da KliNick Serviços Medicos
 			</div>
+			
 			<br>
 
 <!--

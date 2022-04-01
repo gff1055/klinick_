@@ -90,6 +90,7 @@ form .divBtEnviar{
 form .divBtEnviar button{
 	width: 40%;
 	font-weight: bold;
+	color: #00997a;
 }
 
 form .divBtEnviar button:hover{
@@ -119,7 +120,8 @@ form input[type="submit"]:hover{
 /* Campos de texto e campos de senha */
 form input[type="text"], form input[type="password"]{	
 	text-shadow: 10px, 10px;
-	border: 1px solid #888888;
+	border: 0px solid ;
+	background-color: #eee;
 }
 
 /* Atributos desabilitados */
@@ -157,8 +159,8 @@ form input[disabled]:hover{
 }
 
 /*Estilo do formulario de login*/
-.formLogin{										
-	background-color: #eee;
+.formLogin{						
+	background-color: #fff;
 	margin-top: 1%;
 	width: 400px;
 	text-align: center;
@@ -182,9 +184,9 @@ form input[disabled]:hover{
 	width: 100%;
 }
 
-.formUserRegister{
+/*.formUserRegister{
 	background-color: #eee;
-}
+}*/
 
 
 .formUserRegisterTitleLine{

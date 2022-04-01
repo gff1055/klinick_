@@ -35,7 +35,7 @@
 	 <label for="scales"> Eu estou ciente e aceito </label>
 	 <br>
 	 <div class="divBtEnviar">
-	 <button type="button" id="btnContinueAgreement" class="btn btn-success"> Continuar</button>
+	 <button type="button" id="btnContinueAgreement" class="btn btn-light"> Continuar</button>
 	 </div>
 </form>
 
