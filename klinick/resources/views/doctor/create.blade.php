@@ -11,34 +11,38 @@
 
 @include('templates.topMenuBar')
 
-<div class="formUserRegisterTitleLine"><br></div>	
+<div class="formRegisterTitleLine"><br></div>
 
 	<div class="divUserRegisterForm">
 		{!! Form::open([
-			'route' => 'user.store',
-			'class' => 'formUserRegister'
+			'route' => 'doctor.store',
+			'class' => 'formRegister'
 			])
 		!!}
 
-	
-			<div class="formUserRegisterTitle">
-				<span class="logo">KliNicK</span>
+		
+			<div class="formRegisterTitle">
 				<br>
-				Crie sua conta e faça consultas com medicos on-line de varias especialidades
+				<img src="/images/doctor.png" id="iconRegistDoctor">
+				<br>
+				<span class="logo">KliNicK Médicos</span>
+				<br>
+				Crie sua conta Médico Klinick e realize consultas.
 				<br>
 			</div>
-			
+
+
 			<br><br>
-
-			<h5>Informações gerais</h5>
-
+			<h5><b>Informações gerais</b></h5>
 			<br>
+
 
 			<div class="row">
 				<div class="col-8">
 					<span class="notice"> Insira o nome da mesma forma que estã no registro CRM.</span>
 				</div>
 			</div>
+
 
 			<div class="row">
 				<div class="col-8">
@@ -49,105 +53,106 @@
 				</div>
 
 				<div class="col-4">
-					{!! Form::text('email', null, [
+					{!! Form::text('crm', null, [
 						'class' => 'atrForm requiredField',
 						'placeholder' => 'N° CRM',
-						'id' => 'idInputEmail'
 					]) !!}
 				</div>
 			</div>
 
 			<br><br>
-			<h5>Especialidades</h5>
+			<h5><b>Especialidades</b></h5>
 			<br>
 
-			<div class="row">
-				<div class="col-8">
-					{!! Form::text('phone', null, [
-						'class' => 'atrForm',
-						'placeholder' => 'Especialidade'
-					]) !!}
-				</div>
-				<div class="col-4">
-					{!! Form::text('phone', null, [
-						'class' => 'atrForm',
-						'placeholder' => 'Nº RQE'
-					]) !!}
-				</div>
-			</div>
 
 			<div class="row">
 				<div class="col-8">
-					{!! Form::text('phone', null, [
-						'class' => 'atrForm',
-						'placeholder' => 'Especialidade'
-					]) !!}
-				</div>
-				<div class="col-4">
-					{!! Form::text('phone', null, [
-						'class' => 'atrForm',
-						'placeholder' => 'Nº RQE'
-					]) !!}
+					<span class="notice"> Insira o nome da mesma forma que estã no registro CRM.</span>
 				</div>
 			</div>
 
 
 			<div class="row">
 				<div class="col-8">
-					{!! Form::text('phone', null, [
+					{!! Form::text('especialidade1', null, [
 						'class' => 'atrForm',
 						'placeholder' => 'Especialidade'
 					]) !!}
 				</div>
 				<div class="col-4">
-					{!! Form::text('phone', null, [
+					{!! Form::text('rqe1', null, [
 						'class' => 'atrForm',
 						'placeholder' => 'Nº RQE'
 					]) !!}
 				</div>
 			</div>
-			
+		
+
+			<div class="row">
+				<div class="col-8">
+					{!! Form::text('especialidade2', null, [
+						'class' => 'atrForm',
+						'placeholder' => 'Especialidade'
+					]) !!}
+				</div>
+				<div class="col-4">
+					{!! Form::text('rqe2', null, [
+						'class' => 'atrForm',
+						'placeholder' => 'Nº RQE'
+					]) !!}
+				</div>
+			</div>
+
+
+			<div class="row">
+				<div class="col-8">
+					{!! Form::text('especialidade3', null, [
+						'class' => 'atrForm',
+						'placeholder' => 'Especialidade'
+					]) !!}
+				</div>
+				<div class="col-4">
+					{!! Form::text('rqe3', null, [
+						'class' => 'atrForm',
+						'placeholder' => 'Nº RQE'
+					]) !!}
+				</div>
+			</div>
+
+
 			<br>
+			<b>Atenção: </b> Seu cadastro será avaliado e sujeito à elegibilidade. Em caso de reprovação, o cadastro deverá ser feito novamente só depois de 90 dias.
+			<br>
+
 
 			<div class="divBtEnviar">
-					<a href={{route('user.index')}}>{!!Form::button('Home',[
-							'class' => 'atrForm',
-							'id' => ''
-						])
-						!!}</a>
+				<a href={{route('user.index')}}>{!!Form::button('Voltar',[
+					'class' => 'atrForm btn-light',
+					'id' => ''
+					])
+				!!}</a>
 				{!!Form::submit('Criar conta',[
-					'class' => 'atrForm',
+					'class' => 'atrForm btn-success',
 					'id' => 'submitUserRegister'
 				])
 				!!}
 			</div>
+			
 			<br>
-			<div class="formUserRegisterTitle">
+			
+			<div class="formRegisterTitle">
 				Ao me cadastrar eu concordo com os <a href="">termos e usos</a> da KliNick Serviços Medicos
 			</div>
+			
 			<br>
 
-<!--
-		nome - 		input text
-		login - 	--
-		password - 	password
-		email -		input text
-		sexo -		combobox
-		*rua -		input text
-		*bairro -	--
-		*num -		--
-		*compl - 	--
-		*estad -		--
-		*cidad -		--
-		*dataNasc -	--
-		whatsapp -	--
-		phone -		--
-
-	-->	
 
 		{!!Form::close()!!}
+		<div class="formRegisterTitleLine"><br></div>
+		(c) Direitos reservados
 	</div>
+	
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
-	<script src="{{asset('js/checkFormRegister.js')}}"></script>
+	<script src="{{asset('js/checkFormDoctorRegister.js')}}"></script>
 @endsection

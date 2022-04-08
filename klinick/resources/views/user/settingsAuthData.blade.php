@@ -91,7 +91,7 @@
 		<div class="divBtEnviar">
 			<a href={{route('user.index')}}>
 				{!!Form::button('Voltar',[
-					'class' => 'atrForm',
+					'class' => 'atrForm btn-light',
 					//'id' => ''
 				])!!}
 			</a>

@@ -13,7 +13,7 @@ use App\Repositories\UserRepository;
 use App\Validators\UserValidator;
 use App\Entities\User;
 use App\Services\UserService;
-use Illuminate\Support\Facades\DB;
+//use Illuminate\Support\Facades\DB;
 use Auth;
 use Exception;
 

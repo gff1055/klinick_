@@ -11,7 +11,7 @@
 
 @include('templates.topMenuBar')
 
-<div class="formUserRegisterTitleLine"><br></div>	
+<div class="formRegisterTitleLine"><br></div>	
 
 <div class="container">
 	<div class="row">
@@ -45,7 +45,7 @@
 </div>
 </div>
 </div>
-
+<div class="formRegisterTitleLine"><br></div>	
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
 	<script src="{{asset('js/formAgreement.js')}}"></script>

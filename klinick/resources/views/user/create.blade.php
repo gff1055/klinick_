@@ -9,17 +9,17 @@
 
 @section('content')
 
-<div class="formUserRegisterTitleLine"><br></div>
+<div class="formRegisterTitleLine"><br></div>
 
 	<div class="divUserRegisterForm">
 		{!! Form::open([
 			'route' => 'user.store',
-			'class' => 'formUserRegister'
+			'class' => 'formRegister'
 			])
 		!!}
 
 		
-			<div class="formUserRegisterTitle">
+			<div class="formRegisterTitle">
 				<span class="logo">KliNicK</span>
 				<br>
 				Crie sua conta e faça consultas com medicos on-line de varias especialidades
@@ -116,7 +116,7 @@
 
 			<div class="divBtEnviar">
 				<a href={{route('user.index')}}>{!!Form::button('Voltar',[
-					'class' => 'atrForm',
+					'class' => 'atrForm btn-light',
 					'id' => ''
 					])
 				!!}</a>
@@ -129,7 +129,7 @@
 			
 			<br>
 			
-			<div class="formUserRegisterTitle">
+			<div class="formRegisterTitle">
 				Ao me cadastrar eu concordo com os <a href="">termos e usos</a> da KliNick Serviços Medicos
 			</div>
 			
@@ -154,10 +154,10 @@
 	-->	
 
 		{!!Form::close()!!}
-		<div class="formUserRegisterTitleLine"><br></div>
+		<div class="formRegisterTitleLine"><br></div>
 	</div>
 	
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
-	<script src="{{asset('js/checkFormRegister.js')}}"></script>
+	<script src="{{asset('js/checkFormUserRegister.js')}}"></script>
 @endsection

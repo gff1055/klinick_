@@ -5,36 +5,30 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use Prettus\Validator\Contracts\ValidatorInterface;
-use Prettus\Validator\Exceptions\ValidatorException;
+//use Prettus\Validator\Contracts\ValidatorInterface;
+//use Prettus\Validator\Exceptions\ValidatorException;
 use App\Http\Requests\DoctorCreateRequest;
 use App\Http\Requests\DoctorUpdateRequest;
 use App\Repositories\DoctorRepository;
 use App\Validators\DoctorValidator;
 
+use App\Entities\Doctor;
+use App\Services\DoctorService;
+
+use Auth;
+use Exception;
+
 use App\Http\Controllers\Controller;
 
 
 class DoctorsController extends Controller{
-    /**
-     * @var DoctorRepository
-     */
-    protected $repository;
+	
+	protected $repository;
+    protected $service;
 
-    /**
-     * @var DoctorValidator
-     */
-    protected $validator;
-
-    /**
-     * DoctorsController constructor.
-     *
-     * @param DoctorRepository $repository
-     * @param DoctorValidator $validator
-     */
-    public function __construct(DoctorRepository $repository, DoctorValidator $validator){
+    public function __construct(DoctorRepository $repository, DoctorService $service){
         $this->repository = $repository;
-        $this->validator  = $validator;
+        $this->service  = $service;
 	}
 	
 	public function agreement(){
@@ -72,7 +66,12 @@ class DoctorsController extends Controller{
 
 
     public function store(DoctorCreateRequest $request){
-        try {
+
+		$registeredData = $request->all();
+		$request = $this->service->store($registeredData);
+		
+
+        /*try {
 
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
 
@@ -98,7 +97,7 @@ class DoctorsController extends Controller{
             }
 
             return redirect()->back()->withErrors($e->getMessageBag())->withInput();
-        }
+        }*/
     }
 
 	

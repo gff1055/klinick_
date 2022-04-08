@@ -96,7 +96,7 @@ form .divBtEnviar button{
 form .divBtEnviar button:hover{
 	width: 40%;
 	font-weight: bold;
-	background-color: #aaa;
+	/*background-color: #aaa;*/
 }
 
 /* Estilo do botao submit do formulario*/
@@ -189,13 +189,13 @@ form input[disabled]:hover{
 }*/
 
 
-.formUserRegisterTitleLine{
+.formRegisterTitleLine{
 	text-align: center;
 	background-color: #00997a;
 }
 
 /*Titulo do formulario*/
-.formUserRegisterTitle{
+.formRegisterTitle{
 	text-align: center;
 }
 
@@ -497,74 +497,10 @@ form input[disabled]:hover{
 	text-decoration: none;	
 }
 
-/*.formUpdate .title{
-	font-size: .9em;
-	font-weight: bold;
+
+/*Estilos da pagina de cadastro de medicos*/
+#iconRegistDoctor{
+	width: 8em;
 }
-
-.formUpdate .labels{
-	margin: 16px;
-	text-align: right;
-}
-
-
-.formUpdate .data{
-	margin: 16px;
-	text-align: left;
-}
-
-.formUpdate .atrForm{
-	
-}*/
-
-
-/*.configurationArea{
-	display: grid;
-	padding: 8px;
-}
-
-.layoutArea{
-	grid-template-columns: 25% 75%;
-}
-
-
-
-.configurationSideMenu{
-	background-color: #cdcdcd;
-	/*padding: 8px;
-	padding-left: 16px;*/
-/*	text-decoration: none;
-}
-
-.configurationSideMenu a{
-	text-decoration: none;
-}
-
-.configurationSideMenuOption{
-	padding-bottom: 16px;
-	padding-top: 16px;
-	color: #666666;
-}
-
-a .configurationSideMenuOption{
-	padding-bottom: 24px;
-	padding-top: 24px;
-	padding-left: 8px;
-	padding-right: 100px;
-	background-color: red;
-}
-
-.configurationSideMenuOption:hover{
-	background-color: #cdcdcd;
-	text-decoration: none;
-}
-
-.configurationContent{
-	background-color: #888888;
-	padding: 8px;
-}*/
-
-
-
 
 }

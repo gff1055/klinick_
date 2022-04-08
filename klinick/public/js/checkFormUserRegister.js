@@ -112,7 +112,7 @@ $(function(){
 	 * Funcao: anonima associada com o evento de enviar(submeter) formulario
 	 * Objetivo: Fazer a validacao das informações e o enviar o formulario para cadastro
 	 */
-	$('.formUserRegister').submit(function(event){
+	$('.formRegister').submit(function(event){
 		event.preventDefault();
 		
 		var requiredField 		= $('.requiredField');	// Variavel que recebe a referencia dos campos obrigatorios do formulario
