@@ -6,11 +6,13 @@
 
 @extends('templates.basic')
 
+@section('loadingCss')
+	<link rel="stylesheet" href="{{asset('css/themeForUsers.css')}}">
+@endsection
+
 
 @section('content')
-
-@include('templates.topMenuBar')
-
+	@include('templates.topMenuBar')
 <div class="formRegisterTitleLine"><br></div>
 
 	<div class="divUserRegisterForm">
@@ -33,7 +35,7 @@
 
 
 			<br><br>
-			<h5><b>Informações gerais</b></h5>
+			<h5><b>Dados pessoais</b></h5>
 			<br>
 
 
@@ -46,14 +48,14 @@
 
 			<div class="row">
 				<div class="col-8">
-					{!! Form::text('name', null, [
+					{!! Form::text('registeredName', null, [
 						'class' => 'atrForm requiredField',
 						'placeholder' => 'Nome'
 					]) !!}
 				</div>
 
 				<div class="col-4">
-					{!! Form::text('crm', null, [
+					{!! Form::text('numberCrm', null, [
 						'class' => 'atrForm requiredField',
 						'placeholder' => 'N° CRM',
 					]) !!}
@@ -74,13 +76,13 @@
 
 			<div class="row">
 				<div class="col-8">
-					{!! Form::text('especialidade1', null, [
+					{!! Form::text('nameSpecialty1', null, [
 						'class' => 'atrForm',
 						'placeholder' => 'Especialidade'
 					]) !!}
 				</div>
 				<div class="col-4">
-					{!! Form::text('rqe1', null, [
+					{!! Form::text('numberRqe1', null, [
 						'class' => 'atrForm',
 						'placeholder' => 'Nº RQE'
 					]) !!}
@@ -90,13 +92,13 @@
 
 			<div class="row">
 				<div class="col-8">
-					{!! Form::text('especialidade2', null, [
+					{!! Form::text('nameSpecialty2', null, [
 						'class' => 'atrForm',
 						'placeholder' => 'Especialidade'
 					]) !!}
 				</div>
 				<div class="col-4">
-					{!! Form::text('rqe2', null, [
+					{!! Form::text('numberRqe2', null, [
 						'class' => 'atrForm',
 						'placeholder' => 'Nº RQE'
 					]) !!}
@@ -106,15 +108,40 @@
 
 			<div class="row">
 				<div class="col-8">
-					{!! Form::text('especialidade3', null, [
+					{!! Form::text('nameSpecialty3', null, [
 						'class' => 'atrForm',
 						'placeholder' => 'Especialidade'
 					]) !!}
 				</div>
 				<div class="col-4">
-					{!! Form::text('rqe3', null, [
+					{!! Form::text('numberRqe3', null, [
 						'class' => 'atrForm',
 						'placeholder' => 'Nº RQE'
+					]) !!}
+				</div>
+			</div>
+
+			<br><br>
+			<h5><b>Informações gerais</b></h5>
+			<br>
+
+			<div class="row">
+				<div class="col-12">
+					
+					<span class="notice">Campo opcional. Descreva aqui informações que possam ser relevantes</span>
+
+					{!! Form::textarea('description', null, [
+						'class' => 'atrForm',
+						'placeholder' => 'Descricao',
+						'rows' => "8"
+					]) !!}
+					<br><br>
+
+					<span class="notice">Campo opcional. Descreva aqui a(s) forma(s) de pagamento pelos serviços</span>
+					{!! Form::textarea('modePayment', null, [
+						'class' => 'atrForm',
+						'placeholder' => 'Forma(s) de pagamento',
+						'rows' => "4"
 					]) !!}
 				</div>
 			</div>
@@ -154,5 +181,6 @@
 	
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
+	<script src="{{asset('js/menuBarAlreadyDoctor.js')}}"></script>
 	<script src="{{asset('js/checkFormDoctorRegister.js')}}"></script>
 @endsection

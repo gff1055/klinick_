@@ -39,7 +39,19 @@ class DoctorService{
 	 */
 	
 	public function store($data){
-		dd($data);
+
+		/** Tentar inserir atributo id do usuario no final do array */
+
+		//$data["user_id"] = $id;
+
+		try{			
+			$t = $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE);
+			$doctor = $this->repository->create($data);
+		}
+		
+		catch(Exception $except){
+			return 0;
+		}
 	}
 
 

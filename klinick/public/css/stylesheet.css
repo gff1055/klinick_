@@ -51,7 +51,7 @@ form .logo{
 
 /* Icone nos formularios */
 form .icone{									
-	color: #00997a/*#477F6D*/;
+/*	color: #00997a;*/
 }
 
 /* Avisos ou esclarecimentos no formulario */
@@ -90,7 +90,7 @@ form .divBtEnviar{
 form .divBtEnviar button{
 	width: 40%;
 	font-weight: bold;
-	color: #00997a;
+/*	color: #00997a;*/
 }
 
 form .divBtEnviar button:hover{
@@ -106,19 +106,19 @@ form .divBtEnviar input[type="submit"]{
 
 /* Botoes submit dos formularios */
 form input[type="submit"]{						
-	background-color: /*#5BA28B*/#00997a;
+/*	background-color: #00997a;*/
 	font-weight: bold;
 	color: white;
 	margin-top: 32px;
 }
 
 /* Botoes submit ao passar o mouse por cima */
-form input[type="submit"]:hover{				
+/*form input[type="submit"]:hover{				
 	background-color: #006650;
-}
+}*/
 
 /* Campos de texto e campos de senha */
-form input[type="text"], form input[type="password"]{	
+form input[type="text"], form input[type="password"], textarea{	
 	text-shadow: 10px, 10px;
 	border: 0px solid ;
 	background-color: #eee;
@@ -191,7 +191,7 @@ form input[disabled]:hover{
 
 .formRegisterTitleLine{
 	text-align: center;
-	background-color: #00997a;
+	/*background-color: #00997a;*/
 }
 
 /*Titulo do formulario*/
@@ -213,7 +213,7 @@ form input[disabled]:hover{
 /* Menu do topo da pagina inicial */
 .topMenuBar{
 	background-color:  #eeeeee;
-	color: #00997a;
+/*	color: #00997a;*/
 	display: flex;
 	align-items: center;
 	font-size: 16px;
@@ -224,7 +224,7 @@ form input[disabled]:hover{
 
 /* Logo ao lado do menu na pagina inicial */
 .topMenuBar .logo{
-	color: #00997a;
+/*	color: #00997a;*/
 	font-size: 32px;
 	margin-right: 16px;
 }
@@ -399,9 +399,9 @@ form input[disabled]:hover{
   font-size: 16px;
 }
 
-#menu li:hover{
+/*#menu li:hover{
 	background-color: #00997a;
-}
+}*/
 
 
 #menuToggle input:checked ~ ul{
@@ -413,7 +413,7 @@ form input[disabled]:hover{
 
 .logo{
 	font-family: 'Lobster', cursive;
-	color: #00997a;
+/*	color: #00997a;*/
 }
 
 
@@ -435,7 +435,7 @@ form input[disabled]:hover{
 .divOptionSettingMenu{
 	text-align: center;
 	/*background-color: #dddddd;*/
-	background-color:#00997a;
+	/*background-color:#00997a;*/
 	padding-bottom: 16px;
 	padding-top: 16px;
 	display: block;

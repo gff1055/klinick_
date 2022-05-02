@@ -6,10 +6,13 @@
 
 @extends('templates.basic')
 
+@section('loadingCss')
+	<link rel="stylesheet" href="{{asset('css/themeForUsers.css')}}">
+@endsection
+
 
 @section('content')
-
-@include('templates.topMenuBar')
+	@include('templates.topMenuBar')
 
 <div class="formRegisterTitleLine"><br></div>	
 
@@ -49,4 +52,6 @@
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
 	<script src="{{asset('js/formAgreement.js')}}"></script>
+	<script src="{{asset('js/menuBarAlreadyDoctor.js')}}"></script>
+
 @endsection

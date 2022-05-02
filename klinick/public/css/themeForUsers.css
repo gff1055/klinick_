@@ -1,0 +1,87 @@
+/*
+E, pE:		0, 0, 0, 1
+C, pC, atr:	0, 0, 1, 0
+Id			0, 1, 0, 0
+inl			1, 0, 0, 0
+*/
+
+/** ESTILO GERAL DOS FORMULARIOS **/
+
+
+/* Icone nos formularios */
+form .icone{									
+	color: #00997a;
+}
+
+
+/* Estilo do botao do formulario*/
+form .divBtEnviar button{
+	color: #00997a;
+}
+
+
+/* Botoes submit dos formularios */
+form input[type="submit"]{						
+	background-color: /*#5BA28B*/#00997a;
+}
+
+/* Botoes submit ao passar o mouse por cima */
+form input[type="submit"]:hover{				
+	background-color: #006650;
+}
+
+
+/*CONFIGURACOES DA PAGINA DE CADASTRO DE NOVOS USUARIO*/
+
+/* Barra nos formularios */
+.formRegisterTitleLine{
+	background-color: #00997a;
+}
+
+/* CONFIGURACOES GERAIS DO MENU DA BARRA SUPERIOS */
+
+/* Menu do topo da pagina inicial */
+.topMenuBar{
+	color: #00997a;
+}
+
+
+/* Logo ao lado do menu na pagina inicial */
+.topMenuBar .logo{
+	color: #00997a;
+	font-size: 32px;
+	margin-right: 16px;
+}
+
+
+/* MENU SANDUICHE NO MENU DA BARRA SUPERIOR */
+#menu li:hover{
+	background-color: #00997a;
+}
+
+
+/* Area de escolha de tipo de acesso */
+.logo{
+	font-family: 'Lobster', cursive;
+	color: #00997a;
+}
+
+
+
+/* ESTILOS DA SECAO 'CONFIGURACOES' DO USUARIO*/
+
+.divOptionSettingMenu{
+	background-color:#00997a;	
+}
+
+/* Cor da opcao quando o mouse passa por cima */
+.divOptionSettingMenu:hover{
+	background-color: #006650;
+}
+
+/* Opcao atualmente selecionada */
+#divOptionSettingMenuSelected{
+	background-color: #006650;
+}
+
+

@@ -45,7 +45,15 @@ class DoctorsController extends Controller{
 
     
     public function index(){
-        /*$this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
+
+		if(Controller::isAuthenticated()){
+			return view('doctor.index');
+		}
+		else{
+			return redirect()->route('user.login_get');
+		}
+		
+		/*$this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
         $doctors = $this->repository->all();
 
         if (request()->wantsJson()) {
@@ -67,9 +75,15 @@ class DoctorsController extends Controller{
 
     public function store(DoctorCreateRequest $request){
 
+		$idUserLogged = Auth::user()->id;
 		$registeredData = $request->all();
-		$request = $this->service->store($registeredData);
-		
+
+		$registeredData["user_id"] = $idUserLogged;
+
+		$this->service->store($registeredData);
+
+		return redirect()->route('doctor.index');
+	
 
         /*try {
 

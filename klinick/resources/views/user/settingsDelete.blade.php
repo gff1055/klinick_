@@ -4,10 +4,15 @@
 
 @extends("templates.basic")
 
+
+@section('loadingCss')
+	<link rel="stylesheet" href="{{asset('css/themeForUsers.css')}}">
+@endsection
+
+
+
 @section("content")
-	@include('templates.topMenuBar')
-
-
+@include('templates.topMenuBar')
 <div class="container-fluid">
 	<div class="row">
 		<div class="col divOptionSettingMenu">

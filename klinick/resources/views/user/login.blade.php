@@ -5,6 +5,10 @@
 @extends('templates.basic')
 
 
+@section('loadingCss')
+	<link rel="stylesheet" href="{{asset('css/themeForUsers.css')}}">
+@endsection
+
 
 @section('content')
 
