@@ -11,8 +11,9 @@
 
 
 @section("content")
-	@include('templates.topMenuBar')
 
+	@include('templates.topMenuBar.forUsers.standard.layout')
+	@include('templates.topMenuBar.forUsers.standard.rightOption')
 
 <div class="container-fluid">
 	<div class="row">

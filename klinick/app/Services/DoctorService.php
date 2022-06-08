@@ -40,10 +40,6 @@ class DoctorService{
 	
 	public function store($data){
 
-		/** Tentar inserir atributo id do usuario no final do array */
-
-		//$data["user_id"] = $id;
-
 		try{			
 			$t = $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE);
 			$doctor = $this->repository->create($data);
@@ -52,6 +48,12 @@ class DoctorService{
 		catch(Exception $except){
 			return 0;
 		}
+	}
+
+
+	public function isADoctor($id){
+		$emailExist = DB::select('select * from doctors where user_id = ?', $id]);
+		/c
 	}
 
 

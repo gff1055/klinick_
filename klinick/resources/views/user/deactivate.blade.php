@@ -13,7 +13,7 @@
 
 
 @section("content")
-	@extends('templates.topMenuBarUnlogged')
+	@extends('templates.topMenuBar.unlogged.layout')
 
 
 <div class="container-fluid">

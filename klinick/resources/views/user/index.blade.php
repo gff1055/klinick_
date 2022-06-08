@@ -11,8 +11,8 @@
 
 @section('content')
 
-	@include('templates.topMenuBar')
-	@include('templates.loadUserRightOption')
+	@include('templates.topMenuBar.forUsers.registeredAsDoctor.layout')
+	@include('templates.topMenuBar.forUsers.standard.rightOption')
 
 	@php
 	echo "ola ".$name;	

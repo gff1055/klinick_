@@ -51,6 +51,7 @@ class UsersController extends Controller{
 	public function index(){
 
 		if(Controller::isAuthenticated()){
+			dd(Auth::user());
 			return view('user.index', ["name" => Auth::user()->name]);
 		}
 		else

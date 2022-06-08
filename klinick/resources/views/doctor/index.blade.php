@@ -10,7 +10,9 @@
 
 @section('content')
 
-	@include('templates.topMenuBarDoctors')
+	@include('templates.topMenuBar.forDoctors.layout')
+	@include('templates.topMenuBar.forDoctors.rightOption')
+
 
 
 @endsection

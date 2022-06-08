@@ -269,7 +269,7 @@ form input[disabled]:hover{
 	margin: 8px;
 }
 
-#optionBeDoctor{
+#topMenuBarOptionRight{
 	/*white-space: nowrap;*/
 	flex-grow: 10;
 	text-align: right;

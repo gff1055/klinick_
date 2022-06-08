@@ -1,0 +1,1 @@
+<script src="{{asset('js/scriptOptionRightForUsers.js')}}"></script>

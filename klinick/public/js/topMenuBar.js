@@ -5,20 +5,20 @@ menuToggle = document.getElementById("menuToggle");						// referencia do menu
 menu = document.getElementById("menu");
 buttonExitUser = document.getElementsByClassName("buttonExitUser")[0];
 flagCloseMenuBar = true;												// flag que indica se o menu esta aberto ou nao
-//optionBeDoctor = document.querySelector("#optionBeDoctor .btn");
-//modal = document.getElementsByClassName("mdl")[0];
-//screenMdl = document.getElementsByClassName("screenMdl")[0];
-//modalBotaoOk = document.getElementsByClassName("buttonOk")[0];
+topMenuBarOptionRight = document.querySelector("#topMenuBarOptionRight .btn");
+modal = document.getElementsByClassName("mdl")[0];
+screenMdl = document.getElementsByClassName("screenMdl")[0];
+modalBotaoOk = document.getElementsByClassName("buttonOk")[0];
 
 
 
-/*function clickLeaveModal(event){
+function clickLeaveModal(event){
 	return (
 		event.target.className.indexOf("screenMdl") != -1
 		|| event.target.className.indexOf("mdlClose") != -1
 		|| event.target.className.indexOf("buttonExit") != -1
 	);
-}*/
+}
 
 
 /*function clickContinueModal(event){
@@ -54,32 +54,14 @@ buttonExitUser.addEventListener("click", function(e){
 });
 
 /** Evento de clique no botao de cadastro de medico */
-optionBeDoctor.addEventListener("click", function(e){
+topMenuBarOptionRight.addEventListener("click", function(e){
 	modal.style.display = "block";
 	screenMdl.style.display = "block";
 });
 
-
-
-/**
- * FUNCAO:		handleModal
- * OBJETIVO:	administrar o comportamento do modal
- * PARAMETROS:	evento gerado
- * RETORNO: 
- */
-/*function handleModal(event){
-
+screenMdl.addEventListener("click",function(event){
 	if(clickLeaveModal(event)){
 		screenMdl.style.display = "none";
 	}
-
-	else if(clickContinueModal(event)){
-		window.location.href = "/doctor/agreement";
-	}
-}*/
-
-
-screenMdl.addEventListener("click",function(event){
-	handleModal(event);		
 });
 

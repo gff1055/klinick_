@@ -12,7 +12,10 @@
 
 
 @section('content')
-	@include('templates.topMenuBar')
+
+	@include('templates.topMenuBar.forUsers.standard.layout')
+	@include('templates.topMenuBar.forUsers.standard.rightOption')
+
 <div class="formRegisterTitleLine"><br></div>
 
 	<div class="divUserRegisterForm">
