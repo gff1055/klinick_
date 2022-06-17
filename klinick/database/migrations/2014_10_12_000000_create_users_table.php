@@ -25,6 +25,8 @@ class CreateUsersTable extends Migration
 			$table->string("phone", 18)->nullable();
 			$table->date("dataNasc")->nullable();
 
+			$table->boolean("isADoctor");
+
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

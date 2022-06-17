@@ -17,13 +17,11 @@
 			<div class="row">
 				<div class="col-12">
 					
-					Alguns dados precisarão ser coletados<br>
-					para verificar sua elegibilidade.<br><br>
-		
-					<b>ATENÇÃO:</b> Caso não seja aprovado,<br>
-					voce só poderá se cadastrar novamente para<br>
-					ser medico Klinick depois de 90 dias
-					<br>&nbsp
+					<b>ATENÇÃO:</b> Mesmo o consultorio KLINICK,<br>
+					sendo um ambiente virtual, toda conduta ética e<br>
+					profissional deve ser respeitada
+					<br><br>
+					
 				</div>
 			</div>
 		

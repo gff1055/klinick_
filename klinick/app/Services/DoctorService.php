@@ -6,6 +6,7 @@ use App\Repositories\DoctorRepository;
 use App\Validators\DoctorValidator;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use App\Entities\Doctor;
+use App\Services\UserService;
 
 use Illuminate\Support\Facades\DB;
 
@@ -39,10 +40,12 @@ class DoctorService{
 	 */
 	
 	public function store($data){
+//		$user = new UserService($a, $b);
 
 		try{			
 			$t = $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE);
 			$doctor = $this->repository->create($data);
+			DB::table('users')->where('id',$data['user_id'])->update(['isADoctor' => true]);
 		}
 		
 		catch(Exception $except){
@@ -51,9 +54,8 @@ class DoctorService{
 	}
 
 
-	public function isADoctor($id){
-		$emailExist = DB::select('select * from doctors where user_id = ?', $id]);
-		/c
+	public function isADoctor($pIdDoctor){
+		$isDoctor = DB::select('select * from doctors where user_id = ?', $id);
 	}
 
 

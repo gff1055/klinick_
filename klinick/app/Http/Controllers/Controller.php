@@ -14,6 +14,8 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Auth;
 
+use App\Services\DoctorService;
+
 
 class Controller extends BaseController{
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
@@ -73,7 +75,11 @@ class Controller extends BaseController{
                     //throw new Exception("SENHA INVALIDA");
                 }
                 
-                Auth::login($user);
+				Auth::login($user);
+
+				/*if(!Auth::user()->isADoctor){
+					Auth::user()->isADoctor = 0;
+				}*/
                 $loginFeedback['success'] = true;
                 echo json_encode($loginFeedback);                   // Converte a variavel '$loginFeedback' em JSON
                 return;

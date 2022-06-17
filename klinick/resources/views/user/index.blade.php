@@ -11,11 +11,10 @@
 
 @section('content')
 
-	@include('templates.topMenuBar.forUsers.registeredAsDoctor.layout')
-	@include('templates.topMenuBar.forUsers.standard.rightOption')
+	@include('templates.topMenuBar.render', ["user" => $user])
 
 	@php
-	echo "ola ".$name;	
+	echo "ola ".$user->name;	
 	@endphp
 
 @endsection

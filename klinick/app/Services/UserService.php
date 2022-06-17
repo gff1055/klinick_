@@ -59,7 +59,8 @@ class UserService{
 			// Se não existir nenhum nome de usuario/email cadastrado com os dados fornecidos
 			// o array indicando sucesso é enviado para a view
 			//if(!$userExist && !$emailExist){
-			else{	
+			else{
+				$data['isADoctor'] = false;	
 				$user = $this->repository->create($data);
 				$arrayDataFeedback[] = [
 					'success' => true,
@@ -80,6 +81,11 @@ class UserService{
 				'data' => null
 			];
 		}
+	}
+
+
+	public function updateTypeUser($id){
+		DB::table('users')->where('id',$id)->update(['isADoctor' => true]);
 	}
 
 

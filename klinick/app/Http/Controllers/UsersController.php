@@ -13,7 +13,6 @@ use App\Repositories\UserRepository;
 use App\Validators\UserValidator;
 use App\Entities\User;
 use App\Services\UserService;
-//use Illuminate\Support\Facades\DB;
 use Auth;
 use Exception;
 
@@ -51,8 +50,7 @@ class UsersController extends Controller{
 	public function index(){
 
 		if(Controller::isAuthenticated()){
-			dd(Auth::user());
-			return view('user.index', ["name" => Auth::user()->name]);
+			return view('user.index', ["user" => Auth::user()]);
 		}
 		else
 			return redirect()->route('user.login_get');
@@ -70,8 +68,10 @@ class UsersController extends Controller{
      */
 	public function store(UserCreateRequest $request){
 
-        $registeredData = $request;
-        $request = $this->service->store($request->all());
+		$registeredData = $request;
+		
+		
+		$request = $this->service->store($request->all());
 
         // O usuario sendo cadastrado com sucesso, ou nao,
         // os dados referentes são enviados para a view

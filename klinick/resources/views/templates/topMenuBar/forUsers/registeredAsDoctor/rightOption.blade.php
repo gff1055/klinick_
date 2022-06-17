@@ -1,1 +1,1 @@
-<script src="{{asset('js/scriptOptionRightForUsers.js')}}"></script>
+<script src="{{asset('js/scriptOptionRightForRegisteredAsDoctors.js')}}"></script>
