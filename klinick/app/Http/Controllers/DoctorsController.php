@@ -123,9 +123,11 @@ class DoctorsController extends Controller{
             return response()->json([
                 'data' => $doctor,
             ]);
-        }
+		}
 
-        return view('doctors.show', compact('doctor'));
+//		dd($doctor->registeredName);
+		
+		return view('doctor.show', compact('doctor'));
     }
 
 

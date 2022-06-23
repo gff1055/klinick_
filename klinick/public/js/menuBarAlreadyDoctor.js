@@ -1,10 +1,10 @@
 
 
-beDoctor = document.getElementById('optionBeDoctor');
+topMenuBarOptionRight = document.getElementById('topMenuBarOptionRight');
 
 
 function loadOption(){
-	beDoctor.style.visibility = "hidden";
+	topMenuBarOptionRight.style.visibility = "hidden";
 }
 
 loadOption();

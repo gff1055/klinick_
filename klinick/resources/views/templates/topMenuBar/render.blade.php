@@ -1,9 +1,9 @@
 
 @php
-	$isADoctor = $user->isADoctor;
+	$isADoctor = $user->isADoctor ?? 0;
 @endphp
 
-@if($user->isADoctor)
+@if($isADoctor)
 	@include('templates.topMenuBar.forUsers.registeredAsDoctor.layout')
 	@include('templates.topMenuBar.forUsers.registeredAsDoctor.rightOption')
 @else
