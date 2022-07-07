@@ -10,24 +10,25 @@ inl			1, 0, 0, 0
 
 /* Icone nos formularios */
 form .icone{									
-	color: #00997a;
+	color: #006C67;
 }
 
 
 /* Estilo do botao do formulario*/
 form .divBtEnviar button{
-	color: #00997a;
+	color: #006C67;
 }
 
 
 /* Botoes submit dos formularios */
 form input[type="submit"]{						
-	background-color: /*#5BA28B*/#00997a;
+	background-color: /*#5BA28B*/#006C67;
 }
 
 /* Botoes submit ao passar o mouse por cima */
 form input[type="submit"]:hover{				
-	background-color: #006650;
+	background-color: rgb(17, 143, 137);
+	transition: 0.25s;
 }
 
 
@@ -35,20 +36,20 @@ form input[type="submit"]:hover{
 
 /* Barra nos formularios */
 .formRegisterTitleLine{
-	background-color: #00997a;
+	background-color: #006C67;
 }
 
 /* CONFIGURACOES GERAIS DO MENU DA BARRA SUPERIOS */
 
 /* Menu do topo da pagina inicial */
 .topMenuBar{
-	color: #00997a;
+	color: #006C67;
 }
 
 
 /* Logo ao lado do menu na pagina inicial */
 .topMenuBar .logo{
-	color: #00997a;
+	color: #006C67;
 	font-size: 32px;
 	margin-right: 16px;
 }
@@ -56,14 +57,14 @@ form input[type="submit"]:hover{
 
 /* MENU SANDUICHE NO MENU DA BARRA SUPERIOR */
 #menu li:hover{
-	background-color: #00997a;
+	background-color: #006C67;
 }
 
 
 /* Area de escolha de tipo de acesso */
 .logo{
 	font-family: 'Lobster', cursive;
-	color: #00997a;
+	color: #006C67;
 }
 
 
@@ -71,17 +72,19 @@ form input[type="submit"]:hover{
 /* ESTILOS DA SECAO 'CONFIGURACOES' DO USUARIO*/
 
 .divOptionSettingMenu{
-	background-color:#00997a;	
+	background-color:#006C67;	
 }
 
 /* Cor da opcao quando o mouse passa por cima */
 .divOptionSettingMenu:hover{
-	background-color: #006650;
+	background-color: rgb(17, 143, 137);
+	transition: 0.25s;
 }
 
 /* Opcao atualmente selecionada */
 #divOptionSettingMenuSelected{
-	background-color: #006650;
+	background-color: rgb(17, 143, 137);
+	transition: 0.25s;
 }
 
 

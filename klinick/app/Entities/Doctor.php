@@ -20,7 +20,22 @@ class Doctor extends Model implements Transformable
      *
      * @var array
      */
-	protected $fillable = ['user_id','registeredName', 'numberCrm', 'nameSpecialty1', 'numberRqe1', 'nameSpecialty2', 'numberRqe2','nameSpecialty3', 'numberRqe3', 'description'];
+	protected $fillable = [
+		'user_id',
+		'registeredName',
+		'city',
+		'state',
+		'numberCrm',
+		'nameSpecialty1',
+		'numberRqe1',
+		'nameSpecialty2',
+		'numberRqe2',
+		'nameSpecialty3',
+		'numberRqe3',
+		'description',
+		'modePayment'
+	];
+	
 	public $timestamps = true;          // Gerencia as datas de exclusao, edicao, criacao...
 
 	public function user(){

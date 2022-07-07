@@ -35,6 +35,10 @@ class CreateDoctorsTable extends Migration
 			$table->increments('id');
 			$table->unsignedInteger('user_id')->unique();
 
+			$table->string('state', 32);
+			$table->string('city', 32);
+
+
 			$table->string('registeredName', 64);
 			$table->string('numberCrm', 16)->unique();
 			$table->string('nameSpecialty1', 32)->nullable();

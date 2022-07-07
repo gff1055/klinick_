@@ -65,10 +65,31 @@
 				</div>
 			</div>
 
+
+			<br><br>
+			<h5><b>Local de atuação</b></h5>
+			<br>
+
+			<div class="row">
+				<div class="col-8">
+					{!! Form::text('city', null, [
+						'class' => 'atrForm',
+						'placeholder' => 'cidade'
+					]) !!}
+				</div>
+
+				<div class="col-4">
+					{!! Form::text('state', null, [
+						'class' => 'atrForm',
+						'placeholder' => 'Estado',
+					]) !!}
+				</div>
+			</div>
+
+			
 			<br><br>
 			<h5><b>Especialidades</b></h5>
 			<br>
-
 
 			<div class="row">
 				<div class="col-8">

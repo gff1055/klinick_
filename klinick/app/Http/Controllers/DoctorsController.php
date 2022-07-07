@@ -127,7 +127,7 @@ class DoctorsController extends Controller{
 
 //		dd($doctor->registeredName);
 		
-		return view('doctor.show', compact('doctor'));
+		return view('doctor.show', ["doctor" => $doctor]);
     }
 
 

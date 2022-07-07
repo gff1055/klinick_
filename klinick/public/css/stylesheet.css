@@ -15,7 +15,7 @@ inl			1, 0, 0, 0
 *{												/*Resetando os estilos do navegador*/
 	padding: 0px;
 	margin: 0px;
-	list-style: none;
+	/*list-style: none;*/
 	outline: none;
 	border: none;
 
@@ -25,12 +25,12 @@ inl			1, 0, 0, 0
 }
 
 
-/* body */
+/** ESTILO GERAL DOS FORMULARIOS **/
 
-/*body{
-	min-width: 700px
-}*/
-
+.colorTextHead{
+	color: #006C67;
+	font-weight: bold;
+}
 
 
 
@@ -112,10 +112,6 @@ form input[type="submit"]{
 	margin-top: 32px;
 }
 
-/* Botoes submit ao passar o mouse por cima */
-/*form input[type="submit"]:hover{				
-	background-color: #006650;
-}*/
 
 /* Campos de texto e campos de senha */
 form input[type="text"], form input[type="password"], textarea{	

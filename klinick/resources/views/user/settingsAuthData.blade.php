@@ -12,8 +12,7 @@
 
 @section("content")
 
-	@include('templates.topMenuBar.forUsers.standard.layout')
-	@include('templates.topMenuBar.forUsers.standard.rightOption')
+	@include('templates.topMenuBar.render', ["user" => $user])	
 
 <div class="container-fluid">
 	<div class="row">

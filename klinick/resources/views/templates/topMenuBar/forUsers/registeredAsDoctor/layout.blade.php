@@ -102,6 +102,8 @@
 		<a href="{{route('user.index')}}"><span class="logo">KlinicK</span></a>
 	</div>
 
+	
+
 	<div class="itemTopMenuBar" id="topMenuBarOptionRight">
 		<div class="btn">
 			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-building" viewBox="0 0 16 16">

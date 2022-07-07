@@ -1,0 +1,23 @@
+
+
+
+/* Redimensionamento da imagem de perfil */
+.divprofilePhoto{
+	/*height: 100vh;
+	width: 100vw;*/
+	grid-area: photo;
+	border-color: #ddd;
+	border: 2px;
+	text-align: right;
+
+}
+.profilePhoto{
+/*	height: 100%;
+	width: 100%;*/
+	max-width: 100%;
+	width: auto;
+	max-height: 100%;
+	height: auto;
+	border-radius: 100%;
+}
+/* Rdmsonmt---------------------------------------*/
