@@ -116,18 +116,26 @@ class DoctorsController extends Controller{
 
 	
 	public function show($id){
-        $doctor = $this->repository->find($id);
 
-        if (request()->wantsJson()) {
+		if(Controller::isAuthenticated()){
 
-            return response()->json([
-                'data' => $doctor,
-            ]);
+			$doctor = $this->repository->find($id);
+			if (request()->wantsJson()) {
+				return response()->json([
+					'data' => $doctor,
+				]);
+			}
+	
+			return view('doctor.show', ["doctor" => $doctor, "user" => Auth::user()]);
+
 		}
 
-//		dd($doctor->registeredName);
-		
-		return view('doctor.show', ["doctor" => $doctor]);
+		else{
+			return redirect()->route('user.login_get');
+		}
+
+
+
     }
 
 
