@@ -32,6 +32,10 @@ inl			1, 0, 0, 0
 	font-weight: bold;
 }
 
+.containerFullHeight{
+	min-height: 100%;
+}
+
 
 
 /** ESTILO GERAL DOS FORMULARIOS **/

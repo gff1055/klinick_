@@ -146,6 +146,11 @@ class DoctorsController extends Controller{
     }
 
 
+	public function settings(){
+		return view('doctor.settings');
+	}
+
+
 	public function update(DoctorUpdateRequest $request, $id){
         try {
 
