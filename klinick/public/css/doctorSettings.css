@@ -13,6 +13,20 @@
 	font-weight: bolder;
 }
 
+.setOption{
+	color: #fff !important;
+    background-color: #015D9A !important;
+	border-color: #015D9A !important;
+	white-space: nowrap;
+}
+
+
+.setOption:hover{
+	color: #fff !important;
+    background-color: #0069d9 !important;
+    border-color: #0062cc !important;
+}
+
 /*.containerSettings .options{
 	background-color: yellow;
 /*	width: 50px;

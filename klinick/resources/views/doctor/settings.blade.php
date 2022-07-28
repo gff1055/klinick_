@@ -15,7 +15,7 @@
 	@include('templates.topMenuBar.forDoctors.rightOption')
 
 	<br>
-	TESTE
+	Configurações
 	<hr>
 	<br>
 	<div class="containerSettings" style="background-color: tgreen">	
@@ -23,36 +23,28 @@
 		
 			<div class="row align-items-center" style="background-color: tred">
 
-				<div class="col-2">
+				<div class="col-6" >
+					<a class="btn btn-primary setOption">
+						<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-card-checklist" viewBox="0 0 16 16">
+							<path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+							<path d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
+						</svg>
+						<br>
+						Alterar<br>
+						Dados
+					</a>
 				</div>
 
-				<div class="col-8" style="background-color: tblue">
-					<a class="btn btn-primary">Alterar Dados</a>
+				<div class="col-6" >
+					<a class="btn btn-primary setOption">
+						<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person-x-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6.146-2.854a.5.5 0 0 1 .708 0L14 6.293l1.146-1.147a.5.5 0 0 1 .708.708L14.707 7l1.147 1.146a.5.5 0 0 1-.708.708L14 7.707l-1.146 1.147a.5.5 0 0 1-.708-.708L13.293 7l-1.147-1.146a.5.5 0 0 1 0-.708z"/>
+						</svg>
+						<br>
+						Excluir perfil<br>
+						medico
+					</a>
 				</div>
-
-				
-				<div class="col-2">
-				</div>
-		
-		
-			</div>
-			
-			<br><br>
-
-			<div class="row align-items-center" style="background-color: tred">
-
-				<div class="col-2">
-				</div>
-
-				<div class="col-8" style="background-color: tblue">
-					<a class="btn btn-primary ">Excluir perfil de medico</a>
-				</div>
-
-				
-				<div class="col-2">
-				</div>
-		
-		
 			</div>
 		</div>
 	</div>
