@@ -54,14 +54,14 @@ buttonExitUser.addEventListener("click", function(e){
 });
 
 /** Evento de clique no botao de cadastro de medico */
-topMenuBarOptionRight.addEventListener("click", function(e){
+/*topMenuBarOptionRight.addEventListener("click", function(e){
 	modal.style.display = "block";
 	screenMdl.style.display = "block";
-});
+});*/
 
-screenMdl.addEventListener("click",function(event){
+/*screenMdl.addEventListener("click",function(event){
 	if(clickLeaveModal(event)){
 		screenMdl.style.display = "none";
 	}
-});
+});*/
 

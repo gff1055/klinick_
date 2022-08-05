@@ -1,6 +1,31 @@
 
 
-<div class="screenMdl">
+<div class="mdl modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Cadastro Médico Klinick:</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				Alguns dados precisarão ser coletados para verificar sua elegibilidade.
+				<br><br>
+				<b>ATENÇÃO:</b> Caso não seja aprovado, voce só poderá se cadastrar novamente para
+				ser medico Klinick depois de 90 dias
+			</div>
+			
+			<div class="modal-footer">
+				<button type="button" class="btn colorTheme buttonOk">Ok, eu entendi</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
+			</div>
+		</div>
+	</div>
+</div>
+  
+
+<!--<div class="screenMdl">
 	<div class="mdl mdlConfirm">
 		<div class="container">
 			<div class="row">
@@ -44,6 +69,7 @@
 		</div>
 	</div>
 </div>
+-->
 
 <section class="topMenuBar">
 	<div class="itemTopMenuBar_logo">
@@ -106,15 +132,26 @@
 
 	
 
-	<div class="itemTopMenuBar" id="topMenuBarOptionRight">
+	<!--<div class="itemTopMenuBar" id="topMenuBarOptionRight">
 		<div class="btn">
 			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-badge-fill" viewBox="0 0 16 16">
-					<path fill-rule="evenodd" d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm4.5 0a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zM8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm5 2.755C12.146 12.825 10.623 12 8 12s-4.146.826-5 1.755V14a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-.245z"/>
-				</svg>
+				<path fill-rule="evenodd" d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm4.5 0a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zM8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm5 2.755C12.146 12.825 10.623 12 8 12s-4.146.826-5 1.755V14a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-.245z"/>
+			</svg>
 			<div>
 				Quero ser médico(a)
 			</div>
 		</div>
+	</div>
+	-->
+
+	<div class="itemTopMenuBar" id="topMenuBarOptionRight">
+		<button type="button" class="btn" data-toggle="modal" data-target="#modalExemplo">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-badge-fill" viewBox="0 0 16 16">
+				<path fill-rule="evenodd" d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm4.5 0a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zM8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm5 2.755C12.146 12.825 10.623 12 8 12s-4.146.826-5 1.755V14a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-.245z"/>
+			</svg>
+			<br>
+			Quero ser médico(a)
+		</button>
 	</div>
 
 </section>

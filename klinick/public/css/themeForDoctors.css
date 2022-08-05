@@ -7,6 +7,21 @@ inl			1, 0, 0, 0
 
 /** ESTILO GERAL DOS FORMULARIOS **/
 
+.styleGeneral{									
+	color: #015D9A;
+	font-weight: bold;
+}
+
+.mdl .colorTheme{									
+	background-color: #002966;
+	color: #fff;
+}
+
+.mdl .colorTheme:hover{									
+	background-color: #015D9A;
+	color: #fff;
+}
+
 
 /* Icone nos formularios */
 form .icone{									

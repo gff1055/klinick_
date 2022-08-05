@@ -272,8 +272,11 @@ form input[disabled]:hover{
 #topMenuBarOptionRight{
 	/*white-space: nowrap;*/
 	flex-grow: 10;
-	text-align: right;
-	
+	text-align: right;	
+}
+
+#topMenuBarOptionRight .btn{
+	box-shadow: none;
 }
 
 

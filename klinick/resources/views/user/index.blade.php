@@ -17,5 +17,7 @@
 	echo "ola ".$user->name;	
 	@endphp
 
+
+
 @endsection
 
