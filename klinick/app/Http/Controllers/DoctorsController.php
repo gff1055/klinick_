@@ -15,6 +15,7 @@ use App\Validators\DoctorValidator;
 use App\Entities\Doctor;
 use App\Services\DoctorService;
 
+
 use Auth;
 use Exception;
 
@@ -24,7 +25,11 @@ use App\Http\Controllers\Controller;
 class DoctorsController extends Controller{
 	
 	protected $repository;
-    protected $service;
+	protected $service;
+	
+	const DOCTOR = 2;
+	const USER = 1;
+	const UNLOGGED = 0;
 
     public function __construct(DoctorRepository $repository, DoctorService $service){
         $this->repository = $repository;
@@ -43,28 +48,59 @@ class DoctorsController extends Controller{
 
 
 
-    
-    public function index(){
 
+
+	public function analyzeAccess(){
+		
 		if(Controller::isAuthenticated()){
+			
+			if(Auth::user()->isADoctor)	$access = self::DOCTOR;
+			else $access = self::USER;
+		
+		}
+
+		else $access = self::UNLOGGED;
+
+		return $access;
+
+	}
+
+
+	public function accessViewDoctor($view, $defaultRoute){
+		if($this->accessByADoctor())
+			return view($view);
+		
+		else
+			return redirect()->route($defaultRoute);
+	}
+
+
+	public function accessByADoctor(){ 
+		return $this->analyzeAccess() == self::DOCTOR;
+	}
+
+	public function accessByAUser(){ 
+		return $this->analyzeAccess() == self::USER;
+	}
+
+
+	
+	
+    public function index(){
+		return $this->accessViewDoctor('doctor.index', 'user.login_get');
+		/*if($this->accessByADoctor())
+			return view('doctor.index');
+		
+		else
+			return redirect()->route('user.login_get');
+		*/
+
+		/*if(Controller::isAuthenticated()){
 			return view('doctor.index');
 		}
 		else{
 			return redirect()->route('user.login_get');
-		}
-		
-		/*$this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
-        $doctors = $this->repository->all();
-
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'data' => $doctors,
-            ]);
-        }
-
-		return view('doctors.index', compact('doctors'));*/
-		
+		}*/
 	}
 	
 
@@ -83,35 +119,6 @@ class DoctorsController extends Controller{
 		$this->service->store($registeredData);
 
 		return redirect()->route('doctor.index');
-	
-
-        /*try {
-
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
-
-            $doctor = $this->repository->create($request->all());
-
-            $response = [
-                'message' => 'Doctor created.',
-                'data'    => $doctor->toArray(),
-            ];
-
-            if ($request->wantsJson()) {
-
-                return response()->json($response);
-            }
-
-            return redirect()->back()->with('message', $response['message']);
-        } catch (ValidatorException $e) {
-            if ($request->wantsJson()) {
-                return response()->json([
-                    'error'   => true,
-                    'message' => $e->getMessageBag()
-                ]);
-            }
-
-            return redirect()->back()->withErrors($e->getMessageBag())->withInput();
-        }*/
     }
 
 	
@@ -147,8 +154,43 @@ class DoctorsController extends Controller{
 
 
 	public function settings(){
-		return view('doctor.settings');
+		if($this->accessByADoctor()){
+			return view('doctor.settings');
+		}
+		else{
+			return redirect()->route('user.login_get');
+		}
 	}
+
+	public function settingsDelete(){
+		if($this->accessByADoctor()){
+			return view('doctor.settingsDelete', ["user" => Auth::user()]);
+		}
+		else{
+			return redirect()->route('user.login_get');
+		}
+	}
+
+
+	
+	public function deleteDoctor(DoctorUpdateRequest $request){
+		
+		$dtAuthDoctor = [
+			"password" => $request->all()['password'],
+			"id" => Auth::user()->id,
+			//"success" => Auth::user()
+		];
+
+		$answer = $this->service->delete($dtAuthDoctor);
+		//echo json_encode($dtAuthDoctor);
+
+		/**
+		 * Chamar a funcao de exclusao e enviar dados
+		 * retornar a resposta
+		 */
+		//echo json_encode($answer);
+		return;
+    }
 
 
 	public function update(DoctorUpdateRequest $request, $id){
@@ -185,7 +227,8 @@ class DoctorsController extends Controller{
 
 
     public function destroy($id){
-        $deleted = $this->repository->delete($id);
+		dd($id);
+        /*$deleted = $this->repository->delete($id);
 
         if (request()->wantsJson()) {
 
@@ -195,6 +238,6 @@ class DoctorsController extends Controller{
             ]);
         }
 
-        return redirect()->back()->with('message', 'Doctor deleted.');
+        return redirect()->back()->with('message', 'Doctor deleted.');*/
     }
 }

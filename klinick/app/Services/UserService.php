@@ -159,7 +159,7 @@ class UserService{
 	 * RETORNO		: Retorna se a senha esta correta(true) ou nao(false)
 	 * 
 	 */
-	public function checkUser($password, $id){
+	public static function checkUser($password, $id){
 		$query = DB::select('select * from users where password like ? and id = ?', [$password, $id]);
 		if($query){
 			return true;
@@ -245,7 +245,6 @@ class UserService{
 	 */	
 	public function delete($user){
 
-		// Verifica se a senha está correta
 		$checkingUser = $this->checkUser($user['password'], $user['id']);
 
 		// Se a senha estiver correta, o usuario é excluido.

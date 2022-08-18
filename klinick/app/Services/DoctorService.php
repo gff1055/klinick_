@@ -23,6 +23,8 @@ class DoctorService{
 
 
 
+
+
 	/**
 	 * 
 	 * FUNCAO		: store
@@ -40,35 +42,45 @@ class DoctorService{
 	 */
 	
 	public function store($data){
-//		$user = new UserService($a, $b);
 
 		try{			
 			$t = $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE);
 			$doctor = $this->repository->create($data);
 			DB::table('users')->where('id',$data['user_id'])->update(['isADoctor' => true]);
 		}
-		
+	
 		catch(Exception $except){
 			return 0;
 		}
 	}
 
 
-	public function isADoctor($pIdDoctor){
-		$isDoctor = DB::select('select * from doctors where user_id = ?', $id);
+	public function isADoctor($pIdUser){
+		/*$isDoctor = DB::select('select * from doctors where user_id = ?', $id);
+		return $isDoctor;*/
 	}
 
 
-	/**
-	 * FUNCAO		: delete
-	 
-	 * OBJETIVO		: Efetuar a exclusao do usuario da base de dados
-	 
-	 * PARAMETROS	: $user - Dados do usuario a ser excluido
-	 
-	 * RETORNO		: Array com feedback da atualizacao
-	 */	
-	public function delete($doctor){
+	public function delete($pDtAuthDoctor){
+		$checkingUser = UserService::checkUser($pDtAuthDoctor['password'], $pDtAuthDoctor['id']);
+		
+		if($checkingUser){
+		//	$opDelete = DB::delete("delete from users where id = ?", [$user['id']]);
+			$arrDtFeedback = [				
+				'success' => true,
+				'code' => '888',
+		//		'data' => $opDelete
+			];
+		}
+		
+		else{
+			$arrDtFeedback = [				
+				'success' => false,
+				'code' => '341834',
+			];
+		}
+
+		return $arrDtFeedback;
 	}
 
 

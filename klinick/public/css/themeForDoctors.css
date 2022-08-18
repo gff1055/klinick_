@@ -8,7 +8,7 @@ inl			1, 0, 0, 0
 /** ESTILO GERAL DOS FORMULARIOS **/
 
 .styleGeneral{									
-	color: #015D9A;
+	color: #002966;
 	font-weight: bold;
 }
 
@@ -33,18 +33,22 @@ form .icone{
 
 /* Estilo do botao do formulario*/
 form .divBtEnviar button{
-	color: #015D9A;
+	color: #002966;
 }
+
+/*form .divBtEnviar button:hover{
+	color: #015D9A;
+}*/
 
 
 /* Botoes submit dos formularios */
 form input[type="submit"]{						
-	background-color: /*#5BA28B*/#015D9A;
+	background-color: /*#5BA28B*/#002966;
 }
 
 /* Botoes submit ao passar o mouse por cima */
 form input[type="submit"]:hover{				
-	background-color: #006650;
+	background-color: #015D9A;
 }
 
 

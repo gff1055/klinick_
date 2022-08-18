@@ -15,16 +15,17 @@
 
 .setOption{
 	color: #fff !important;
-    background-color: #015D9A !important;
-	border-color: #015D9A !important;
+    background-color: #002966 !important;
+	border-color: #002966 !important;
 	white-space: nowrap;
+	width: 100%;
 }
 
 
 .setOption:hover{
 	color: #fff !important;
-    background-color: #0069d9 !important;
-    border-color: #0062cc !important;
+    background-color: #015D9A !important;
+    border-color: #015D9A !important;
 }
 
 /*.containerSettings .options{
