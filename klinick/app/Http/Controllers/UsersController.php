@@ -28,7 +28,15 @@ class UsersController extends Controller{
         $this->repository = $repository;
 		$this->service = $service;
 		
-    }
+	}
+	
+	public function acessViewOrRoute($view, $arrDataView, $defaulRoute){
+		if(Controller::isAuthenticated()){
+			return view($view, $arrDataView);
+		}
+		else
+			return redirect()->route($defaulRoute);
+	}
     
     /**
      * FUNCAO:      register
@@ -48,13 +56,10 @@ class UsersController extends Controller{
      * RETORNO:     retorna a view de login ou a view de perfil do usuario (no caso de usuarios ja logados)
      */
 	public function index(){
-
-		if(Controller::isAuthenticated()){
-			return view('user.index', ["user" => Auth::user()]);
-		}
-		else
-			return redirect()->route('user.login_get');
-
+		return $this->acessViewOrRoute(
+			'user.index', ["user" => Auth::user()],
+			'user.login_get'
+		);
 	}
 
 
@@ -101,13 +106,10 @@ class UsersController extends Controller{
      */
 	public function settingsPersonalData(){
 
-        // Se nao tiver nenhum usuario autenticado, 
-        // é redirecionado para a rota de login
-        if(Controller::isAuthenticated()){
-			return view('user.settingsPersonalData', ["user" => Auth::user()]);
-		}
-		else
-			return redirect()->route('user.login_get');
+		return $this->acessViewOrRoute(
+			'user.settingsPersonalData', ["user" => Auth::user()],
+			'user.login_get'
+		);
 
     }
 
@@ -121,13 +123,10 @@ class UsersController extends Controller{
      */
 	public function settingsAuthData(){
 
-		// Se nao tiver nenhum usuario autenticado, 
-        // é redirecionado para a rota de login
-		if(Controller::isAuthenticated()){
-			return view('user.settingsAuthData', ["user" => Auth::user()]);
-		}
-		else
-			return redirect()->route('user.login_get');
+		return $this->acessViewOrRoute(
+			'user.settingsAuthData', ["user" => Auth::user()],
+			'user.login_get'
+		);
 
     }
 
@@ -186,13 +185,11 @@ class UsersController extends Controller{
      */
 	public function settingsDelete(){
 
-		// Se nao tiver nenhum usuario autenticado, 
-		// é redirecionado para a rota de login
-		if(Controller::isAuthenticated()){
-			return view('user.settingsDelete', ["user" => Auth::user()]);
-		}
-		else
-			return redirect()->route('user.login_get');
+		return $this->acessViewOrRoute(
+			'user.settingsDelete',
+			["user" => Auth::user()],
+			'user.login_get'
+		);
 
 	}
 
@@ -260,19 +257,6 @@ class UsersController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function destroy($id){
-		
-        /*$deleted = $this->repository->delete($id);
-
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'message' => 'User deleted.',
-                'deleted' => $deleted,
-            ]);
-        }
-
-		return redirect()->back()->with('message', 'User deleted.');*/
-		//return view('user.register');
 
 	}
 	

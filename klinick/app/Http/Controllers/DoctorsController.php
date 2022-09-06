@@ -35,6 +35,10 @@ class DoctorsController extends Controller{
         $this->repository = $repository;
         $this->service  = $service;
 	}
+
+	public function accessByADoctor(){ return $this->analyzeAccess() == self::DOCTOR; }
+	public function accessByAUser(){ return $this->analyzeAccess() == self::USER; }
+
 	
 	public function agreement(){
 		
@@ -54,58 +58,40 @@ class DoctorsController extends Controller{
 		
 		if(Controller::isAuthenticated()){
 			
-			if(Auth::user()->isADoctor)	$access = self::DOCTOR;
-			else $access = self::USER;
+			if(Auth::user()->isADoctor)
+				return self::DOCTOR;
+			else
+				return self::USER;
 		
 		}
 
-		else $access = self::UNLOGGED;
-
-		return $access;
+		else
+			return self::UNLOGGED;
 
 	}
 
 
-	public function accessViewDoctor($view, $defaultRoute){
+	public function accessViewOrRoute($view, $arrDataView, $defaultRoute){
 		if($this->accessByADoctor())
-			return view($view);
+			return view($view, $arrDataView);
 		
 		else
 			return redirect()->route($defaultRoute);
 	}
 
-
-	public function accessByADoctor(){ 
-		return $this->analyzeAccess() == self::DOCTOR;
-	}
-
-	public function accessByAUser(){ 
-		return $this->analyzeAccess() == self::USER;
-	}
-
-
-	
 	
     public function index(){
-		return $this->accessViewDoctor('doctor.index', 'user.login_get');
-		/*if($this->accessByADoctor())
-			return view('doctor.index');
-		
-		else
-			return redirect()->route('user.login_get');
-		*/
-
-		/*if(Controller::isAuthenticated()){
-			return view('doctor.index');
-		}
-		else{
-			return redirect()->route('user.login_get');
-		}*/
+		return $this->accessViewOrRoute('doctor.index', [] ,'user.login_get');
 	}
 	
 
 	public function create(){
-		return view("doctor.create");		
+		if(Controller::isAuthenticated()){
+			return view('doctor.create');
+		}
+		else{
+			return redirect()->route('user.login_get');
+		}
     }
 
 
@@ -133,7 +119,10 @@ class DoctorsController extends Controller{
 				]);
 			}
 	
-			return view('doctor.show', ["doctor" => $doctor, "user" => Auth::user()]);
+			return view('doctor.show', [
+				"doctor" => $doctor,
+				"user" => Auth::user()
+			]);
 
 		}
 
@@ -148,41 +137,30 @@ class DoctorsController extends Controller{
 
     public function edit($id){
         $doctor = $this->repository->find($id);
-
         return view('doctors.edit', compact('doctor'));
     }
 
 
 	public function settings(){
-		if($this->accessByADoctor()){
-			return view('doctor.settings');
-		}
-		else{
-			return redirect()->route('user.login_get');
-		}
+		return $this->accessViewOrRoute('doctor.settings', [], 'user.login_get');
 	}
 
 	public function settingsDelete(){
-		if($this->accessByADoctor()){
-			return view('doctor.settingsDelete', ["user" => Auth::user()]);
-		}
-		else{
-			return redirect()->route('user.login_get');
-		}
+		return $this->accessViewOrRoute('doctor.settingsDelete', ["user" => Auth::user()], 'user.login_get');
 	}
 
 
 	
 	public function deleteDoctor(DoctorUpdateRequest $request){
 		
-		$dtAuthDoctor = [
+		$doctorAuthenticationData = [
 			"password" => $request->all()['password'],
 			"id" => Auth::user()->id,
-			//"success" => Auth::user()
+			"success" => Auth::user()
 		];
 
-		$answer = $this->service->delete($dtAuthDoctor);
-		//echo json_encode($dtAuthDoctor);
+		$feedbackOperarion = $this->service->delete($doctorAuthenticationData);
+		echo json_encode($feedbackOperarion);
 
 		/**
 		 * Chamar a funcao de exclusao e enviar dados

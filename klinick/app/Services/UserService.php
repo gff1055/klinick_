@@ -84,8 +84,12 @@ class UserService{
 	}
 
 
-	public function updateTypeUser($id){
+	public static function setUserAsDoctor($id){
 		DB::table('users')->where('id',$id)->update(['isADoctor' => true]);
+	}
+
+	public static function unsetUserAsDoctor($id){
+		DB::table('users')->where('id',$id)->update(['isADoctor' => false]);
 	}
 
 

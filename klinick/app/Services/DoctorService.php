@@ -46,7 +46,8 @@ class DoctorService{
 		try{			
 			$t = $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE);
 			$doctor = $this->repository->create($data);
-			DB::table('users')->where('id',$data['user_id'])->update(['isADoctor' => true]);
+			UserService::setUserAsDoctor($data['user_id']);
+			//DB::table('users')->where('id',$data['user_id'])->update(['isADoctor' => true]);
 		}
 	
 		catch(Exception $except){
@@ -61,12 +62,16 @@ class DoctorService{
 	}
 
 
-	public function delete($pDtAuthDoctor){
-		$checkingUser = UserService::checkUser($pDtAuthDoctor['password'], $pDtAuthDoctor['id']);
+	public function delete($pDoctorAuthenticationData){
 		
-		if($checkingUser){
-		//	$opDelete = DB::delete("delete from users where id = ?", [$user['id']]);
-			$arrDtFeedback = [				
+		$checkDoctorUser = UserService::checkUser($pDoctorAuthenticationData['password'], $pDoctorAuthenticationData['id']);
+		
+		if($checkDoctorUser){
+			
+			$opDelete = DB::delete("delete from doctors where user_id = ?", [$pDoctorAuthenticationData['id']]);
+			UserService::unsetUserAsDoctor($pDoctorAuthenticationData['id']);
+			
+			$feedbackData = [				
 				'success' => true,
 				'code' => '888',
 		//		'data' => $opDelete
@@ -74,13 +79,13 @@ class DoctorService{
 		}
 		
 		else{
-			$arrDtFeedback = [				
+			$feedbackData = [				
 				'success' => false,
 				'code' => '341834',
 			];
 		}
 
-		return $arrDtFeedback;
+		return $feedbackData;
 	}
 
 

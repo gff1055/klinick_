@@ -61,7 +61,7 @@ form .icone{
 /* Avisos ou esclarecimentos no formulario */
 form .notice{
 	font-size: .8em;
-	color: gray;
+	color: #555555;
 }
 
 /* Estilo geral dos atributos dos formularios */
