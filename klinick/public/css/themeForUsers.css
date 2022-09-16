@@ -8,6 +8,11 @@ inl			1, 0, 0, 0
 /** ESTILO GERAL DOS FORMULARIOS **/
 
 /* Cor geral do site */
+
+.generalThemeColorUsers{
+	color: #006C67;
+}
+
 .mdl .colorTheme{									
 	background-color: #006C67;
 	color: #fff;
@@ -95,6 +100,25 @@ form input[type="submit"]:hover{
 #divOptionSettingMenuSelected{
 	background-color: rgb(17, 143, 137);
 	transition: 0.25s;
+}
+
+
+/*Botoes de menu*/
+
+.menuOptionButton{
+	color: #006C67 !important;
+    background-color:  #ddd !important;
+	border-color: #ddd !important;
+	white-space: nowrap;
+	width: 100%;
+	font-size: 0.8em !important;
+}
+
+
+.menuOptionButton:hover{
+	color: #fff !important;
+    background-color: rgb(17, 143, 137) !important;
+    border-color: rgb(17, 143, 137) !important;
 }
 
 
