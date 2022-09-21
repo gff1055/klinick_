@@ -193,6 +193,14 @@ class UsersController extends Controller{
 
 	}
 
+	public function newAppointment($id){
+
+		echo "E AI ";
+		echo $id;
+
+
+	}
+
 
 
 	public function show($id){
