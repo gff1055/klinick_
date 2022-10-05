@@ -12,6 +12,10 @@ use App\Http\Requests\AppointmentUpdateRequest;
 use App\Repositories\AppointmentRepository;
 use App\Validators\AppointmentValidator;
 
+use Auth;
+use Exception;
+
+
 /**
  * Class AppointmentsController.
  *
@@ -61,9 +65,14 @@ class AppointmentsController extends Controller
 		//echo $id;
 	}
 	
-	public function create($s){
-		return view('appointment.create');
-		//echo $id;
+	public function create($userId){
+		if(Controller::isAuthenticated()){
+			if($userId == Auth::user()->id){
+				return view('appointment.create');
+			}
+		}
+
+		return redirect()->route('user.login_get');
     }
 
     /**
