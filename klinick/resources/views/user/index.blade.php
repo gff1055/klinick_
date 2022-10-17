@@ -13,8 +13,100 @@
 
 	@include('templates.topMenuBar.render', ["user" => $user])
 
-	<div class="container">
+	<div class="mdl modal fade" id="tokenCreationForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Novo atendimento: </h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
 
+				{!! Form::open([
+					'route' => ['medform.store',$user->id],
+					//'class' => 'formRegister'
+					])
+				!!}
+
+				Preencha o formulario. Assim que a ficha for gerada algum medico entrará em contato...
+			
+				<div class="modal-body">
+					
+					<div class="row">
+						<div class="col-8">
+							{!! Form::text('city', null, [
+								'class' => 'atrForm',
+								'placeholder' => 'Cidade'
+							]) !!}
+						</div>
+						<div class="col-4">
+							{!! Form::text('state', null, [
+								'class' => 'atrForm',
+								'placeholder' => 'Estado'
+							]) !!}
+						</div>
+					</div>
+
+					<br>
+					
+					<div class="row">
+						<div class="col-12">
+							<span class="notice">
+								* Preencha o campo com o máximo de informação possivel
+								<ul>
+									<li> O que está sentindo</li>
+									<li> Historico familiar </li>
+									<li> Rémedios que está tomando ou já tomou </li>
+								</ul>
+							</span>
+							{!! Form::textarea('complaint', null, [
+								'class' => 'atrForm',
+								'placeholder' => 'Queixa',
+								'rows' => "8"
+							]) !!}
+						</div>
+					</div>
+					
+					<br>
+
+					<span class="labelField">Forma de pagamento: </span>
+					{!! Form::select('paymentMethod', array(
+						'dinheiro' => 'Dinheiro',
+						'cartão de crédito' => 'Cartão de Crédito',
+						'cartão de débito' => 'Cartão de Drédito',
+						'pix' => 'PIX',
+						'convênio' => 'Convênio'
+					),[
+						'class'=>'atrForm',
+					]) !!}
+					
+					<br>
+					<span class="notice">
+						*Apenas carater informativo, valor da consulta será acordado entre médico e paciente
+					</span>
+
+				
+				</div>
+				
+				<div class="modal-footer">
+					<!--<button type="button" class="btn colorTheme buttonOk">Ok, eu entendi</button>-->
+					{!!Form::submit('Retirar ficha',[
+						//'class' => 'atrForm',
+						'class' => 'atrForm btn colorTheme buttonOk',
+						'id' => 'submitMedFormBtn'
+					])!!}
+					<button type="button" id="btnExitModalRegistrationForm" class="atrForm btn btn-secondary" data-dismiss="modal">Sair</button>
+				</div>
+
+				{!!Form::close()!!}
+				
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
 		<div class="row">
 			<div class="col-12">
 				<h3 class="generalThemeColorUsers">@php
@@ -28,15 +120,14 @@
 
 		<div class="row">
 			<div class="col-12">
-				<button type="button" class="btn menuOptionButton" data-toggle="modal">
+				<button type="button" class="btn menuOptionButton" data-toggle="modal" data-target="#tokenCreationForm">
 					<div class="m-1">
-						<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-clipboard-heart" viewBox="0 0 16 16">
-							<path fill-rule="evenodd" d="M5 1.5A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm5 0a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Z"/>
-							<path d="M3 1.5h1v1H3a1 1 0 0 0-1 1V14a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V3.5a1 1 0 0 0-1-1h-1v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
-							<path d="M8 6.982C9.664 5.309 13.825 8.236 8 12 2.175 8.236 6.336 5.31 8 6.982Z"/>
+						<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-calendar2-plus" viewBox="0 0 16 16">
+							<path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z"/>
+							<path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4zM8 8a.5.5 0 0 1 .5.5V10H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V11H6a.5.5 0 0 1 0-1h1.5V8.5A.5.5 0 0 1 8 8z"/>
 						</svg>
 					</div>
-					Necessito<br>de consulta
+					Novo<br>Atendimento
 				</button>
 			</div>
 		</div>
@@ -130,7 +221,7 @@
 
 	</div>	
 
-
+	<script src="{{asset('js/user/index.js')}}"></script>
 
 @endsection
 

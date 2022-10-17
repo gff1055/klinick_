@@ -72,15 +72,11 @@ Route::delete('/user/delete',[
 	'uses'	=> 'UsersController@deleteUser'
 ]);
 
-/*Route::get('/user/appointment/new',[
-	'as'	=> 'appointment.new',
-	'uses'	=> 'UsersController@deleteUser'
-]);?????*/
-
 Route::resource('user', 'UsersController');
 
 
 Route::resource('user/{user}/appointment', 'AppointmentsController');
+Route::resource('user/{user}/medform', 'MedFormsController');
 
 
 
