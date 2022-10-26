@@ -75,8 +75,20 @@ Route::delete('/user/delete',[
 Route::resource('user', 'UsersController');
 
 
-Route::resource('user/{user}/appointment', 'AppointmentsController');
+Route::get('/user/{user}/medform/all', [
+	'as'	=> 'medForm.all',
+	'uses'	=> 'MedFormsController@allMedForms'
+]);
+
+Route::get('/user/{user}/medform/{medform}/close', [
+	'as'	=> 'medForm.close',
+	'uses'	=> 'MedFormsController@close'
+]);
+
 Route::resource('user/{user}/medform', 'MedFormsController');
+
+Route::resource('user/{user}/appointment', 'AppointmentsController');
+
 
 
 

@@ -12,6 +12,13 @@ use App\Http\Requests\MedFormUpdateRequest;
 use App\Repositories\MedFormRepository;
 use App\Validators\MedFormValidator;
 
+use App\Services\MedFormService;
+
+use Auth;
+use Exception;
+
+use App\Http\Controllers\Controller;
+
 /**
  * Class MedFormsController.
  *
@@ -19,15 +26,8 @@ use App\Validators\MedFormValidator;
  */
 class MedFormsController extends Controller
 {
-    /**
-     * @var MedFormRepository
-     */
     protected $repository;
-
-    /**
-     * @var MedFormValidator
-     */
-    protected $validator;
+    protected $service;
 
     /**
      * MedFormsController constructor.
@@ -35,10 +35,9 @@ class MedFormsController extends Controller
      * @param MedFormRepository $repository
      * @param MedFormValidator $validator
      */
-    public function __construct(MedFormRepository $repository, MedFormValidator $validator)
-    {
-        $this->repository = $repository;
-        $this->validator  = $validator;
+    public function __construct(MedFormRepository $pRepository, MedFormService $pService){
+        $this->repository = $pRepository;
+        $this->service  = $pService;
     }
 
     /**
@@ -70,9 +69,12 @@ class MedFormsController extends Controller
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function store(MedFormCreateRequest $request)
-    {
-		dd($request->all());
+    public function store(MedFormCreateRequest $request){
+
+
+
+		$answer = $this->service->store($request);
+		dd($answer);
         /*try {
 
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);

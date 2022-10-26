@@ -212,7 +212,7 @@ form input[disabled]:hover{
 
 /* Menu do topo da pagina inicial */
 .topMenuBar{
-	background-color:  #eeeeee;
+	/*background-color:  #eeeeee;*/
 /*	color: #00997a;*/
 	display: flex;
 	align-items: center;
@@ -251,12 +251,12 @@ form input[disabled]:hover{
 }
 
 /* Links do cabecalho ao passar o mouse */
-.itemTopMenuBar .btn:hover{
+/*.itemTopMenuBar .btn:hover{
 	color: #666666;
 	text-decoration: none;
 	background-color: #cdcdcd;
 	transition: .1s;
-}
+}*/
 
 .itemTopMenuBar_logo a:hover{
 	text-decoration: none;

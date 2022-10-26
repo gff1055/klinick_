@@ -5,6 +5,19 @@ Id			0, 1, 0, 0
 inl			1, 0, 0, 0
 */
 
+
+.topMenuBar{
+	background-color: #C1E1C1;
+}
+
+/* Links do cabecalho ao passar o mouse */
+.itemTopMenuBar .btn:hover{
+	color: #fff;
+	text-decoration: none;
+	background-color: rgb(17, 143, 137);
+	transition: .3s;
+}
+
 /** ESTILO GERAL DOS FORMULARIOS **/
 
 /* Cor geral do site */
@@ -107,7 +120,7 @@ form input[type="submit"]:hover{
 
 .menuOptionButton{
 	color: #006C67 !important;
-    background-color:  #ddd !important;
+    background-color:  #C1E1C1 !important;
 	border-color: #ddd !important;
 	white-space: nowrap;
 	width: 100%;
