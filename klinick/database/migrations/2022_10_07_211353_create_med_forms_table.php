@@ -23,6 +23,7 @@ class CreateMedFormsTable extends Migration{
 			$table->string('city', 32);
 			$table->string('complaint', 1000);
 			$table->string('paymentMode', 32);
+			$table->unsignedInteger('status');
 
 			$table->timestamps();
 

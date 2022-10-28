@@ -20,6 +20,21 @@ class MedForm extends Model implements Transformable
      *
      * @var array
      */
-    protected $fillable = [];
+	public $timestamps = true;          // Gerencia as datas de exclusao, edicao, criacao...
+
+
+
+    protected $fillable = [
+		'user_id',
+		'date',
+		'state',
+		'city',
+		'complaint',
+		'paymentMode'
+	];
+
+	public function user(){
+		return $this->belongsTo(User::class, 'user_id', 'id');
+	}
 
 }
