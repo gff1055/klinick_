@@ -124,3 +124,8 @@ Route::delete('/doctor/delete',[
 Route::resource('doctor', 'DoctorsController');
 
 
+Route::get('/test',[
+	'as'	=> 'my.test',
+	'uses'	=> 'TestsController@running'
+]);
+

@@ -6,11 +6,11 @@ use \Prettus\Validator\Contracts\ValidatorInterface;
 use \Prettus\Validator\LaravelValidator;
 
 /**
- * Class MedFormValidator.
+ * Class TestValidator.
  *
  * @package namespace App\Validators;
  */
-class MedFormValidator extends LaravelValidator
+class TestValidator extends LaravelValidator
 {
     /**
      * Validation Rules
@@ -18,9 +18,7 @@ class MedFormValidator extends LaravelValidator
      * @var array
      */
     protected $rules = [
-        ValidatorInterface::RULE_CREATE => [
-			'user_id' => 'required',
-		],
+        ValidatorInterface::RULE_CREATE => [],
         ValidatorInterface::RULE_UPDATE => [],
     ];
 }

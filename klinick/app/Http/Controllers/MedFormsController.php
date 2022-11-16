@@ -38,7 +38,19 @@ class MedFormsController extends Controller
     public function __construct(MedFormRepository $pRepository, MedFormService $pService){
         $this->repository = $pRepository;
         $this->service  = $pService;
-    }
+	}
+	
+	public function identifyData($data, $id){
+		
+		$data["user_id"] = $id;
+		
+		$feedback = [
+			"content" 			=> $data,
+			"message"			=> "Success"
+		];
+		
+		return $feedback;
+	}
 
     /**
      * Display a listing of the resource.
@@ -60,48 +72,11 @@ class MedFormsController extends Controller
         return view('medForms.index', compact('medForms'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  MedFormCreateRequest $request
-     *
-     * @return \Illuminate\Http\Response
-     *
-     * @throws \Prettus\Validator\Exceptions\ValidatorException
-     */
     public function store(MedFormCreateRequest $request){
 
-
-
-		$answer = $this->service->store($request);
-		dd($answer);
-        /*try {
-
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
-
-            $medForm = $this->repository->create($request->all());
-
-            $response = [
-                'message' => 'MedForm created.',
-                'data'    => $medForm->toArray(),
-            ];
-
-            if ($request->wantsJson()) {
-
-                return response()->json($response);
-            }
-
-            return redirect()->back()->with('message', $response['message']);
-        } catch (ValidatorException $e) {
-            if ($request->wantsJson()) {
-                return response()->json([
-                    'error'   => true,
-                    'message' => $e->getMessageBag()
-                ]);
-            }
-
-            return redirect()->back()->withErrors($e->getMessageBag())->withInput();
-        }*/
+		$enteredData = $this->identifyData($request->all(), Auth::user()->id);
+		$this->service->store($enteredData["content"]);
+		
     }
 
     /**

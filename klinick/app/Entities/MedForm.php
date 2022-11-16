@@ -30,7 +30,8 @@ class MedForm extends Model implements Transformable
 		'state',
 		'city',
 		'complaint',
-		'paymentMode'
+		'paymentMode',
+		'status'
 	];
 
 	public function user(){

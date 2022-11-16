@@ -72,7 +72,7 @@
 					<br>
 
 					<span class="labelField">Forma de pagamento: </span>
-					{!! Form::select('paymentMethod', array(
+					{!! Form::select('paymentMode', array(
 						'dinheiro' => 'Dinheiro',
 						'cartão de crédito' => 'Cartão de Crédito',
 						'cartão de débito' => 'Cartão de Drédito',
