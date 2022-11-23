@@ -40,6 +40,7 @@ class MedFormsController extends Controller
         $this->service  = $pService;
 	}
 	
+	/** Funcao que adiciona o id do usuario*/
 	public function identifyData($data, $id){
 		
 		$data["user_id"] = $id;
@@ -75,7 +76,10 @@ class MedFormsController extends Controller
     public function store(MedFormCreateRequest $request){
 
 		$enteredData = $this->identifyData($request->all(), Auth::user()->id);
-		$this->service->store($enteredData["content"]);
+		
+		$result = $this->service->store($enteredData["content"]);
+		if($result["success"] == false)
+			echo $result["data"];
 		
     }
 

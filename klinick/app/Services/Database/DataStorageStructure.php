@@ -2,9 +2,11 @@
 
 namespace App\Services\Database;
 
-interface dataStorageStructure{
+interface DataStorageStructure{
 
-	public function store($pRepository, $pData);
+	public function validate($pValidator, $pData);
+
+	public function storeData($pRepository, $pData);
 
 }
 
