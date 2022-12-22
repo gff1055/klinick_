@@ -8,6 +8,7 @@
 
 
 @section('loadingCss')
+	<link rel="stylesheet" href="{{asset('css/user/create.css')}}">
 	<link rel="stylesheet" href="{{asset('css/themeForUsers.css')}}">
 @endsection
 

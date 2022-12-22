@@ -10,7 +10,7 @@ inl			1, 0, 0, 0
 /* Links do cabecalho ao passar o mouse */
 
 .topMenuBar{
-	background-color: #ADD8E6;
+	background-color: #002966;
 }
 
 .itemTopMenuBar .btn:hover{
@@ -18,6 +18,16 @@ inl			1, 0, 0, 0
 	text-decoration: none;
 	background-color: #015D9A;
 	transition: .1s;
+}
+
+.main-page-title{
+	text-align: center;
+	padding-bottom: 16px;
+	padding-top: 16px;
+	display: block;
+	font-weight: bold;
+	background-color: #002966;
+	color: #fff;
 }
 
 /** ESTILO GERAL DOS FORMULARIOS **/
@@ -84,7 +94,7 @@ form input[type="submit"]:hover{
 
 /* Logo ao lado do menu na pagina inicial */
 .topMenuBar .logo{
-	color: #015D9A;
+	color: #fff;
 	font-size: 32px;
 	margin-right: 16px;
 }

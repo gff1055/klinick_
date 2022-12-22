@@ -7,7 +7,8 @@ inl			1, 0, 0, 0
 
 
 .topMenuBar{
-	background-color: #C1E1C1;
+	/*background-color: #C1E1C1;*/
+	background-color: #006C67;
 }
 
 /* Links do cabecalho ao passar o mouse */
@@ -18,12 +19,34 @@ inl			1, 0, 0, 0
 	transition: .3s;
 }
 
-/** ESTILO GERAL DOS FORMULARIOS **/
-
 /* Cor geral do site */
+
+.main-page-title{
+	text-align: center;
+	padding-bottom: 16px;
+	padding-top: 16px;
+	display: block;
+	font-weight: bold;
+	background-color: #006C67;
+	color: #fff;
+}
 
 .generalThemeColorUsers{
 	color: #006C67;
+}
+
+.generalThemeColorUsersReverse{
+	color: #888;
+}
+
+.btnStyleGeneral{
+	background-color: #006C67;
+	color: #fff;
+}
+
+.btnStyleGeneralReverse{
+	background-color: #888;
+	color: #fff;
 }
 
 .mdl .colorTheme{									
@@ -76,11 +99,11 @@ form input[type="submit"]:hover{
 
 
 /* Logo ao lado do menu na pagina inicial */
-.topMenuBar .logo{
-	color: #006C67;
+/*.topMenuBar .logo{
+	color: #fff;
 	font-size: 32px;
 	margin-right: 16px;
-}
+}*/
 
 
 /* MENU SANDUICHE NO MENU DA BARRA SUPERIOR */
@@ -118,13 +141,20 @@ form input[type="submit"]:hover{
 
 /*Botoes de menu*/
 
+.menu-option-div{
+	margin: 0px !important;
+}
+
 .menuOptionButton{
-	color: #006C67 !important;
-    background-color:  #C1E1C1 !important;
+	background-color:  #eee !important;
+    /*background-color:  #C1E1C1 !important;*/
 	border-color: #ddd !important;
 	white-space: nowrap;
 	width: 100%;
 	font-size: 0.8em !important;
+	font-weight: bold  !important;
+	margin: 0px  !important;
+	text-align: center;
 }
 
 

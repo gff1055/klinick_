@@ -58,9 +58,10 @@ class MedFormsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
+    public function index(){
+		return view('medForm.index', ["user" => Auth::user()]);
+		
+/*        $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
         $medForms = $this->repository->all();
 
         if (request()->wantsJson()) {
@@ -70,28 +71,28 @@ class MedFormsController extends Controller
             ]);
         }
 
-        return view('medForms.index', compact('medForms'));
+        return view('medForms.index', compact('medForms'));*/
     }
 
     public function store(MedFormCreateRequest $request){
 
 		$enteredData = $this->identifyData($request->all(), Auth::user()->id);
-		
 		$result = $this->service->store($enteredData["content"]);
-		if($result["success"] == false)
-			echo $result["data"];
-		
-    }
+		return redirect()->route("medform.index", ["user" => Auth::user()->id]);
+	
+		/*if($result["success"] == false)
+			echo $result["data"];*/
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
+		
+	}
+
+
+	public function allMedForms(){
+    }
+	
+
+
+    public function show($id){
         $medForm = $this->repository->find($id);
 
         if (request()->wantsJson()) {

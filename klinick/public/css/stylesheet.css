@@ -79,11 +79,6 @@ form .notice{
 	font-weight: bold;
 }
 
-/* Estilo de campos que ocupam metade do formulario */
-.atrFormSizeHalf{
-	/*width: 49.5%;*/
-}
-
 /* Div que contem botoes submit dos formularios */
 form .divBtEnviar{
 	text-align: center;
@@ -134,80 +129,6 @@ form input[disabled]:hover{
 	background-color: /*#477F6D*/#888888;
 }
 
-
-
-/*CONFIGURACOES DA AREA DE LOGIN DE USUARIO*/
-
-/* Estilo do body da pagina de login */
-.bodyPaginaLoginUser{								
-	background-image: url("/images/frontdesk.png");
-	background-size: cover;
-	font-family: Verdana, "sans-serif";	
-}
-
-/* Camada escura em cima da imagem de fundo */
-.divMaskBackgroundImage{
-	background-color: rgba(0,0,0,.5);
-}
-
-.divFormLogin{									/* Estilo da div que abriga o formulario de login */
-	height: 100%;								/* Altura da area dor formulario */
-	min-height: 100%;							/* Altura minima da area dor formulario */
-	display: flex;								/* Flexbox */
-	align-items: center;						/*Alinha form no centro*/
-	justify-content: center;					/*Alinha form no centro*/
-}
-
-/*Estilo do formulario de login*/
-.formLogin{						
-	background-color: #fff;
-	margin-top: 1%;
-	width: 400px;
-	text-align: center;
-}
-
-/* Estilo dos atributos do formulario de login */
-.formLogin .atrForm{
-	width: 82%;
-}
-
-
-
-
-
-/*CONFIGURACOES DA PAGINA DE CADASTRO DE NOVOS USUARIO*/
-
-
-
-/* Estilo da div que contem o formulario de cadastro */
-.divUserRegisterForm form{
-	width: 100%;
-}
-
-/*.formUserRegister{
-	background-color: #eee;
-}*/
-
-
-.formRegisterTitleLine{
-	text-align: center;
-	/*background-color: #00997a;*/
-}
-
-/*Titulo do formulario*/
-.formRegisterTitle{
-	text-align: center;
-}
-
-.labelField{
-	font-size: 1em;
-	font-weight: bold;
-}
-
-
-
-
-
 /* CONFIGURACOES GERAIS DO MENU DA BARRA SUPERIOS */
 
 /* Menu do topo da pagina inicial */
@@ -224,14 +145,15 @@ form input[disabled]:hover{
 
 /* Logo ao lado do menu na pagina inicial */
 .topMenuBar .logo{
-/*	color: #00997a;*/
-	font-size: 32px;
+	color: #fff;
+	/*font-size: 32px;*/
+	font-size: 1.4em;
 	margin-right: 16px;
 }
 
 .itemTopMenuBar_logo{
 	margin-right: 16px;
-	margin-left: 16px;
+	margin-left: 1px;
 }
 
 
@@ -243,20 +165,13 @@ form input[disabled]:hover{
 
 }
 
-/* Links do cabecalho */
+/* botao mais a direita no cabecalho */
 .itemTopMenuBar .btn{
-	color: #666666;
+	color: #fff;
 	border-radius: 0px;
-	padding: 14px;	
+	padding: 14px;
+	font-size: .9em;
 }
-
-/* Links do cabecalho ao passar o mouse */
-/*.itemTopMenuBar .btn:hover{
-	color: #666666;
-	text-decoration: none;
-	background-color: #cdcdcd;
-	transition: .1s;
-}*/
 
 .itemTopMenuBar_logo a:hover{
 	text-decoration: none;
@@ -313,6 +228,8 @@ form input[disabled]:hover{
 	display: block;
 	width: 40px;
 	height: 32px;
+/*	width: 1.5em;
+	height: 1.5em;*/
 	position: absolute;
 	top: -7px;
 	left: -5px;
@@ -329,12 +246,12 @@ form input[disabled]:hover{
 /* Estiliza o icone do menu hamburguer */
 #menuToggle span{
 	display: block;
-	width: 33px;
-	height: 4px;
+	width: 28px;
+	height: 2px;
 	margin-bottom: 5px;
 	position: relative;
 
-	background: #666666;
+	background: #fff;
 	border-radius: 3px;
 
 	z-index: 1;
@@ -420,7 +337,6 @@ form input[disabled]:hover{
 }
 
 
-
 /* CONFIGURACOES DA PAGINA INICIAL DO USUARIO */
 
 .iconMenuToggle{
@@ -428,77 +344,9 @@ form input[disabled]:hover{
 }
 
 
-
-
-
-
-
 /* ESTILOS DA SECAO 'CONFIGURACOES' DO USUARIO*/
 
-.divOptionSettingMenu{
-	text-align: center;
-	/*background-color: #dddddd;*/
-	/*background-color:#00997a;*/
-	padding-bottom: 16px;
-	padding-top: 16px;
-	display: block;
-	
-	/*display: flex;								/* Flexbox */
-	/*align-items: center;						/*Alinha form no centro*/
-	/*justify-content: center;					/*Alinha form no centro*/
-	
-}
 
-.divOptionSettingMenu:hover{
-	background-color: #006650;
-}
-
-#divOptionSettingMenuSelected{
-	background-color: #006650;
-}
-
-
-.optionSettingMenu{
-	font-size: 1em;
-	font-weight: bold;
-	color: #eeeeee;
-}
-
-.formUpdate{
-	margin-top: 24px;
-	width: 100%;
-}
-
-/* Estilos da pagina de exclusao */
-
-.divAccountDeleted{
-	text-align: center;
-	/*background-color: #dddddd;*/
-	background-color:#ddd;
-	padding-bottom: 16px;
-	padding-top: 16px;
-	display: block;
-	
-	/*display: flex;								/* Flexbox */
-	/*align-items: center;						/*Alinha form no centro*/
-	/*justify-content: center;					/*Alinha form no centro*/
-	
-}
-
-.divAccountDeleted a{
-	color: #666;
-	font-weight: bolder;
-	/*display: flex;								/* Flexbox */
-	/*align-items: center;						/*Alinha form no centro*/
-	/*justify-content: center;					/*Alinha form no centro*/
-	
-}
-
-.divAccountDeleted a:hover{
-	color: #666;
-	font-weight: bolder;
-	text-decoration: none;	
-}
 
 
 /*Estilos da pagina de cadastro de medicos*/

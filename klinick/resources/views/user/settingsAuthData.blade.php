@@ -6,13 +6,14 @@
 
 
 @section('loadingCss')
+	<link rel="stylesheet" href="{{asset('css/user/settings/style.css')}}">
 	<link rel="stylesheet" href="{{asset('css/themeForUsers.css')}}">
 @endsection
 
 
 @section("content")
 
-	@include('templates.topMenuBar.render', ["user" => $user])	
+	@include('templates.topMenuBar.render', ["userIsADoctor" => $user->isADoctor])	
 
 <div class="container-fluid">
 	<div class="row">

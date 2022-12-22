@@ -1,0 +1,32 @@
+.divOptionSettingMenu{
+	text-align: center;
+	/*background-color: #dddddd;*/
+	/*background-color:#00997a;*/
+	padding-bottom: 16px;
+	padding-top: 16px;
+	display: block;
+	
+	/*display: flex;								/* Flexbox */
+	/*align-items: center;						/*Alinha form no centro*/
+	/*justify-content: center;					/*Alinha form no centro*/
+}
+
+.divOptionSettingMenu:hover{
+	background-color: #006650;
+}
+
+#divOptionSettingMenuSelected{
+	background-color: #006650;
+}
+
+
+.optionSettingMenu{
+	font-size: 1em;
+	font-weight: bold;
+	color: #eeeeee;
+}
+
+.formUpdate{
+	margin-top: 24px;
+	width: 100%;
+}

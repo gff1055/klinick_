@@ -1,0 +1,34 @@
+
+
+/* Estilo do body da pagina de login */
+.bodyPaginaLoginUser{								
+	background-image: url("/images/frontdesk.png");
+	background-size: cover;
+	font-family: Verdana, "sans-serif";	
+}
+
+/* Camada escura em cima da imagem de fundo */
+.divMaskBackgroundImage{
+	background-color: rgba(0,0,0,.5);
+}
+
+.divFormLogin{									/* Estilo da div que abriga o formulario de login */
+	height: 100%;								/* Altura da area dor formulario */
+	min-height: 100%;							/* Altura minima da area dor formulario */
+	display: flex;								/* Flexbox */
+	align-items: center;						/*Alinha form no centro*/
+	justify-content: center;					/*Alinha form no centro*/
+}
+
+/*Estilo do formulario de login*/
+.formLogin{						
+	background-color: #fff;
+	margin-top: 1%;
+	width: 400px;
+	text-align: center;
+}
+
+/* Estilo dos atributos do formulario de login */
+.formLogin .atrForm{
+	width: 82%;
+}

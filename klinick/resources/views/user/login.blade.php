@@ -6,6 +6,7 @@
 
 
 @section('loadingCss')
+	<link rel="stylesheet" href="{{asset('css/login/style.css')}}">
 	<link rel="stylesheet" href="{{asset('css/themeForUsers.css')}}">
 @endsection
 
