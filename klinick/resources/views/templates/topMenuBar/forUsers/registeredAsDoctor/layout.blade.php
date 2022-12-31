@@ -67,7 +67,7 @@
 -->
 
 <section class="topMenuBar">
-	<div class="itemTopMenuBar_logo">
+	<div class="itemTopMenuBar">
 		<div id="menuToggle">
 			<input type="checkbox" id="inputMenuSandwich"/>
 			<span></span>

@@ -24,7 +24,6 @@ inl			1, 0, 0, 0
 	box-sizing: border-box;
 }
 
-
 /** ESTILO GERAL DOS FORMULARIOS **/
 
 .colorTextHead{
@@ -71,7 +70,7 @@ form .notice{
 	border-radius: 8px;
 	padding: 8px;
 	width: 100%;
-	border-color: #333333;
+	/*border-color: #333333;*/
 }
 
 .indicatorFieldRequired{
@@ -140,6 +139,7 @@ form input[disabled]:hover{
 	font-size: 16px;
 	font-family: verdana;
 	
+	
 }
 
 
@@ -147,13 +147,13 @@ form input[disabled]:hover{
 .topMenuBar .logo{
 	color: #fff;
 	/*font-size: 32px;*/
-	font-size: 1.4em;
-	margin-right: 16px;
+	font-size: 1.5em;
+	
+	
 }
 
 .itemTopMenuBar_logo{
-	margin-right: 16px;
-	margin-left: 1px;
+	margin-left: 16px;
 }
 
 
@@ -161,6 +161,7 @@ form input[disabled]:hover{
 .itemTopMenuBar{
 	margin: 0px;
 	margin-right: 0px;
+	
 	
 
 }
@@ -248,7 +249,7 @@ form input[disabled]:hover{
 	display: block;
 	width: 28px;
 	height: 2px;
-	margin-bottom: 5px;
+	margin: 5px;
 	position: relative;
 
 	background: #fff;

@@ -1,0 +1,59 @@
+body{
+	background-color: #efefef;
+}
+
+/*Botoes de menu*/
+
+.menu-area{
+	background-color: #006C67;
+}
+
+.menu-area .menu-option-div{
+	/*padding: 1px;*/
+	padding: 0;
+	border-color: #bbb;
+	border-style: none none solid none;
+	border-width: 0 0 .1vh 0;
+	/*border-bottom-style: solid;
+	border-right-style: solid;*/	
+}
+
+/*.novo-background{background-color: #5495D1}
+.em-espera-background{background-color: #B89809}
+.em-andamento-background{background-color: #9E1710}
+.finalizadas-background{background-color: #105A9E}
+*/
+
+.menuOptionButton{
+	color: #333;
+	white-space: nowrap;
+	width: 100%;
+	height: 100%;
+	font-size: 1em;
+	margin: 0px;
+	text-align: left;
+	padding: 1em;
+	font-family: 'Poppins', sans-serif;
+}
+
+.menuOptionButton:focus{
+	outline: none;
+}
+
+.menuOptionButton svg{
+	width: 2em;
+	height: 2em;
+}
+
+
+.menuOptionButton:hover{
+	color: #006C67;
+    /*background-color: rgb(17, 143, 137);
+	border-color: rgb(17, 143, 137);*/
+	font-weight: 900;
+	transition: .2s;
+}
+
+.button-label{
+	margin: 1vw;
+}

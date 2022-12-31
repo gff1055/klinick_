@@ -23,8 +23,8 @@ inl			1, 0, 0, 0
 
 .main-page-title{
 	text-align: center;
-	padding-bottom: 16px;
-	padding-top: 16px;
+	padding-bottom: 4px;
+	padding-top: 1px;
 	display: block;
 	font-weight: bold;
 	background-color: #006C67;
@@ -37,6 +37,10 @@ inl			1, 0, 0, 0
 
 .generalThemeColorUsersReverse{
 	color: #888;
+}
+
+.background-green{
+	background-color: #006C67;
 }
 
 .btnStyleGeneral{
@@ -90,6 +94,10 @@ form input[type="submit"]:hover{
 	background-color: #006C67;
 }
 
+.lineBottom{
+	background-color: #006C67;
+}
+
 /* CONFIGURACOES GERAIS DO MENU DA BARRA SUPERIOS */
 
 /* Menu do topo da pagina inicial */
@@ -137,31 +145,3 @@ form input[type="submit"]:hover{
 	background-color: rgb(17, 143, 137);
 	transition: 0.25s;
 }
-
-
-/*Botoes de menu*/
-
-.menu-option-div{
-	margin: 0px !important;
-}
-
-.menuOptionButton{
-	background-color:  #eee !important;
-    /*background-color:  #C1E1C1 !important;*/
-	border-color: #ddd !important;
-	white-space: nowrap;
-	width: 100%;
-	font-size: 0.8em !important;
-	font-weight: bold  !important;
-	margin: 0px  !important;
-	text-align: center;
-}
-
-
-.menuOptionButton:hover{
-	color: #fff !important;
-    background-color: rgb(17, 143, 137) !important;
-    border-color: rgb(17, 143, 137) !important;
-}
-
-
