@@ -71,40 +71,105 @@
 
 		</div>
 
+		<br>
+
 		<div class="row">
-			<div class="col">
-				<h3 class="generalThemeColorUsers"> coluna</h3>
+			<div class="col-10">
+				<div class="container">
+					<div class="row">
+						<div class="col complaint-preview">
+						Lorem ipsdolor sit amet...
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col date-preview">
+						Montes Claros/MG...
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col medform-situation ">
+							Status: <span class="waiting">Á Espera de médico</span>
+						</div>
+					</div>					
+				</div>
+			</div>
+
+			<div class="col-2 centered generalThemeColorUsers">
+				<a href="#" class="medform-info-link"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-chevron-right medform-info-icon" viewBox="0 0 16 16">
+					<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+				</svg></a>
+			</div>
+
+		</div>
+
+		<hr>
+
+		<div class="row">
+			<div class="col-10">
+				<div class="container">
+					<div class="row">
+						<div class="col complaint-preview">
+						Lorem ipsdolor sit amet...
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col date-preview">
+						Montes Claros/MG...
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col medform-situation ">
+							Status: <span class="in-progress">Iniciada</span>
+						</div>
+					</div>					
+				</div>
+			</div>
+
+			<div class="col-2 centered generalThemeColorUsers">
+				<a href="#" class="medform-info-link"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-chevron-right medform-info-icon" viewBox="0 0 16 16">
+					<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+				</svg></a>
 			</div>
 		</div>
 
+		<hr>
 
 		<div class="row">
-
-			<div class="col container">
-
-				<div class="row">
-					<div class="col complaint-preview">
-						Dor nas...
+			<div class="col-10">
+				<div class="container">
+					<div class="row">
+						<div class="col complaint-preview">
+						Lorem ipsdolor sit amet...
+						</div>
 					</div>
-				</div>
 
-
-				<div class="row">
-					<div class="col date-preview">
-						Montes...
+					<div class="row">
+						<div class="col date-preview">
+						Montes Claros/MG...
+						</div>
 					</div>
+
+					<div class="row">
+						<div class="col medform-situation ">
+							Status: <span class="finished">Concluido</span>
+						</div>
+					</div>					
 				</div>
 			</div>
 
-			<div class="col">
-				<h3 class="generalThemeColorUsers situation-medform"> coluna</h3>
-			</div>
-
-			<div class="col">
-				<h3 class="generalThemeColorUsers access-info"> coluna</h3>
+			<div class="col-2 centered generalThemeColorUsers">
+				<a href="#" class="medform-info-link"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-chevron-right medform-info-icon" viewBox="0 0 16 16">
+					<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+				</svg></a>
 			</div>
 
 		</div>
+
+		<hr>
 
 	</div>
 

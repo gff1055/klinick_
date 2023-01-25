@@ -4,9 +4,11 @@
 	margin: 1vh;
 }
 
-.type-search-bar{
+.centered{
+	display: flex;
+    align-items: center;
+    justify-content: center;
 }
-
 
 .type-search-bar .type-search-option{
 	padding: 0px;
@@ -49,12 +51,54 @@
 	outline: none;	
 }
 
+.search-results-label{
+	font-size: .8em;
+}
+
+.search-results-label-situation{
+	padding-left: 1vw;
+	color: white;
+}
+
 .complaint-preview{
 	font-weight: bolder;
-	font-size: 1em;
-	padding: 1;
+	font-size: 1rem;
 }
 
 .date-preview{
-	font-size: 1em;
+	font-size: 1rem;
 }
+
+.medform-situation{
+	/*display: flex;
+    align-items: center;
+    justify-content: center;*/
+	
+	border-radius: 4px;
+	font-family: 'Lato', sans-serif;
+	font-weight: bold;
+	
+	font-size: 1rem;
+}
+
+.waiting{
+	color: #6B0B05;
+}
+
+.in-progress{
+	color: #105A9E;
+}
+
+.finished{
+	color: #006C67;
+}
+
+.medform-info-link a{
+	text-decoration: none !important;
+}
+
+.medform-info-icon{
+	width: 2rem;
+	height: 2rem;
+}
+
