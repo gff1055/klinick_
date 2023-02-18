@@ -27,11 +27,34 @@ class DataStorageArray implements DataStorageStructure{
 
 		if($pData){
 			array_push($pRepository, $pData);
-			$feedback = true;
+			$feedback = [
+				"success" 		=> true,
+				"repository"	=> $pRepository
+			];
 		}
 
 		return $feedback;
 	}
+
+	
+
+	public function searchData($pRepository, $fieldToBeSearched, $keySearch){
+
+		$result = [];
+
+		foreach($pRepository as $userData){
+			if($userData[$fieldToBeSearched] == $keySearch){
+				array_push($result, $userData);
+			}
+		}
+
+		if($result == []){
+			return false;
+		}
+		else return $result;
+	}
+
+
 }
 
 ?>

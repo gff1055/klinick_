@@ -60,21 +60,15 @@ class TestsController extends Controller{
   			"paymentMethod"	=> "dinheiro",
 		];
 
-		$id = "5";
-
-/*		$this->testing(
-			"testa insercao do id do usuario",
-			"medForm_controller->identifyData()",
-			$this->medF_contr->identifyData($medForm_service_store_array,$id)['content']['user_id'],
-			$id
-		);*/
+		$idTest = 4;
 
 		$medForm_service_store_array = [
 			"city"			=> "1",
   			"state"			=> "2",
   			"complaint"		=> "3",
 			"paymentMethod"	=> "dinheiro",
-			"user_id"		=> "2"
+			"user_id"		=> "2",
+			"id"			=> 4
 			  
 		];
 		$test_valid = true;
@@ -154,6 +148,37 @@ class TestsController extends Controller{
 			false
 		);
 
+
+
+		$repositoryArray = $this->dat_stor_arr->storeData($repositoryArray,$medForm_service_store_array)["repository"];
+		$idTest = "2";
+
+		$this->testing(
+			"testa o armazenamento dos dados no repositorio (array)",
+			"medForm_service->searchData()",
+			$this->dat_stor_arr->searchData(
+				$repositoryArray,
+				"user_id",
+				$idTest
+			),
+			true
+		);
+
+		$idTestInv = -8;
+		$this->testing(
+			"testa o armazenamento dos dados no repositorio (array) em caso de falha",
+			"medForm_service->searchData()",
+			$this->dat_stor_arr->searchData(
+				$repositoryArray,
+				"user_id",
+				$idTestInv
+			),
+			false
+		);
+
+
+		
+
 		/*$this->testing(
 			"testa o armazenamento dos dados no repositorio (DB) em caso de falha",
 			"medForm_service->store()",
@@ -180,7 +205,7 @@ class TestsController extends Controller{
 		echo "<br>";
 		var_dump($func);
 		echo "<br>";
-		echo $func == $res ? $name." PASSOU" : $name." NAO PASSOU";
+		echo $func == $res ? $name.' <span style="background-color: green"> PASSOU</span>' : $name.' <span style="background-color: red">NAO PASSOU</span>';
 		echo "<br>";
 	}
 

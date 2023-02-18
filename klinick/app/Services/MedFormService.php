@@ -75,8 +75,17 @@ class MedFormService{
 		}
 	}
 
-	public function search(){
+	
+	/** Busca as fichas de um usuario */
+	public function search($id){
 
+		return DB::select('select * from med_forms where user_id = ?', [$id]);
+		
+		/*return [
+			"complaint" => "Minha queixa",
+			"Cidade" => "Montes Claros",
+			"Situacao" => "Concluido"
+		];*/
 	}
 
 	public function close(){

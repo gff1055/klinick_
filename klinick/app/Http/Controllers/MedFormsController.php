@@ -41,7 +41,7 @@ class MedFormsController extends Controller
 	}
 	
 	/** Funcao que adiciona o id do usuario*/
-	public function identifyData($data, $id){
+	public function insertUserId($data, $id){
 		
 		$data["user_id"] = $id;
 		
@@ -58,25 +58,21 @@ class MedFormsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
-		return view('medForm.index', ["user" => Auth::user()]);
+    public function index($userId){
 		
-/*        $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
-        $medForms = $this->repository->all();
+		$dataAllMedForm = $this->service->search(Auth::user()->id);
 
-        if (request()->wantsJson()) {
+		/*dd($dataAllMedForm);*/
 
-            return response()->json([
-                'data' => $medForms,
-            ]);
-        }
-
-        return view('medForms.index', compact('medForms'));*/
+		return view('medForm.index', [
+			"user" => Auth::user(),
+			"dataAllMedForm" => $dataAllMedForm
+		]);
     }
 
     public function store(MedFormCreateRequest $request){
 
-		$enteredData = $this->identifyData($request->all(), Auth::user()->id);
+		$enteredData = $this->insertUserId($request->all(), Auth::user()->id);
 		$result = $this->service->store($enteredData["content"]);
 		return redirect()->route("medform.index", ["user" => Auth::user()->id]);
 	

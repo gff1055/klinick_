@@ -8,6 +8,8 @@ interface DataStorageStructure{
 
 	public function storeData($pRepository, $pData);
 
+	public function searchData($pRepository, $fieldToBeSearched, $keySearch);
+
 }
 
 ?>
