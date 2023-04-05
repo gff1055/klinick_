@@ -7,7 +7,7 @@
 .centered{
 	display: flex;
     align-items: center;
-    justify-content: center;
+	justify-content: right;
 }
 
 .type-search-bar .type-search-option{
@@ -45,6 +45,37 @@
 	background-color: #fff;
 }
 
+.noDisplay{
+	display: none;
+}
+
+.previousBtnCol{
+	text-align: left;
+}
+
+.nextBtnCol{
+	text-align: right;
+}
+
+.previousBtnCol button, .nextBtnCol button{
+	color: #fff;
+	padding: 1vw 4vh 1vw 4vh;
+	font-size: 2rem;
+	background-color: #076782;
+	border-radius: .5rem;
+	border-color: none;
+}
+
+.previousBtnCol button:hover, .nextBtnCol button:hover{
+	background-color: #00B8AE;
+}
+
+.previousBtnCol svg, .nextBtnCol svg{
+	/*	color: #053A6B;*/
+		width: .9em;
+		height: .9em;
+}
+
 .type-search-bar .type-search-option button:focus{
 	background-color: #076782;
 	color: #fff;
@@ -69,6 +100,16 @@
 	font-size: 1rem;
 }
 
+.indexInfo{
+	display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.infoMedForm .title{
+	text-align: left;
+}
+
 .medform-situation{
 	/*display: flex;
     align-items: center;
@@ -82,7 +123,7 @@
 }
 
 .waiting{
-	color: #6B0B05;
+	color: #666666;
 }
 
 .in-progress{

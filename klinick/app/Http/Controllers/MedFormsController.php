@@ -61,6 +61,7 @@ class MedFormsController extends Controller
     public function index($userId){
 		
 		$dataAllMedForm = $this->service->search(Auth::user()->id);
+		
 
 		/*dd($dataAllMedForm);*/
 
@@ -68,18 +69,14 @@ class MedFormsController extends Controller
 			"user" => Auth::user(),
 			"dataAllMedForm" => $dataAllMedForm
 		]);
-    }
+	}
+	
 
     public function store(MedFormCreateRequest $request){
 
 		$enteredData = $this->insertUserId($request->all(), Auth::user()->id);
 		$result = $this->service->store($enteredData["content"]);
 		return redirect()->route("medform.index", ["user" => Auth::user()->id]);
-	
-		/*if($result["success"] == false)
-			echo $result["data"];*/
-
-		
 	}
 
 

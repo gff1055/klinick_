@@ -24,6 +24,10 @@ inl			1, 0, 0, 0
 	box-sizing: border-box;
 }
 
+body{
+	margin-bottom: 5vh;
+}
+
 /** ESTILO GERAL DOS FORMULARIOS **/
 
 .colorTextHead{
