@@ -94,6 +94,9 @@
 .complaint-preview{
 	font-weight: bolder;
 	font-size: 1rem;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;	
 }
 
 .date-preview{
@@ -108,6 +111,10 @@
 
 .infoMedForm .title{
 	text-align: left;
+}
+
+.infoMedForm:hover{
+	background-color: #ddd;
 }
 
 .medform-situation{

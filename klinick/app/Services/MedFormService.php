@@ -76,20 +76,17 @@ class MedFormService{
 	}
 
 	
-	/** Busca as fichas de um usuario */
-	public function search($id){
-
-		return DB::select('select * from med_forms where user_id = ?', [$id]);
-
+	public function searchUserMedForms($pIdUser){
+		return DB::select('select * from med_forms where user_id = ?', [$pIdUser]);
 	}
 
-	public function close(){
-
+	public function searchMedForm($pId){
+		return DB::select('select * from med_forms where id = ?', [$pId])[0];
 	}
 
-	public function update(){
-		
-	}
+	public function close(){}
+
+	public function update(){}
 
 
 

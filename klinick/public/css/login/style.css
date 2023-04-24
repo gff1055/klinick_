@@ -2,14 +2,18 @@
 
 /* Estilo do body da pagina de login */
 .bodyPaginaLoginUser{								
-	background-image: url("/images/frontdesk.png");
+	background-image:
+		linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+		url("/images/frontdesk.png");
 	background-size: cover;
 	font-family: Verdana, "sans-serif";	
 }
 
 /* Camada escura em cima da imagem de fundo */
 .divMaskBackgroundImage{
-	background-color: rgba(0,0,0,.5);
+	/*background-color: rgba(0,0,0,.5);*/
+	/*filter: brightness(50%);*/
+
 }
 
 .divFormLogin{									/* Estilo da div que abriga o formulario de login */

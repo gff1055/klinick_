@@ -40,6 +40,7 @@ class MedFormsController extends Controller
         $this->service  = $pService;
 	}
 	
+
 	/** Funcao que adiciona o id do usuario*/
 	public function insertUserId($data, $id){
 		
@@ -53,16 +54,26 @@ class MedFormsController extends Controller
 		return $feedback;
 	}
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+	
+	public function prepareForDisplay($pArray){
+
+		for($i = 0; $i < count($pArray); $i++){
+			if($pArray[$i]->status == 11) $pArray[$i]->status = "Esperando médico";
+			elseif($pArray[$i]->status == 12) $pArray[$i]->status = "Atendimento iniciado";
+			elseif($pArray[$i]->status == 22) $pArray[$i]->status = "Atendimento concluido";
+		}
+
+		return $pArray;
+	}
+
+
+    /* Display a listing of the resource. */
     public function index($userId){
 		
-		$dataAllMedForm = $this->service->search(Auth::user()->id);
+		$dataAllMedForm = $this->service->searchUserMedForms(Auth::user()->id);
+		$dataAllMedForm = $this->prepareForDisplay($dataAllMedForm);
 		
-
 		/*dd($dataAllMedForm);*/
 
 		return view('medForm.index', [
@@ -80,22 +91,24 @@ class MedFormsController extends Controller
 	}
 
 
-	public function allMedForms(){
-    }
-	
+	public function show($idUser, $idMedForm){
+		$medForm = $this->service->searchMedForm($idMedForm);
 
-
-    public function show($id){
-        $medForm = $this->repository->find($id);
-
-        if (request()->wantsJson()) {
+        /*if (request()->wantsJson()) {
 
             return response()->json([
                 'data' => $medForm,
             ]);
         }
 
-        return view('medForms.show', compact('medForm'));
+		return view('medForms.show', compact('medForm'));*/
+
+		//dd($medForm);
+		
+		
+		return view('medForm.show', [
+			"dataMedForm" => $medForm
+		]);
     }
 
     /**

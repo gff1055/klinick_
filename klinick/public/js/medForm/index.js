@@ -3,6 +3,9 @@
 medFormArrayDisplay	= document.getElementsByClassName('infoMedForm');
 previousBtnCol		= document.getElementsByClassName('previousBtnCol');
 nextBtnCol			= document.getElementsByClassName('nextBtnCol');
+statusMedForm 		= document.getElementsByClassName('status');
+infoMedForm 		= document.getElementsByClassName('infoMedForm');
+medFormInfoLink		= document.getElementsByClassName('medform-info-link');
 
 beginPage	= document.getElementById('beginPage');
 endPage		= document.getElementById('endPage');
@@ -46,6 +49,20 @@ function hide(pRow){
 	return pRow;
 }
 
+function setToWaiting(pStatus){
+	pStatus.classList.add('waiting');
+	return pStatus;
+}
+
+function showStatus(pListStatus){
+	for(i = 0; i<pListStatus.length; i++){
+
+		if(pListStatus[i].innerHTML == "Esperando médico") setToWaiting(pListStatus[i]);
+	}
+}
+
+
+/** Oculta os botoes */
 function hideAllButtons(arrBtn){
 	for(btn of arrBtn)
 		btn.style.visibility = 'hidden';
@@ -53,12 +70,15 @@ function hideAllButtons(arrBtn){
 }
 
 
+/** Exibe os botoes */
 function showAllButtons(arrBtn){
 	for(btn of arrBtn)
 		btn.style.visibility = 'visible';
 	return btn;
 }
 
+
+/** Mostra informacoes da pagina */
 function showInfoIndexPage(pPage, pArray){
 
 	min = (pPage * 10) + 1;
@@ -74,6 +94,7 @@ function showInfoIndexPage(pPage, pArray){
 }
 
 
+/** Esconde uma pagina na exibicao */
 function hidePage(pPage, pArray){
 	
 	for(element of pArray[pPage])
@@ -127,7 +148,20 @@ function loadPage(){
 	showButtons();
 	
 	pagedMedForms = showRangeData(showPage, pagedMedForms);
+	showStatus(statusMedForm);
 	window.scrollTo(0, 0);
+}
+
+
+/** Carrega e exibe os dados das paginas */
+function loadLinks(pArray, pArrLinks){
+
+	for(let element = 0; element < pArray.length; element++ ){
+	
+		pArray[element].addEventListener("click", function(){
+			window.location.href = pArrLinks[element].href;		
+		});
+	}
 }
 
 
@@ -137,8 +171,7 @@ window.addEventListener("load", function(){
 	numberOfPages = pagedMedForms.length;
 
 	loadPage();
-/*	console.log(showPage);
-	console.log(numberOfPages);*/
+	loadLinks(infoMedForm, medFormInfoLink);
 })
 
 
@@ -155,6 +188,11 @@ for(element = 0; element < previousBtnCol.length; element++ )
 		showPage = accessPreviousPage(showPage);
 		loadPage();
 	});
+
+
+/*infoMedForm[0].addEventListener("click", function(){
+	console.log('dssa');
+});*/
 
 
 function showButtons(){

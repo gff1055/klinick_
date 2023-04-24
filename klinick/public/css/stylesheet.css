@@ -174,8 +174,8 @@ form input[disabled]:hover{
 .itemTopMenuBar .btn{
 	color: #fff;
 	border-radius: 0px;
-	padding: 14px;
-	font-size: .9em;
+	padding: 1vw;
+	font-size: .6rem;
 }
 
 .itemTopMenuBar_logo a:hover{
@@ -191,12 +191,8 @@ form input[disabled]:hover{
 
 #topMenuBarOptionRight{
 	/*white-space: nowrap;*/
-	flex-grow: 10;
+/*	flex-grow: 10;*/
 	text-align: right;	
-}
-
-#topMenuBarOptionRight .btn{
-	box-shadow: none;
 }
 
 
@@ -207,7 +203,7 @@ form input[disabled]:hover{
 	display: block;
 	position: relative;
 	/*top: 50px;*/
-	left: 8px;
+	left: 0px;
 	z-index: 1;
 	-webkit-user-select: none;
 	user-select: none;

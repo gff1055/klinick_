@@ -1,6 +1,6 @@
 
 @php
-	$title = 'Home';
+	$title = 'Minhas fichas de atendimento';
 @endphp
 
 @extends('templates.basic')
@@ -14,9 +14,7 @@
 @section('content')
 
 	@include('templates.topMenuBar.render', ["userIsADoctor" => $user->isADoctor])
-	<div class="main-page-title">
-		Minhas fichas de atendimento
-	</div>
+	
 
 	<div class="container-fluid" id="medform-data-table">
 		<br>
@@ -57,20 +55,19 @@
 
 					<div class="row">
 						<div class="col date-preview">
-						Montes Claros/MG...
+							{{ $medForm->city }}
 						</div>
 					</div>
 
 					<div class="row">
 						<div class="col medform-situation ">
-							Status: <span class="waiting">Á Espera de médico</span>
+							Status: <span class="status">{{ $medForm->status }}</span>
 						</div>
 					</div>					
-				<!--</div>-->
 			</div>
 
 			<div class="col-2 centered generalThemeColorUsers">
-				<a href="#" class="medform-info-link">
+				<a href="{!!route('medform.show',['user' => $user->id, 'medform' => $medForm->id])!!}" class="medform-info-link">
 					<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-right-square-fill medform-info-icon" viewBox="0 0 16 16">
 						<path d="M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v12zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1z"/>
 					 </svg>
@@ -107,8 +104,7 @@
 	</div>
 
 	<script>
-		var dataAllMedForm = @json($dataAllMedForm);;
-		console.log(dataAllMedForm.length);
+		var dataAllMedForm = @json($dataAllMedForm);
 	</script>
 	<script src="{{asset('js/medForm/index.js')}}"> </script>
 	   

@@ -21,48 +21,10 @@
 	</div>
   </div>
 
-<!-- <div class="screenMdl">
-	<div class="mdl mdlConfirm">
-		<div class="container">
-			<div class="row">
-				<div class="tituloModal col-10">
-				Confirmação
-				</div>
-				<div class="col-2">
-					<div class="mdlClose">
-						X
-					</div>
-				</div>
-			</div>
-			<hr/>
-			<div class="row">
-				<div class="col-12">
-					
-					Deseja sair do consultório?
-					<br>&nbsp
-				</div>
-			</div>
-		
-			<div class="row">
-						
-				<div class="btn btn-secondary col-4 buttonExit">
-					Não
-				</div>
-	
-				<div class="col-4">
-				</div>
-	
-				<div class="btn btn-success col-4 buttonOk">
-					Sim
-				</div>
-						
-			</div>
-		</div>
-	</div>
-</div>-->
+
 
 <section class="topMenuBar">
-	<div class="itemTopMenuBar_logo">
+	<div class="itemTopMenuBar col-3">
 		<div id="menuToggle">
 			<input type="checkbox" id="inputMenuSandwich"/>
 			<span></span>
@@ -117,11 +79,15 @@
 		</div>
 	</div>
 	
-	<div class="itemTopMenuBar_logo">
+	<!--<div class="itemTopMenuBar_logo">
 		<a href="{{route('user.index')}}"><span class="logo">KlinicK Médicos</span></a>
+	</div>-->
+
+	<div class="col-6" style="background-color:red; color: white; text-align: center">
+		teste de teste
 	</div>
 
-	<div class="itemTopMenuBar" id="topMenuBarOptionRight">
+	<div class="itemTopMenuBar col-3" id="topMenuBarOptionRight">
 		<button type="button" class="btn" data-toggle="modal" data-target="#modalExemplo">
 			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
 				<path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
