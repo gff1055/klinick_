@@ -31,9 +31,9 @@ inl			1, 0, 0, 0
 	color: #fff;
 }
 
-.generalThemeColorUsers{
-	color: #006C67;
-}
+.generalThemeColorUsers{ color: #006C67;}
+/*.generalThemeColorUsers:hover{ color: rgb(17, 143, 137);}*/
+
 
 .generalThemeColorUsersReverse{
 	color: #888;
@@ -46,6 +46,15 @@ inl			1, 0, 0, 0
 .btnStyleGeneral{
 	background-color: #006C67;
 	color: #fff;
+}
+
+.btnStyleGeneral:hover{
+	background-color: rgb(17, 143, 137);
+	color: #fff;
+}
+
+.btnStyleGeneral:focus{
+	outline: none;
 }
 
 .btnStyleGeneralReverse{

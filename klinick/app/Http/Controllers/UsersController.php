@@ -48,8 +48,6 @@ class UsersController extends Controller{
     }
     
     
-
-    
     /**
      * FUNCAO:      index
      * OBJETIVO:    acionar a view padrao do site
@@ -63,8 +61,6 @@ class UsersController extends Controller{
 	}
 
 
-
-
     /**
      * FUNCAO:      store
      * OBJETIVO:    Cadastrar o usuario
@@ -74,8 +70,7 @@ class UsersController extends Controller{
 	public function store(UserCreateRequest $request){
 
 		$registeredData = $request;
-		
-		
+				
 		$request = $this->service->store($request->all());
 
         // O usuario sendo cadastrado com sucesso, ou nao,
@@ -97,9 +92,7 @@ class UsersController extends Controller{
 	}
 
 
-
-
-     /**
+	/**
      * FUNCAO       : settingsPersonalData
      * OBJETIVO     : Exibir formulario de alterar dados pessoais
      * RETORNO      : View de atualizacao de dados
@@ -112,8 +105,6 @@ class UsersController extends Controller{
 		);
 
     }
-
-
 
 
     /**
@@ -129,8 +120,6 @@ class UsersController extends Controller{
 		);
 
     }
-
-
 
 
     /**
@@ -193,13 +182,13 @@ class UsersController extends Controller{
 
 	}
 
-	public function newAppointment($id){
+	/*public function newAppointment($id){
 
 		echo "E AI ";
 		echo $id;
 
 
-	}
+	}*/
 
 
 

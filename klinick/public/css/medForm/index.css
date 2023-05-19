@@ -115,6 +115,7 @@
 
 .infoMedForm:hover{
 	background-color: #ddd;
+	cursor: pointer;
 }
 
 .medform-situation{
@@ -141,8 +142,14 @@
 	color: #006C67;
 }
 
-.medform-info-link a{
+/*.medform-info-link a{
 	text-decoration: none !important;
+	color: #555;
+}*/
+
+.medform-info-link {
+	color: #888;
+	font-weight: bold;
 }
 
 .medform-info-icon{

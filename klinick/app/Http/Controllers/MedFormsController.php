@@ -27,7 +27,8 @@ use App\Http\Controllers\Controller;
 class MedFormsController extends Controller
 {
     protected $repository;
-    protected $service;
+	protected $service;
+	private $feedback;
 
     /**
      * MedFormsController constructor.
@@ -39,6 +40,9 @@ class MedFormsController extends Controller
         $this->repository = $pRepository;
         $this->service  = $pService;
 	}
+
+	public function setFeedback($message){ $this->feedback = $message; }
+	public function getFeedback(){ return $this->feedback; }
 	
 
 	/** Funcao que adiciona o id do usuario*/
@@ -54,35 +58,49 @@ class MedFormsController extends Controller
 		return $feedback;
 	}
 
-
 	
+	/** altera o atributo status para exibicao */
+	public function setStatusDisplay($pStatus){
+		if($pStatus == 11)		$pStatus = "Esperando médico";
+		elseif($pStatus == 12)	$pStatus = "Atendimento iniciado";
+		elseif($pStatus == 22)	$pStatus = "Atendimento concluido";
+
+		return $pStatus;
+	}
+	
+
+	/** prepara a ficha para exibicao */
 	public function prepareForDisplay($pArray){
 
 		for($i = 0; $i < count($pArray); $i++){
-			if($pArray[$i]->status == 11) $pArray[$i]->status = "Esperando médico";
-			elseif($pArray[$i]->status == 12) $pArray[$i]->status = "Atendimento iniciado";
-			elseif($pArray[$i]->status == 22) $pArray[$i]->status = "Atendimento concluido";
+			$pArray[$i]->status = $this->setStatusDisplay($pArray[$i]->status);
 		}
 
 		return $pArray;
 	}
 
 
-    /* Display a listing of the resource. */
+    /**  */
     public function index($userId){
-		
+
+		if(!Controller::isAuthenticated())
+			return redirect()->route('user.login_get');
+
+			
 		$dataAllMedForm = $this->service->searchUserMedForms(Auth::user()->id);
 		$dataAllMedForm = $this->prepareForDisplay($dataAllMedForm);
 		
-		/*dd($dataAllMedForm);*/
+		
 
 		return view('medForm.index', [
 			"user" => Auth::user(),
 			"dataAllMedForm" => $dataAllMedForm
+			/*"feedback"	=> /*$feedback*/
 		]);
 	}
 	
 
+	/** armazena as fichas */
     public function store(MedFormCreateRequest $request){
 
 		$enteredData = $this->insertUserId($request->all(), Auth::user()->id);
@@ -91,24 +109,20 @@ class MedFormsController extends Controller
 	}
 
 
+	/** mostra a ficha de um usuario */
 	public function show($idUser, $idMedForm){
+
+		if(!Controller::isAuthenticated())
+			return redirect()->route('user.login_get');
+		
 		$medForm = $this->service->searchMedForm($idMedForm);
+		$medForm->status = $this->setStatusDisplay($medForm->status);
 
-        /*if (request()->wantsJson()) {
-
-            return response()->json([
-                'data' => $medForm,
-            ]);
-        }
-
-		return view('medForms.show', compact('medForm'));*/
-
-		//dd($medForm);
-		
-		
-		return view('medForm.show', [
-			"dataMedForm" => $medForm
+        return view('medForm.show', [
+			"dataMedForm" => $medForm,
+			"user" => Auth::user()
 		]);
+				
     }
 
     /**
@@ -118,12 +132,12 @@ class MedFormsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    /*public function edit($id)
     {
         $medForm = $this->repository->find($id);
 
         return view('medForms.edit', compact('medForm'));
-    }
+    }*/
 
     /**
      * Update the specified resource in storage.
@@ -135,7 +149,7 @@ class MedFormsController extends Controller
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function update(MedFormUpdateRequest $request, $id)
+    /*public function update(MedFormUpdateRequest $request, $id)
     {
         try {
 
@@ -166,7 +180,7 @@ class MedFormsController extends Controller
 
             return redirect()->back()->withErrors($e->getMessageBag())->withInput();
         }
-    }
+    }*/
 
 
     /**
@@ -176,18 +190,49 @@ class MedFormsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        $deleted = $this->repository->delete($id);
+/*    public function destroy(Request $request){
 
-        if (request()->wantsJson()) {
+		$medformId = $request['medform_id'];
+		$userId = $request['user_id'];
+		
+        /*$deleted = $this->repository->delete($medformId);*/
+
+        /*if (request()->wantsJson()) {
 
             return response()->json([
                 'message' => 'MedForm deleted.',
                 'deleted' => $deleted,
             ]);
-        }
+        }*/
 
-        return redirect()->back()->with('message', 'MedForm deleted.');
-    }
+		/*return redirect()->back()->with('message', 'MedForm deleted.');*/
+
+/*		dd($request);
+
+		return redirect()->route('medform.index', ["user" => Auth::user()->id]);
+	}*/
+	
+	public function delete(Request $request, $userId, $medFormId){
+		
+		$medformId = $request['medform_id'];
+		$userId = $request['user_id'];
+
+		$feedback = $this->service->delete($medformId);
+
+		if($feedback['success'])
+			$msgFeedback = "A ficha de atendimento foi excluida";
+		
+		else
+			$msgFeedback = "ERRO ao excluir. ERRO: ".$feedback['code'];
+
+		/*return redirect()->route('medform.index', [
+				"user"		=> Auth::user()->id,
+				"feedback" => $this->getFeedback()
+				]);*/
+				return redirect()
+				->action('MedFormsController@index',["user" => Auth::user()->id])
+				->with('mensagem', $msgFeedback);
+	    
+		
+	}
 }

@@ -19,6 +19,12 @@
 	<div class="container-fluid" id="medform-data-table">
 		<br>
 
+		@if(e(session('mensagem')))
+			<div class="alert alert-primary" role="alert">
+				{{session('mensagem')}}
+			</div>
+		@endif
+
 		<div class="row">
 			<div class="col previousBtnCol">
 				<button type="button" class="">
@@ -42,6 +48,8 @@
 		</div>
 		
 		<br>
+
+		
 
 		@foreach($dataAllMedForm as $medForm)
 		<div class="row infoMedForm noDisplay">
@@ -68,8 +76,11 @@
 
 			<div class="col-2 centered generalThemeColorUsers">
 				<a href="{!!route('medform.show',['user' => $user->id, 'medform' => $medForm->id])!!}" class="medform-info-link">
-					<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-right-square-fill medform-info-icon" viewBox="0 0 16 16">
+					<!--<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-right-square-fill medform-info-icon" viewBox="0 0 16 16">
 						<path d="M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v12zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1z"/>
+					 </svg>-->
+					 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-chevron-right medform-info-icon" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
 					 </svg>
 				</a>
 			</div>

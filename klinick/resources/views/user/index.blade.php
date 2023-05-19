@@ -7,7 +7,7 @@
 
 @section('loadingCss')
 	<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&family=Press+Start+2P&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="{{asset('css//user/index.css')}}">
+	<link rel="stylesheet" href="{{asset('css/user/index.css')}}">
 	<link rel="stylesheet" href="{{asset('css/themeForUsers.css')}}">
 @endsection
 

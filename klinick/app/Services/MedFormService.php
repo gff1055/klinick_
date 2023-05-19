@@ -76,12 +76,46 @@ class MedFormService{
 	}
 
 	
+	/** busca as fichas de um usuario */
 	public function searchUserMedForms($pIdUser){
-		return DB::select('select * from med_forms where user_id = ?', [$pIdUser]);
+		return DB::select('select * from med_forms where user_id = ? order by date desc', [$pIdUser]);
 	}
 
+	/** busca uma ficha de consulta */
 	public function searchMedForm($pId){
 		return DB::select('select * from med_forms where id = ?', [$pId])[0];
+	}
+
+	/** apaga uma ficha de consulta */
+	public function delete($idMedForm){
+
+		$medForm = $this->searchMedForm($idMedForm);
+
+		if($medForm->status == 11){
+			$opDelete = DB::delete("delete from med_forms where id = ?", [$medForm->id]);
+
+			$arrayDataFeedback = [				
+				'success' => true,
+				'code' => '888',
+				'data' => $opDelete
+			];
+		}
+
+		else if($medForm->status == 12 || $medForm->status == 22){
+			$arrayDataFeedback = [				
+				'success' => false,
+				'code' => '0xAT31ME0IN11AD0',
+			];
+		}
+
+		else{
+			$arrayDataFeedback = [				
+				'success' => false,
+				'code' => '0xER03SC03CI0',
+			];
+		}
+
+		return $arrayDataFeedback;
 	}
 
 	public function close(){}

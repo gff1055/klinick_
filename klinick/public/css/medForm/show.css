@@ -1,0 +1,35 @@
+
+
+.medform-head{
+	margin-top: 2vh;
+	margin-bottom: 0;
+	font-size: 1.5rem;
+	text-align: center;
+}
+
+.head-date-city{
+	font-style: italic;
+	color: #888;
+	text-align: center;
+}
+
+.label{
+	text-align: right;
+	font-weight: bold;
+}
+
+.btn-medform-show{
+	margin: 8vh 0 8vh 0;
+}
+
+.btn-back{
+	background-color: #ddd;
+}
+
+.btn-back:hover{
+	background-color: #bbb;
+}
+
+.btn-label{
+	font-size: 1rem;
+}
