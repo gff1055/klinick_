@@ -45,17 +45,34 @@ class MedFormService{
 		
 		$feedback	= $this->storage->validate($pValidator, $pData);
 				
-		if(!$feedback["validate"]){
-			$success = false;
-		}
-		else{
-			$success = $feedback["validate"];
-		}
+		if(!$feedback["validate"])	$success = false;
+		else						$success = $feedback["validate"];
 
 		return [
 			"data"		=> $feedback["data"],
 			"success"	=> $success
 		];
+	}
+
+
+	/** altera o atributo status para exibicao */
+	public function setStatusDisplay($pStatus){
+		if($pStatus == 11)		$pStatus = "Esperando médico";
+		elseif($pStatus == 12)	$pStatus = "Atendimento iniciado";
+		elseif($pStatus == 22)	$pStatus = "Atendimento concluido";
+
+		return $pStatus;
+	}
+
+
+	/** prepara a ficha para exibicao */
+	public function prepareForDisplay($pArray){
+
+		for($i = 0; $i < count($pArray); $i++){
+			$pArray[$i]->status = $this->setStatusDisplay($pArray[$i]->status);
+		}
+
+		return $pArray;
 	}
 
 
@@ -68,9 +85,9 @@ class MedFormService{
 			// Em caso de excecao, o array indicando excecao é enviado para a view
 		}catch(Exception $except){
 			return [
-				'success' => false,
-				'message' => 'Erro interno',
-				'data' => $except
+				'success'	=> false,
+				'message'	=> 'Erro interno',
+				'data'		=> $except
 			];
 		}
 	}
@@ -79,6 +96,16 @@ class MedFormService{
 	/** busca as fichas de um usuario */
 	public function searchUserMedForms($pIdUser){
 		return DB::select('select * from med_forms where user_id = ? order by date desc', [$pIdUser]);
+	}
+
+	public function searchAllMedForms(){
+		return DB::select('
+			select * 
+			from med_forms m, users u
+			where m.user_id = u.id 
+			order by date
+			desc'
+		);
 	}
 
 	/** busca uma ficha de consulta */
@@ -95,23 +122,23 @@ class MedFormService{
 			$opDelete = DB::delete("delete from med_forms where id = ?", [$medForm->id]);
 
 			$arrayDataFeedback = [				
-				'success' => true,
-				'code' => '888',
-				'data' => $opDelete
+				'success'	=> true,
+				'code'		=> '888',
+				'data'		=> $opDelete
 			];
 		}
 
 		else if($medForm->status == 12 || $medForm->status == 22){
 			$arrayDataFeedback = [				
-				'success' => false,
-				'code' => '0xAT31ME0IN11AD0',
+				'success'	=> false,
+				'code'		=> '0xAT31ME0IN11AD0',
 			];
 		}
 
 		else{
 			$arrayDataFeedback = [				
-				'success' => false,
-				'code' => '0xER03SC03CI0',
+				'success'	=> false,
+				'code'		=> '0xER03SC03CI0',
 			];
 		}
 

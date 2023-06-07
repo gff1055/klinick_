@@ -121,6 +121,12 @@ Route::delete('/doctor/delete',[
 	'uses'	=> 'DoctorsController@deleteDoctor'
 ]);
 
+Route::get('/doctor/{doctor}/appointments',[
+	'as'	=> 'doctor.loadAppointments',
+	'uses'	=> 'DoctorsController@loadAppointments'
+]);
+
+
 Route::resource('doctor', 'DoctorsController');
 
 

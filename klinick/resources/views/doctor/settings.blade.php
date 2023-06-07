@@ -7,6 +7,7 @@
 @section('loadingCss')
 	<link rel="stylesheet" href="{{asset('css/themeForDoctors.css')}}">
 	<link rel="stylesheet" href="{{asset('css/doctorSettings.css')}}">
+	<link rel="stylesheet" href="{{asset('css/doctor/settings/st.css')}}">
 @endsection
 
 @section('content')

@@ -61,6 +61,11 @@ class DoctorService{
 		return $isDoctor;*/
 	}
 
+	public function searchDoctor($pIdUser){
+		$feedback = DB::select('select * from doctors where user_id = ?', [$pIdUser])[0];
+		return $feedback;
+	}
+
 
 	public function delete($pDoctorAuthenticationData){
 		

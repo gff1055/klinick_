@@ -59,28 +59,7 @@ class MedFormsController extends Controller
 	}
 
 	
-	/** altera o atributo status para exibicao */
-	public function setStatusDisplay($pStatus){
-		if($pStatus == 11)		$pStatus = "Esperando médico";
-		elseif($pStatus == 12)	$pStatus = "Atendimento iniciado";
-		elseif($pStatus == 22)	$pStatus = "Atendimento concluido";
-
-		return $pStatus;
-	}
-	
-
-	/** prepara a ficha para exibicao */
-	public function prepareForDisplay($pArray){
-
-		for($i = 0; $i < count($pArray); $i++){
-			$pArray[$i]->status = $this->setStatusDisplay($pArray[$i]->status);
-		}
-
-		return $pArray;
-	}
-
-
-    /**  */
+	/**  */
     public function index($userId){
 
 		if(!Controller::isAuthenticated())
@@ -88,13 +67,13 @@ class MedFormsController extends Controller
 
 			
 		$dataAllMedForm = $this->service->searchUserMedForms(Auth::user()->id);
-		$dataAllMedForm = $this->prepareForDisplay($dataAllMedForm);
+		$dataAllMedForm = $this->service->prepareForDisplay($dataAllMedForm);
 		
 		
 
 		return view('medForm.index', [
-			"user" => Auth::user(),
-			"dataAllMedForm" => $dataAllMedForm
+			"user" 				=> Auth::user(),
+			"dataAllMedForm"	=> $dataAllMedForm
 			/*"feedback"	=> /*$feedback*/
 		]);
 	}
@@ -103,8 +82,8 @@ class MedFormsController extends Controller
 	/** armazena as fichas */
     public function store(MedFormCreateRequest $request){
 
-		$enteredData = $this->insertUserId($request->all(), Auth::user()->id);
-		$result = $this->service->store($enteredData["content"]);
+		$enteredData	= $this->insertUserId($request->all(), Auth::user()->id);
+		$result			= $this->service->store($enteredData["content"]);
 		return redirect()->route("medform.index", ["user" => Auth::user()->id]);
 	}
 
@@ -115,8 +94,8 @@ class MedFormsController extends Controller
 		if(!Controller::isAuthenticated())
 			return redirect()->route('user.login_get');
 		
-		$medForm = $this->service->searchMedForm($idMedForm);
-		$medForm->status = $this->setStatusDisplay($medForm->status);
+		$medForm 			= $this->service->searchMedForm($idMedForm);
+		$medForm->status	= $this->service->setStatusDisplay($medForm->status);
 
         return view('medForm.show', [
 			"dataMedForm" => $medForm,
@@ -214,8 +193,8 @@ class MedFormsController extends Controller
 	
 	public function delete(Request $request, $userId, $medFormId){
 		
-		$medformId = $request['medform_id'];
-		$userId = $request['user_id'];
+		$medformId 	= $request['medform_id'];
+		$userId		= $request['user_id'];
 
 		$feedback = $this->service->delete($medformId);
 

@@ -1,0 +1,158 @@
+
+.title-centered{
+	text-align: center;
+	margin: 1vh;
+}
+
+.centered{
+	display: flex;
+    align-items: center;
+	justify-content: right;
+}
+
+.type-search-bar .type-search-option{
+	padding: 0px;
+	border-color: #dddddd;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-width: .1vw;
+	border-bottom-style: solid;
+}
+
+.type-search-bar .leftmost-option{
+	border-left-style: solid;
+}
+
+.type-search-bar svg{
+/*	color: #053A6B;*/
+	width: 2em;
+	height: 2em;
+}
+.type-search-bar svg:focus{
+	/*color: #fff;*/
+	fill: #fff;
+	width: 2em;
+	height: 2em;
+}
+
+.type-search-bar button{
+	width: 100%;
+	height: 100%;
+	padding-bottom: 3vw;
+	padding-top: 3vw;
+	font-size: .9em;
+	color: #076782;
+	background-color: #fff;
+}
+
+.noDisplay{
+	display: none;
+}
+
+.previousBtnCol{
+	text-align: left;
+}
+
+.nextBtnCol{
+	text-align: right;
+}
+
+.previousBtnCol button, .nextBtnCol button{
+	color: #fff;
+	padding: 1vw 4vh 1vw 4vh;
+	font-size: 2rem;
+	background-color: #076782;
+	border-radius: .5rem;
+	border-color: none;
+}
+
+.previousBtnCol button:hover, .nextBtnCol button:hover{
+	background-color: #00B8AE;
+}
+
+.previousBtnCol svg, .nextBtnCol svg{
+	/*	color: #053A6B;*/
+		width: .9em;
+		height: .9em;
+}
+
+.type-search-bar .type-search-option button:focus{
+	background-color: #076782;
+	color: #fff;
+	outline: none;	
+}
+
+.search-results-label{
+	font-size: .8em;
+}
+
+.search-results-label-situation{
+	padding-left: 1vw;
+	color: white;
+}
+
+.complaint-preview{
+	font-weight: bolder;
+	font-size: 1rem;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;	
+}
+
+.date-preview{
+	font-size: 1rem;
+}
+
+.indexInfo{
+	display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.infoMedForm .title{
+	text-align: left;
+}
+
+.infoMedForm:hover{
+	background-color: #ddd;
+	cursor: pointer;
+}
+
+.medform-situation{
+	/*display: flex;
+    align-items: center;
+    justify-content: center;*/
+	
+	border-radius: 4px;
+	font-family: 'Lato', sans-serif;
+	font-weight: bold;
+	
+	font-size: 1rem;
+}
+
+.waiting{
+	color: #666666;
+}
+
+.in-progress{
+	color: #105A9E;
+}
+
+.finished{
+	color: #006C67;
+}
+
+/*.medform-info-link a{
+	text-decoration: none !important;
+	color: #555;
+}*/
+
+.medform-info-link {
+	color: #888;
+	font-weight: bold;
+}
+
+.medform-info-icon{
+	width: 2rem;
+	height: 2rem;
+}

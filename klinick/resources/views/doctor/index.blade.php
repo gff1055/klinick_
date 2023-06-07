@@ -8,12 +8,13 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&family=Press+Start+2P&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="{{asset('css/doctor/index.css')}}">
 	<link rel="stylesheet" href="{{asset('css/themeForDoctors.css')}}">
+	
 
 @endsection
 
 @section('content')
 
-	@include('templates.topMenuBar.forDoctors.layout')
+	@include('templates.topMenuBar.forDoctors.layout',["title" => 'Bem vindo <b>'.$user->name.'</b> <br>'])
 	@include('templates.topMenuBar.forDoctors.rightOption')
 
 	<div class="container-fluid menu-container">
@@ -42,7 +43,7 @@
 
 		<div class="row menu-area">
 			<div class="col menu-option-div">
-				<button type="button" id="btnMedFormService" class=" em-andamento-background menuOptionButton" data-toggle="modal">
+				<button type="button" id="searchAppointments" class=" em-andamento-background menuOptionButton" data-toggle="modal">
 					<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-clipboard2-pulse" viewBox="0 0 16 16">
 						<path d="M9.5 0a.5.5 0 0 1 .5.5.5.5 0 0 0 .5.5.5.5 0 0 1 .5.5V2a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 2v-.5a.5.5 0 0 1 .5-.5.5.5 0 0 0 .5-.5.5.5 0 0 1 .5-.5h3Z"/>
 						<path d="M3 2.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 0 0-1h-.5A1.5 1.5 0 0 0 2 2.5v12A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 12.5 1H12a.5.5 0 0 0 0 1h.5a.5.5 0 0 1 .5.5v12a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-12Z"/>
@@ -56,7 +57,7 @@
 
 		<div class="row menu-area">
 			<div class="col menu-option-div">
-				<button type="button" id="btnMedFormService" class=" em-andamento-background menuOptionButton" data-toggle="modal">
+				<button type="button" id="" class=" em-andamento-background menuOptionButton" data-toggle="modal">
 					<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-clipboard2-pulse" viewBox="0 0 16 16">
 						<path d="M9.5 0a.5.5 0 0 1 .5.5.5.5 0 0 0 .5.5.5.5 0 0 1 .5.5V2a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 2v-.5a.5.5 0 0 1 .5-.5.5.5 0 0 0 .5-.5.5.5 0 0 1 .5-.5h3Z"/>
 						<path d="M3 2.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 0 0-1h-.5A1.5 1.5 0 0 0 2 2.5v12A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 12.5 1H12a.5.5 0 0 0 0 1h.5a.5.5 0 0 1 .5.5v12a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-12Z"/>
@@ -80,5 +81,13 @@
 			</div>
 		</div>-->
 	</div>
+
+	<script>
+		searchAppointments = document.getElementById('searchAppointments');
+
+		searchAppointments.addEventListener("click", function(){
+			window.location.href = '{!!route("doctor.loadAppointments", ["doctorId" => $doctorId])!!}';
+		});
+	</script>
 
 @endsection

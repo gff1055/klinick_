@@ -83,8 +83,8 @@
 		<a href="{{route('user.index')}}"><span class="logo">KlinicK Médicos</span></a>
 	</div>-->
 
-	<div class="col-6" style="background-color:red; color: white; text-align: center">
-		teste de teste
+	<div class="col-6" style="color: white; text-align: center">
+		@php echo $title @endphp
 	</div>
 
 	<div class="itemTopMenuBar col-3" id="topMenuBarOptionRight">

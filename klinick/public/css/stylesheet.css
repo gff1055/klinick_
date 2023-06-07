@@ -22,6 +22,7 @@ inl			1, 0, 0, 0
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
+	font-family: 'Lato', sans-serif;
 }
 
 body{

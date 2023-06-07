@@ -12,6 +12,8 @@ use App\Http\Requests\DoctorUpdateRequest;
 use App\Repositories\DoctorRepository;
 use App\Validators\DoctorValidator;
 
+use App\Services\MedFormService;
+
 use App\Entities\Doctor;
 use App\Services\DoctorService;
 
@@ -26,18 +28,25 @@ class DoctorsController extends Controller{
 	
 	protected $repository;
 	protected $service;
+	protected $mfService;
 	
 	const DOCTOR = 2;
 	const USER = 1;
 	const UNLOGGED = 0;
 
-    public function __construct(DoctorRepository $repository, DoctorService $service){
-        $this->repository = $repository;
-        $this->service  = $service;
+    public function __construct( 
+		DoctorRepository $repository,
+		DoctorService $service,
+		MedFormService $mfService
+		){
+
+        $this->repository	= $repository;
+		$this->service 		= $service;
+		$this->mfService	= $mfService;
 	}
 
-	public function accessByADoctor(){ return $this->analyzeAccess() == self::DOCTOR; }
-	public function accessByAUser(){ return $this->analyzeAccess() == self::USER; }
+	public function accessByADoctor(){	return $this->analyzeAccess() == self::DOCTOR;	}
+	public function accessByAUser(){	return $this->analyzeAccess() == self::USER;	}
 
 	
 	public function agreement(){
@@ -51,37 +60,32 @@ class DoctorsController extends Controller{
 	}
 
 
-
-
-
 	public function analyzeAccess(){
-		
 		if(Controller::isAuthenticated()){
-			
-			if(Auth::user()->isADoctor)
-				return self::DOCTOR;
-			else
-				return self::USER;
-		
+			if(Auth::user()->isADoctor)	return self::DOCTOR;
+			else						return self::USER;
 		}
 
-		else
-			return self::UNLOGGED;
-
+		else							return self::UNLOGGED;
 	}
 
 
 	public function accessViewOrRoute($view, $arrDataView, $defaultRoute){
-		if($this->accessByADoctor())
-			return view($view, $arrDataView);
-		
-		else
-			return redirect()->route($defaultRoute);
+
+		if($this->accessByADoctor())	return view($view, $arrDataView);
+		else							return redirect()->route($defaultRoute);
+	}
+
+	public function getDoctorId($pUserId){
+		$lDoctor = $this->service->searchDoctor($pUserId);
+		return $lDoctor->id;
 	}
 
 	
+	
     public function index(){
-		return $this->accessViewOrRoute('doctor.index', [] ,'user.login_get');
+		$doctorId = $this->getDoctorId(Auth::user()->id);
+		return $this->accessViewOrRoute('doctor.index', ["user" => Auth::user(), "doctorId" => $doctorId] ,'user.login_get');
 	}
 	
 
@@ -97,8 +101,8 @@ class DoctorsController extends Controller{
 
     public function store(DoctorCreateRequest $request){
 
-		$idUserLogged = Auth::user()->id;
-		$registeredData = $request->all();
+		$idUserLogged 	= Auth::user()->id;
+		$registeredData	= $request->all();
 
 		$registeredData["user_id"] = $idUserLogged;
 
@@ -113,11 +117,11 @@ class DoctorsController extends Controller{
 		if(Controller::isAuthenticated()){
 
 			$doctor = $this->repository->find($id);
-			if (request()->wantsJson()) {
+			/*if (request()->wantsJson()) {
 				return response()->json([
 					'data' => $doctor,
 				]);
-			}
+			}*/
 	
 			return view('doctor.show', [
 				"doctor" => $doctor,
@@ -129,9 +133,6 @@ class DoctorsController extends Controller{
 		else{
 			return redirect()->route('user.login_get');
 		}
-
-
-
     }
 
 
@@ -154,9 +155,9 @@ class DoctorsController extends Controller{
 	public function deleteDoctor(DoctorUpdateRequest $request){
 		
 		$doctorAuthenticationData = [
-			"password" => $request->all()['password'],
-			"id" => Auth::user()->id,
-			"success" => Auth::user()
+			"password"	=> $request->all()['password'],
+			"id" 		=> Auth::user()->id,
+			"success" 	=> Auth::user()
 		];
 
 		$feedbackOperarion = $this->service->delete($doctorAuthenticationData);
@@ -205,9 +206,7 @@ class DoctorsController extends Controller{
 
 
     public function destroy($id){
-		dd($id);
-        /*$deleted = $this->repository->delete($id);
-
+		/*
         if (request()->wantsJson()) {
 
             return response()->json([
@@ -217,5 +216,26 @@ class DoctorsController extends Controller{
         }
 
         return redirect()->back()->with('message', 'Doctor deleted.');*/
-    }
+	}
+	
+	public function loadAppointments($doctorId){
+		if(!Controller::isAuthenticated())
+			return redirect()->route('user.login_get');
+
+		/** implementar se o usuario é medico de fato (DEPOIS) */
+
+		/** exibicao dos medformsd '-' */
+		$medForms = $this->mfService->searchAllMedForms();
+		$medForms = $this->mfService->prepareForDisplay($medForms);
+
+		$feedback = [
+			'success'	=> true,
+			'data'		=>$medForms
+		];
+
+		/*dd($feedback);*/
+
+		return view('doctor.loadAppointments.docLoaApp', ["medForms" => $feedback]);
+
+	}
 }
