@@ -218,7 +218,7 @@ class DoctorsController extends Controller{
         return redirect()->back()->with('message', 'Doctor deleted.');*/
 	}
 	
-	public function loadAppointments($doctorId){
+	public function loadAppointments(){
 		if(!Controller::isAuthenticated())
 			return redirect()->route('user.login_get');
 
@@ -228,6 +228,7 @@ class DoctorsController extends Controller{
 		$medForms = $this->mfService->searchAllMedForms();
 		$medForms = $this->mfService->prepareForDisplay($medForms);
 
+		
 		$feedback = [
 			'success'	=> true,
 			'data'		=>$medForms
@@ -237,5 +238,14 @@ class DoctorsController extends Controller{
 
 		return view('doctor.loadAppointments.docLoaApp', ["medForms" => $feedback]);
 
+	}
+
+
+	public function detailedAppointment($pIdMedForm){
+		$detailedMedForm = $this->mfService->searchDetailedMedForm($pIdMedForm);
+		
+		return view('doctor.detailedAppointment.docDetApp',[
+			"data" => $detailedMedForm
+		]);
 	}
 }

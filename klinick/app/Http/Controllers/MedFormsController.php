@@ -68,8 +68,6 @@ class MedFormsController extends Controller
 			
 		$dataAllMedForm = $this->service->searchUserMedForms(Auth::user()->id);
 		$dataAllMedForm = $this->service->prepareForDisplay($dataAllMedForm);
-		
-		
 
 		return view('medForm.index', [
 			"user" 				=> Auth::user(),
@@ -86,7 +84,7 @@ class MedFormsController extends Controller
 		$result			= $this->service->store($enteredData["content"]);
 		return redirect()->route("medform.index", ["user" => Auth::user()->id]);
 	}
-
+	
 
 	/** mostra a ficha de um usuario */
 	public function show($idUser, $idMedForm){
@@ -94,7 +92,7 @@ class MedFormsController extends Controller
 		if(!Controller::isAuthenticated())
 			return redirect()->route('user.login_get');
 		
-		$medForm 			= $this->service->searchMedForm($idMedForm);
+		$medForm			= $this->service->searchMedForm($idMedForm)['medform'];
 		$medForm->status	= $this->service->setStatusDisplay($medForm->status);
 
         return view('medForm.show', [
@@ -104,99 +102,16 @@ class MedFormsController extends Controller
 				
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    /*public function edit($id)
-    {
-        $medForm = $this->repository->find($id);
 
-        return view('medForms.edit', compact('medForm'));
-    }*/
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  MedFormUpdateRequest $request
-     * @param  string            $id
-     *
-     * @return Response
-     *
-     * @throws \Prettus\Validator\Exceptions\ValidatorException
-     */
-    /*public function update(MedFormUpdateRequest $request, $id)
-    {
-        try {
-
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
-
-            $medForm = $this->repository->update($request->all(), $id);
-
-            $response = [
-                'message' => 'MedForm updated.',
-                'data'    => $medForm->toArray(),
-            ];
-
-            if ($request->wantsJson()) {
-
-                return response()->json($response);
-            }
-
-            return redirect()->back()->with('message', $response['message']);
-        } catch (ValidatorException $e) {
-
-            if ($request->wantsJson()) {
-
-                return response()->json([
-                    'error'   => true,
-                    'message' => $e->getMessageBag()
-                ]);
-            }
-
-            return redirect()->back()->withErrors($e->getMessageBag())->withInput();
-        }
-    }*/
-
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-/*    public function destroy(Request $request){
-
-		$medformId = $request['medform_id'];
-		$userId = $request['user_id'];
-		
-        /*$deleted = $this->repository->delete($medformId);*/
-
-        /*if (request()->wantsJson()) {
-
-            return response()->json([
-                'message' => 'MedForm deleted.',
-                'deleted' => $deleted,
-            ]);
-        }*/
-
-		/*return redirect()->back()->with('message', 'MedForm deleted.');*/
-
-/*		dd($request);
-
-		return redirect()->route('medform.index', ["user" => Auth::user()->id]);
-	}*/
 	
 	public function delete(Request $request, $userId, $medFormId){
 		
-		$medformId 	= $request['medform_id'];
-		$userId		= $request['user_id'];
+		/*$medformId 	= $request['medform_id'];
+		/*$medformId 	= 5;*/
+		
+		/*$userId		= $request['user_id'];*/
 
-		$feedback = $this->service->delete($medformId);
+		$feedback = $this->service->delete($medFormId);
 
 		if($feedback['success'])
 			$msgFeedback = "A ficha de atendimento foi excluida";

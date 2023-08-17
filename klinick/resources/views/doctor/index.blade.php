@@ -86,7 +86,7 @@
 		searchAppointments = document.getElementById('searchAppointments');
 
 		searchAppointments.addEventListener("click", function(){
-			window.location.href = '{!!route("doctor.loadAppointments", ["doctorId" => $doctorId])!!}';
+			window.location.href = '{!!route("doctor.loadAppointments")!!}';
 		});
 	</script>
 

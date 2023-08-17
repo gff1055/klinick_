@@ -91,6 +91,16 @@
 	color: white;
 }
 
+.div-image-medform{
+	text-align: right;
+	vertical-align: middle;
+}
+
+.image-medform{
+	width: 3rem;
+	height: 3rem;
+}
+
 .complaint-preview{
 	font-weight: bolder;
 	font-size: 1rem;
@@ -107,6 +117,10 @@
 	display:flex;
     align-items: center;
     justify-content: center;
+}
+
+.infoMedForm{
+	padding: 1rem 0 0 0;
 }
 
 .infoMedForm .title{

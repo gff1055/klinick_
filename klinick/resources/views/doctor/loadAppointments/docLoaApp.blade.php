@@ -17,7 +17,7 @@
 	@include('templates.topMenuBar.forDoctors.layout')
 	@include('templates.topMenuBar.forDoctors.rightOption')
 
-	{!! $medForms['data'][0]->id !!}
+	
 
 	<div class="container-fluid" id="medform-data-table">
 
@@ -51,31 +51,39 @@
 		</div>
 		
 		<br>
-
+		
 		@foreach ($medForms['data'] as $medForm)
 		<div class="row infoMedForm noDisplay">
-			<div class="col-10">
+			<div class="col-2">
+				<div class="div-image-pacient">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person-circle image-pacient" viewBox="0 0 16 16">
+						<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+						<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+					</svg>
+				</div>
+			</div>
+			<div class="col-8 data-medforms">
 					<div class="row">
 						<div class="col complaint-preview">
-							{{ $medForm->complaint }}
+							<span class="name-preview">{{$medForm->name}}</span>: {{ $medForm->complaint }}
 						</div>
 					</div>
 
 					<div class="row">
 						<div class="col date-preview">
-							{{ $medForm->name }} - {{ $medForm->city }}/{{ $medForm->state }}
+							{{$medForm->city}}/{{$medForm->state}}
 						</div>
 					</div>
 
 					<div class="row">
 						<div class="col medform-situation ">
-							Status: <span class="status">{{ $medForm->status }}</span>
+							Status: <span class="status">{{ $medForm->descStatus }}</span>
 						</div>
 					</div>					
 			</div>
 
 			<div class="col-2 centered generalThemeColorUsers">
-				<a href="{!/!route('medform.show',['user' => $user->id, 'medform' => $medForm->id])!!}" class="medform-info-link">
+				<a href="{!!route('doctor.detailedAppointment',['appointment' => $medForm->id])!!}" class="medform-info-link">
 					 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-chevron-right medform-info-icon" viewBox="0 0 16 16">
 						<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
 					 </svg>

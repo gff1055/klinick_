@@ -16,122 +16,60 @@ Route::get('/', function () {
 });
 
 /* Rota inicial */
-Route::get('/login', [
-	'as'	=> 'user.login_get',
-	'uses'	=> 'Controller@userLogin'
-]);
+Route::get('/login',	['as' => 'user.login_get',	'uses' => 'Controller@userLogin']);
 
 /** Rota POST onde são enviado os dados de login fornecidos*/
-Route::post('/login',[
-	'as'	=> 'user.login_post',
-	'uses'	=> 'Controller@login'
-]);
+Route::post('/login',	['as' => 'user.login_post',	'uses' => 'Controller@login']);
 
-Route::get('/logout', [
-	'as'	=> 'user.logout',
-	'uses'	=> 'Controller@logout'
-	]);
+Route::get('/logout',	['as' => 'user.logout', 	'uses'	=> 'Controller@logout']);
 
-Route::get('/deactivated', [
-	'as'	=> 'user.deactivated',
-	'uses'	=> 'Controller@deactivated'
-	]);
+Route::get('/deactivated',	['as' => 'user.deactivated',	'uses' => 'Controller@deactivated']);
 
-Route::get('/register', [
-	'as'	=> 'user.register_get',
-	'uses'	=> 'UsersController@register']);
+Route::get('/register',		['as' => 'user.register_get',	'uses'	=> 'UsersController@register']);
 
 
 
-Route::get('/user/settings/personal_data', [
-	'as'	=> 'user.settingsPersonalData',
-	'uses'	=> 'UsersController@settingsPersonalData']);
+Route::get('/user/settings/personal_data',	['as' => 'user.settingsPersonalData',	'uses' => 'UsersController@settingsPersonalData']);
 
-Route::get('/user/settings/auth_data', [
-	'as'	=> 'user.settingsAuthData',
-	'uses'	=> 'UsersController@settingsAuthData'
-]);
+Route::get('/user/settings/auth_data',		['as' => 'user.settingsAuthData',		'uses' => 'UsersController@settingsAuthData']);
 
-Route::put('/user/updating/personal_data',[
-	'as' 	=> 'user.updatingPersonalData',
-	'uses' 	=> 'UsersController@updatingPersonalData'
-]);
+Route::put('/user/updating/personal_data',	['as' => 'user.updatingPersonalData',	'uses' => 'UsersController@updatingPersonalData']);
 
-Route::put('/user/updating/auth_data',[
-	'as'	=> 'user.updatingAuthData',
-	'uses'	=> 'UsersController@updatingAuthData'
-]);
+Route::put('/user/updating/auth_data',		['as' => 'user.updatingAuthData',		'uses' => 'UsersController@updatingAuthData']);
 
-Route::get('/user/settings/delete',[
-	'as'	=> 'user.settingsDelete',
-	'uses'	=> 'UsersController@settingsDelete'
-]);
+Route::get('/user/settings/delete',			['as' => 'user.settingsDelete',			'uses' => 'UsersController@settingsDelete']);
 
-Route::delete('/user/delete',[
-	'as'	=> 'user.delete',
-	'uses'	=> 'UsersController@deleteUser'
-]);
+Route::delete('/user/delete',				['as' => 'user.delete',	'uses'	=> 'UsersController@deleteUser']);
 
 Route::resource('user', 'UsersController');
 
-
-/*Route::get('/user/{user}/medform/{medform}/close', [
-	'as'	=> 'medForm.close',
-	'uses'	=> 'MedFormsController@close'
-]);*/
+/*Route::get('/user/{user}/medform/{medform}/close',	['as' => 'medForm.close',	'uses' => 'MedFormsController@close']);*/
 
 Route::resource('user/{user}/medform', 'MedFormsController');
 
-Route::get('/user/{user}/medform/{medform}/delete',[
-	'as'	=> 'medform.delete',
-	'uses'	=> 'MedFormsController@delete'
-]);
+Route::get('/user/{user}/medform/{medform}/delete',	['as' => 'medform.delete',	'uses'	=> 'MedFormsController@delete']);
 
 Route::resource('user/{user}/appointment', 'AppointmentsController');
 
 
 
 
-/*Route::get('/user/{user}/appointment/new',[
-	'as'	=> 'user.appointment.new',
-	'uses'	=> 'UsersController@newAppointment'
-]);*/
+Route::get('/doctor/agreement',	['as' => 'doctor.agreement',	'uses' => 'DoctorsController@agreement']);
 
+Route::get('/doctor/settings',	['as' => 'doctor.settings',		'uses' => 'DoctorsController@settings']);
 
+Route::get('/doctor/settings/delete',	['as' => 'doctor.delete',	'uses' => 'DoctorsController@settingsDelete']);
 
+Route::delete('/doctor/delete',			['as' => 'doctor.delete',	'uses'	=> 'DoctorsController@deleteDoctor']);
 
+Route::get('/doctor/appointments',		['as' => 'doctor.loadAppointments', 'uses' => 'DoctorsController@loadAppointments']);
 
-Route::get('/doctor/agreement',[
-	'as'	=> 'doctor.agreement',
-	'uses'	=> 'DoctorsController@agreement'
-]);
-
-Route::get('/doctor/settings',[
-	'as'	=> 'doctor.settings',
-	'uses'	=> 'DoctorsController@settings'
-]);
-
-Route::get('/doctor/settings/delete',[
-	'as'	=> 'doctor.delete',
-	'uses'	=> 'DoctorsController@settingsDelete'
-]);
-
-Route::delete('/doctor/delete',[
-	'as'	=> 'doctor.delete',
-	'uses'	=> 'DoctorsController@deleteDoctor'
-]);
-
-Route::get('/doctor/{doctor}/appointments',[
-	'as'	=> 'doctor.loadAppointments',
-	'uses'	=> 'DoctorsController@loadAppointments'
-]);
-
+Route::get('/doctor/appointments/{appointment}',	['as' => 'doctor.detailedAppointment', 'uses' => 'DoctorsController@detailedAppointment']);
 
 Route::resource('doctor', 'DoctorsController');
 
 
-Route::get('/test',[
-	'as'	=> 'my.test',
-	'uses'	=> 'TestsController@running'
-]);
+
+
+Route::get('/test',	[ 'as' => 'my.test',	'uses' => 'TestsController@running']);
 

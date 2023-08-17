@@ -90,8 +90,6 @@
 						Deseja excluir esta ficha de atendimento? 
 					</div>
 
-					<input type="text" name="user_id" id="user_id" value="">
-					<input type="text" name="medform_id" id="medform_id" value="">
 
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -114,15 +112,16 @@
 		$('#deleteModal').on('show.bs.modal', function(event){
 
 			var button = $(event.relatedTarget);
-			var recipientUser = button.data('user');
-			var recipientMedform = button.data('medform');
+			/*var recipientUser = button.data('user');*/
+			var recipientUser = 5;
+			/*var recipientMedform = button.data('medform');*/
+			var recipientMedform = 5;
 			console.log(recipientUser);
 			console.log(recipientMedform);
 
 			var modal = $(this);
 			modal.find('#user_id').val(recipientUser);
 			modal.find('#medform_id').val(recipientMedform);
-
 		})
 
 	</script>

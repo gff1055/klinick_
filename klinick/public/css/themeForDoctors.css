@@ -9,6 +9,15 @@ inl			1, 0, 0, 0
 
 /* Links do cabecalho ao passar o mouse */
 
+.generalThemeColorDoctors{
+	color: #002966;
+}
+
+.background-color-blue{
+	background-color: #002966;
+	color: white;
+}
+
 .topMenuBar{
 	background-color: #002966;
 }

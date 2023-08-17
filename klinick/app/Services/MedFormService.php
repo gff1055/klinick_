@@ -69,7 +69,7 @@ class MedFormService{
 	public function prepareForDisplay($pArray){
 
 		for($i = 0; $i < count($pArray); $i++){
-			$pArray[$i]->status = $this->setStatusDisplay($pArray[$i]->status);
+			$pArray[$i]->descStatus = $this->setStatusDisplay($pArray[$i]->status);
 		}
 
 		return $pArray;
@@ -93,33 +93,60 @@ class MedFormService{
 	}
 
 	
-	/** busca as fichas de um usuario */
 	public function searchUserMedForms($pIdUser){
 		return DB::select('select * from med_forms where user_id = ? order by date desc', [$pIdUser]);
 	}
 
 	public function searchAllMedForms(){
 		return DB::select('
-			select * 
-			from med_forms m, users u
+			select m.id, m.state, m.city, m.complaint, m.status, u.name 
+			from med_forms as m, users as u
 			where m.user_id = u.id 
 			order by date
 			desc'
 		);
 	}
 
-	/** busca uma ficha de consulta */
-	public function searchMedForm($pId){
-		return DB::select('select * from med_forms where id = ?', [$pId])[0];
+	
+	public function searchMedForm($pIdMedForm){
+
+		/*try {*/
+			$medform 				= DB::select('select * from med_forms where id = ?', [$pIdMedForm])[0];
+			$medform->descStatus	= $this->setStatusDisplay($medform->status);
+			
+			$user 		= DB::select('select id, name from users where id = ?', [$medform->user_id])[0];
+
+			return[
+				"medform" 	=> $medform,
+				"user"		=> $user
+			];
+		/*} catch (Exception $th) {
+			return "Erro inesperado! Code: 4C3S01N3V1D0" . $th;
+		}*/
+		
+	}
+
+	
+	public function searchDetailedMedForm($pIdMedForm){
+		return $this->searchMedForm($pIdMedForm);
+/*		$userInfo	= DB::select('select * from users where id = ?', [dForm])[0];*/
+	}
+
+	public function setDoctorToMedForm($pIdDoctor, $pIdMedForm){
+		$data = $this->searchMedForm($pIdMedForm);
+		$data['medform']->doctor_id = $pIdDoctor;
 	}
 
 	/** apaga uma ficha de consulta */
 	public function delete($idMedForm){
+		
+		$data = $this->searchMedForm($idMedForm);
+		/*dd($data);*/
 
-		$medForm = $this->searchMedForm($idMedForm);
+				
 
-		if($medForm->status == 11){
-			$opDelete = DB::delete("delete from med_forms where id = ?", [$medForm->id]);
+		if($data['medform']->status == 11){
+			$opDelete = DB::delete("delete from med_forms where id = ?", [$data['medform']->id]);
 
 			$arrayDataFeedback = [				
 				'success'	=> true,
@@ -128,7 +155,7 @@ class MedFormService{
 			];
 		}
 
-		else if($medForm->status == 12 || $medForm->status == 22){
+		else if($data['medform']->status == 12 || $data['medform']->status == 22){
 			$arrayDataFeedback = [				
 				'success'	=> false,
 				'code'		=> '0xAT31ME0IN11AD0',

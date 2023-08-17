@@ -25,6 +25,15 @@
 			</div>
 		@endif
 
+		@if($dataAllMedForm == [])
+		<div class="row infoMedForm">
+			<div class="col-4"></div>
+			<div class="col-4">Nenhuma ficha foi criada</div>
+			<div class="col-4"></div>
+		</div>
+			
+		@else
+
 		<div class="row">
 			<div class="col previousBtnCol">
 				<button type="button" class="">
@@ -50,10 +59,18 @@
 		<br>
 
 		
-
 		@foreach($dataAllMedForm as $medForm)
 		<div class="row infoMedForm noDisplay">
-			<div class="col-10">
+			<div class="col-2">
+				<div class="div-image-medform">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-card-text image-medform" viewBox="0 0 16 16">
+						<path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+						<path d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8zm0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z"/>
+					</svg>
+				</div>
+			</div>
+			
+			<div class="col-8">
 				<!--<div class="container">-->
 					<div class="row">
 						<div class="col complaint-preview">
@@ -69,7 +86,7 @@
 
 					<div class="row">
 						<div class="col medform-situation ">
-							Status: <span class="status">{{ $medForm->status }}</span>
+							Status: <span class="status">{{ $medForm->descStatus }}</span>
 						</div>
 					</div>					
 			</div>
@@ -111,6 +128,7 @@
 				</button>
 			</div>
 		</div>
+		@endif
 	
 	</div>
 
